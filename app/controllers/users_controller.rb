@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-#  before_filter :authenticate_user!
-#  before_filter :check_admin, :only => [:index, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :check_admin, :only => [:index, :update, :destroy]
 
   def check_admin
     unless current_user.admin?

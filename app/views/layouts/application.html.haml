@@ -14,4 +14,9 @@
         = render 'layouts/navigation'
         %main{:role => "main"}
           = render 'layouts/messages'
+          - if notice
+          = notice
+          - if alert
+          = alert
+          - end
           = yield
