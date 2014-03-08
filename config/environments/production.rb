@@ -1,7 +1,7 @@
 Myapp::Application.configure do
 
   if ENV['MAILTRAP_HOST'].present?
-    ActionMailer::Base.deliver_method = :smtp
+    ActionMailer::Base.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
       :user_name => ENV['MAILTRAP_USER_NAME'],
       :password => ENV['MAILTRAPPASSWORD'],
