@@ -1,4 +1,16 @@
 Myapp::Application.configure do
+
+  if ENV['MAILTRAP_HOST'].present?
+    ActionMailer::Base.deliver_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+      :user_name => ENV['MAILTRAP_USER_NAME'],
+      :password => ENV['MAILTRAPPASSWORD'],
+      :address => ENV['MAILTRAP_HOST'],
+      :port => ENV['MAILTRAP_PORT'],
+      :authentication => :plain
+    }
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -14,7 +26,8 @@ Myapp::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.action_mailer.default_url_options = {:host => "http://carbon-counter-5000.herokuapp.com"}
+  config.action_mailer.default_url_options = {:host => "http://intense-caverns-3017.herokuapp.com"}
+  
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
