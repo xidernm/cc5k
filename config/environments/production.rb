@@ -1,15 +1,13 @@
 Myapp::Application.configure do
-
-  if ENV['MAILTRAP_HOST'].present?
-    ActionMailer::Base.delivery_method = :smtp
-    ActionMailer::Base.smtp_settings = {
-      :user_name => ENV['MAILTRAP_USER_NAME'],
-      :password => ENV['MAILTRAPPASSWORD'],
-      :address => ENV['MAILTRAP_HOST'],
-      :port => ENV['MAILTRAP_PORT'],
-      :authentication => :plain
-    }
-  end
+  ActionMailer::Base.smtp_settings = {
+  :port           => ENV['MAILGUN_SMTP_PORT'],
+  :address        => ENV['MAILGUN_SMTP_SERVER'],
+  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  :domain         => 'intense-caverns-3017.heroku.com',
+  :authentication => :plain,
+  }
+ActionMailer::Base.delivery_method = :smtp
 
   # Settings specified here will take precedence over those in config/application.rb.
 
