@@ -1,0 +1,11 @@
+development:
+ adapter: sqlite3
+ database: rails_dev
+ username: dev
+ password: devpwd
+production:
+ adapter: postgresql
+ encoding: unicode
+ database: myapp_development
+ pool: 5
+ password: 

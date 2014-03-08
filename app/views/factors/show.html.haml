@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @factor.name
+%p
+  %b Amount:
+  = @factor.amount
+%p
+  %b Statistic Id:
+  = @factor.statistic_id
+%p
+  %b Dependency:
+  = @factor.dependency
+%p
+  %b Unit:
+  = @factor.unit
+%p
+
+= link_to 'Edit', edit_factor_path(@factor)
+\|
+= link_to 'Back', factors_path

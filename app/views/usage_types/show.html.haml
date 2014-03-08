@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Indirection:
+  = @usage_type.indirection
+%p
+  %b Type:
+  = @usage_type.type
+
+= link_to 'Edit', edit_usage_type_path(@usage_type)
+\|
+= link_to 'Back', usage_types_path
