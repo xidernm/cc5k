@@ -1,13 +1,6 @@
 class StatisticsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_admin, :only => [:index, :update, :destroy]
   before_action :set_statistic, :only => [:show, :edit, :update, :destroy]
-
-  def check_admin
-    unless current_user.admin?
-      authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    end
-  end
 
   # GET /statistics
   # GET /statistics.json
@@ -18,7 +11,10 @@ class StatisticsController < ApplicationController
   # GET /statistics/1
   # GET /statistics/1.json
   def show
-    redirect_to fill_in_factors_path(@statistic.id)
+    if current_user.admin?
+      redirect_to fill_in_factors_path(@statistic.id)
+    else
+    end
   end
 
   # GET /statistics/new
@@ -78,15 +74,20 @@ class StatisticsController < ApplicationController
     end
   end
 
+  def make_factors
+    raise "Fuck You"
+  end
 
   def fill_in_factors
     a = params[:format]
     @factors = Factor.where(:statistic_id => a)
+    # raise @factors.inspect
   end
 
 
   def create_answer
     current_stat_id = nil
+    raise params
     params[:form_fields].each do |field|
       current_stat_id = field[0][0] if current_stat_id != field[0][0]
       s = Statistic.find(field[0][0])

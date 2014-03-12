@@ -1,0 +1,10 @@
+= form_for @earned_badge do |f|
+  - if @earned_badge.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@earned_badge.errors.count, "error")} prohibited this earned_badge from being saved:"
+      %ul
+        - @earned_badge.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

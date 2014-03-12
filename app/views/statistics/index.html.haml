@@ -20,8 +20,9 @@
         %td= statistic.description
         %td= statistic.equation
         %td= link_to('Show', statistic, :class => 'btn btn-mini')
-        %td= link_to('Edit', edit_statistic_path(statistic), :class => 'btn btn-mini')
-        %td= link_to('Destroy', statistic, :class => 'btn btn-mini', :method => :delete, :data => { :confirm => 'Are you sure?' })
+        - if current_user.admin?
+          %td= link_to('Edit', edit_statistic_path(statistic), :class => 'btn btn-mini')
+          %td= link_to('Destroy', statistic, :class => 'btn btn-mini', :method => :delete, :data => { :confirm => 'Are you sure?' })
 %br
 
 = link_to 'New Statistic', new_statistic_path

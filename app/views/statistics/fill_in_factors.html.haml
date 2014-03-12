@@ -1,6 +1,6 @@
--  @factors.each do |fac|
-  %hr
-  = form_for fac do |f|  
+- @factors.each do |fac|
+  = form_for fac do |f|
+    %br
     .field
       = f.label :name
       = f.text_field :name
@@ -13,4 +13,6 @@
     .field
       = f.label :unit
       = f.text_field :unit
-%br
+= link_to "Back", :controller => "statistics", :action => "create_answer"
+\|
+= link_to "Doesn't Save Yet", :controller => "statistics", :action => "index"

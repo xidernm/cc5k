@@ -1,0 +1,2 @@
+module UsageTypesHelper
+end

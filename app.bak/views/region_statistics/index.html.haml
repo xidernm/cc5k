@@ -1,0 +1,19 @@
+%h1 Listing region_statistics
+
+%table
+  %tr
+    %th Usage
+    %th
+    %th
+    %th
+
+  - @region_statistics.each do |region_statistic|
+    %tr
+      %td= region_statistic.usage
+      %td= link_to 'Show', region_statistic
+      %td= link_to 'Edit', edit_region_statistic_path(region_statistic)
+      %td= link_to 'Destroy', region_statistic, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Region statistic', new_region_statistic_path

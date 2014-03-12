@@ -8,19 +8,6 @@ class AnswersController < ApplicationController
     @answers = Answer.all
   end
 
-  def create_answer
-    current_stat_id = nil
-    params[:form_fields].each do |field|
-      current_stat_id = field[0][0] if current_stat_id != field[0][0]
-      s = Statistic.find(field[0][0])
-      Answer.where(statistic_id: s.id, user_id: current_user.id, name: field[0][1..-1], amount: field[1]).create
-    end
-    redirect_to answers_path
-  end
-  def fill_out_form
-    @statistics = Statistic.all
-    @user = current_user
-  end
   # GET /answers/1
   # GET /answers/1.json
   def show

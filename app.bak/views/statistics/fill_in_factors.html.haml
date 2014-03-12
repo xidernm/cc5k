@@ -1,0 +1,16 @@
+-  @factors.each do |fac|
+  %hr
+  = form_for fac do |f|  
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :dependency
+      = f.text_field :dependency
+    .field  
+      = f.label  :amount
+      = f.text_field :amount
+    .field
+      = f.label :unit
+      = f.text_field :unit
+%br
