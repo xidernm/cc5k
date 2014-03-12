@@ -1,17 +1,25 @@
-%h3 Home
-
-= current_user.inspect
-%br
-%br
-%div
- %p Welcome to Carbon Counter 5000! This message serves several purposes. First: there is now text on the homescreen which is satisfying, second: learning curves on making stuff show up, third: ????? forth: profit.
- %ul
-  %li Text on homescreen
-  %li learn HAML
-  %li ??????????
-  %li profit
-
 -if current_user!=nil
- = high_chart("bigChart",@usage)
+  %h3
+    Welcome Back
+    =current_user.email
+    !
+  %h4 Your Carbon Profile
+  %div
+    = high_chart("bigChart",@usage)
+-else
+  %h3 Welcome to Carbon Counter 5000, Please sign up for an account
+  %br
+  %br
+  %div
+    %p
+      Welcome to Carbon Counter 5000! Our community is designed to help people track, compare, and reduce their carbon footprints. Click sign-up and get your 100% free Carbon usage profile and see how you compare to your friends, your community, and the average. Then come back often for updated average, historical analysis, and to see what cool prizes you've won.
+    %ul
+      %li Tracking on a number of usage types and factors
+      %li History and reduction vectors
+      %li Badges, acheivements, community
+      %li Analysis compared to regional averages
+      %li Most effective reduction suggestions
+
+
 
 
