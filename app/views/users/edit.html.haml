@@ -17,9 +17,9 @@
     = f.text_field :email
   %tr
    %td
-    = f.label :zip
+    = f.label:state
    %td
-    = f.text_field :zip
+    = f.select(:state,$stateMap)
 
 
  = f.submit "Update"
