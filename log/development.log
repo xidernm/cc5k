@@ -7217,3 +7217,1007 @@ Processing by HomeController#index as HTML
   Rendered layouts/_navigation.html.haml (2.9ms)
   Rendered layouts/_messages.html.haml (0.1ms)
 Completed 200 OK in 39ms (Views: 36.9ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 09:46:40 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (3.9ms)
+  Rendered layouts/_carousel.html.haml (9.1ms)
+  Rendered layouts/_navigation_links.html.erb (1.2ms)
+  Rendered layouts/_navigation.html.haml (5.3ms)
+  Rendered layouts/_messages.html.haml (1.4ms)
+Completed 200 OK in 687ms (Views: 655.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-15 09:46:45 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (76.1ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.haml (1.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 115ms (Views: 98.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-15 09:46:49 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xnk5A+uBKZePVQM9VlXvZKHDj0Iv6UZbJP6wbMhPnA=", "user"=>{"email"=>"xidernm@unm.edu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'xidernm@unm.edu' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 401 Unauthorized in 132ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-15 09:46:49 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.haml (1.5ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-15 09:47:00 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xnk5A+uBKZePVQM9VlXvZKHDj0Iv6UZbJP6wbMhPnA=", "user"=>{"email"=>"asdf@asdf.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'asdf@asdf.com' ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 401 Unauthorized in 3ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xnk5A+uBKZePVQM9VlXvZKHDj0Iv6UZbJP6wbMhPnA=", "user"=>{"email"=>"asdf@asdf.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.haml (1.2ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 111ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-03-15 09:48:40 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (30.7ms)
+  Rendered layouts/_carousel.html.haml (11.5ms)
+  Rendered layouts/_navigation_links.html.erb (1.3ms)
+  Rendered layouts/_navigation.html.haml (5.2ms)
+  Rendered layouts/_messages.html.haml (1.3ms)
+Completed 200 OK in 319ms (Views: 287.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-03-15 09:48:48 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xnk5A+uBKZePVQM9VlXvZKHDj0Iv6UZbJP6wbMhPnA=", "user"=>{"email"=>"asdf@asdf.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'asdf@asdf.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered devise/registrations/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.haml (1.5ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 156ms (Views: 26.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-03-15 09:48:53 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xnk5A+uBKZePVQM9VlXvZKHDj0Iv6UZbJP6wbMhPnA=", "user"=>{"email"=>"asdf@asdf.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'asdf@asdf.com' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'b9936087d18af52c6bc6d4982ea481b5822c5bb54d54e0e8058a4a91234f53ea' ORDER BY "users"."id" ASC LIMIT 1[0m
+Binary data inserted for `string` type on column `confirmation_token`
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (62.2ms)[0m  INSERT INTO "users" ("confirmation_sent_at", "confirmation_token", "created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Sat, 15 Mar 2014 15:48:54 UTC +00:00], ["confirmation_token", "b9936087d18af52c6bc6d4982ea481b5822c5bb54d54e0e8058a4a91234f53ea"], ["created_at", Sat, 15 Mar 2014 15:48:53 UTC +00:00], ["email", "asdf@asdf.com"], ["encrypted_password", "$2a$10$kCp6V.HVIAyMhkPVh6okvOBaBlkbsyziU86Pvuo2FYlfdL9yDGVp."], ["updated_at", Sat, 15 Mar 2014 15:48:53 UTC +00:00]]
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/devise-3.2.3/app/views/devise/mailer/confirmation_instructions.html.erb (1.0ms)
+
+Sent mail to asdf@asdf.com (12.1ms)
+Date: Sat, 15 Mar 2014 09:48:54 -0600
+From: info@intense-caverns-3017.herokuapp.com
+Reply-To: info@intense-caverns-3017.herokuapp.com
+To: asdf@asdf.com
+Message-ID: <53247666ac171_1c762e99d307005f@xidernm-lp.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome asdf@asdf.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://intense-caverns-3017.herokuapp.com/users/confirmation?confirmation_token=-h4BRfE8-zjs5tLkh1uV">Confirm my account</a></p>
+
+  [1m[36m (142.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1301ms (ActiveRecord: 205.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 09:48:54 -0600
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.5ms)
+  Rendered layouts/_navigation.html.haml (1.3ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=-h4BRfE8-zjs5tLkh1uV" for 127.0.0.1 at 2014-03-15 09:49:33 -0600
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"-h4BRfE8-zjs5tLkh1uV"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'b9936087d18af52c6bc6d4982ea481b5822c5bb54d54e0e8058a4a91234f53ea' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "confirmation_token" = ?, "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = 4  [["confirmation_token", nil], ["confirmed_at", Sat, 15 Mar 2014 15:49:33 UTC +00:00], ["updated_at", Sat, 15 Mar 2014 15:49:33 UTC +00:00]]
+  [1m[36m (316.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 325ms (ActiveRecord: 317.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-15 09:49:33 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.haml (1.4ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-15 09:49:38 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xnk5A+uBKZePVQM9VlXvZKHDj0Iv6UZbJP6wbMhPnA=", "user"=>{"email"=>"asdf@asdf.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'asdf@asdf.com' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `last_sign_in_ip`
+Binary data inserted for `string` type on column `current_sign_in_ip`
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 4  [["last_sign_in_at", Sat, 15 Mar 2014 15:49:38 UTC +00:00], ["current_sign_in_at", Sat, 15 Mar 2014 15:49:38 UTC +00:00], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", Sat, 15 Mar 2014 15:49:38 UTC +00:00]]
+  [1m[36m (237.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 323ms (ActiveRecord: 238.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 09:49:38 -0600
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 4]]
+  Rendered layouts/_navigation_links.html.erb (37.1ms)
+  Rendered layouts/_navigation.html.haml (37.9ms)
+  Rendered layouts/_messages.html.haml (0.3ms)
+Completed 200 OK in 61ms (Views: 58.6ms | ActiveRecord: 1.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 09:50:40 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (4.7ms)
+  Rendered layouts/_carousel.html.haml (8.0ms)
+  [1m[36mRole Load (2.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 4]]
+  Rendered layouts/_navigation_links.html.erb (23.9ms)
+  Rendered layouts/_navigation.html.haml (27.2ms)
+  Rendered layouts/_messages.html.haml (1.6ms)
+Completed 200 OK in 283ms (Views: 241.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 09:51:21 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (4.6ms)
+  Rendered layouts/_carousel.html.haml (8.0ms)
+  [1m[36mRole Load (2.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 4]]
+  Rendered layouts/_navigation_links.html.erb (23.8ms)
+  Rendered layouts/_navigation.html.haml (27.0ms)
+  Rendered layouts/_messages.html.haml (1.6ms)
+Completed 200 OK in 281ms (Views: 239.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 09:51:56 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (4.8ms)
+  Rendered layouts/_carousel.html.haml (8.2ms)
+  [1m[36mRole Load (2.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 4]]
+  Rendered layouts/_navigation_links.html.erb (24.1ms)
+  Rendered layouts/_navigation.html.haml (27.3ms)
+  Rendered layouts/_messages.html.haml (1.6ms)
+Completed 200 OK in 314ms (Views: 240.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 10:02:59 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+SyntaxError - /home/xidernm/heroku/app/controllers/home_controller.rb:29: syntax error, unexpected end-of-input, expecting keyword_end:
+  activesupport (4.0.3) lib/active_support/dependencies.rb:424:in `'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:424:in `load'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:424:in `block in load_file'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:616:in `new_constants_in'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:423:in `load_file'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:324:in `require_or_load'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:463:in `load_missing_constant'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.0.3) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.3) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.3) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.3) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.3) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:535:in `get'
+  activesupport (4.0.3) lib/active_support/dependencies.rb:566:in `constantize'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__3582186419624269903__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/22795380/variables" for 127.0.0.1 at 2014-03-15 10:02:59 -0600
+
+
+Started POST "/__better_errors/22795380/variables" for 127.0.0.1 at 2014-03-15 10:03:23 -0600
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 10:04:13 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+ERROR: compiling _app_views_home_index_html_haml___3503334146435025189_27893640 RAISED /home/xidernm/heroku/app/views/home/index.html.haml:10: syntax error, unexpected ';', expecting ')'
+));}\n</div>\n", -1, false);else
+   ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unknown regexp option - h
+unmatched close parenthesis: /div>\n", -1, false);else
+_hamlout.push_text("<h3>Welcome to Carbon Counter 5000, Please sign up for an account</
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tINTEGER, expecting tSTRING_DEND
+...ease sign up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...n up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welc...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...or an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...ccount</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+.../h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon Counte...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected '!', expecting tSTRING_DEND
+...Welcome to Carbon Counter 5000! Our community is designed to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected keyword_and
+...help people track, compare, and reduce their carbon footprin...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tCONSTANT, expecting keyword_do or '{' or '('
+...p and get your 100% free Carbon usage profile and see how yo...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...to your friends, your community, and the average. Then come ...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+... back often for updated average, historical analysis, and to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...ed average, historical analysis, and to see what cool prizes...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unterminated string meets end of file
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+Function body:           def _app_views_home_index_html_haml___3503334146435025189_27893640(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "home/index";_old_output_buffer = @output_buffer;;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(haml_buffer, {:autoclose=>["area", "base", "basefont", "br", "col", "command", "embed", "frame", "hr", "img", "input", "isindex", "keygen", "link", "menuitem", "meta", "param", "source", "track", "wbr"], :preserve=>["textarea", "pre", "code"], :attr_wrapper=>"'", :ugly=>false, :format=>:html5, :encoding=>"UTF-8", :escape_html=>true, :escape_attrs=>true, :hyphenate_data_attrs=>true, :cdata=>false});_erbout = _hamlout.buffer;@output_buffer = output_buffer ||= ActionView::OutputBuffer.new rescue nil;if current_user!=nil
+_hamlout.push_text("<h3>\n  Welcome Back\n  #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false((current_user.email
+));}\n  !\n</h3>\n<h4>Your Carbon Profile</h4>\n<div>\n  #{
+
+
+_hamlout.format_script_false_false_false_true_false_true_false(( high_chart("UsageChart",@areaGraph)
+));}\n  #{_hamlout.format_script_false_false_false_true_false_true_false(( high_chart("EmissionDistributionChart",@distributionGraph
+));}\n</div>\n", -1, false);else
+_hamlout.push_text("<h3>Welcome to Carbon Counter 5000, Please sign up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon Counter 5000! Our community is designed to help people track, compare, and reduce their carbon footprints. Click sign-up and get your 100% free Carbon usage profile and see how you compare to your friends, your community, and the average. Then come back often for updated average, historical analysis, and to see what cool prizes you've won.\n  </p>\n  <ul>\n    <li>Tracking on a number of usage types and factors</li>\n    <li>History and reduction vectors</li>\n    <li>Badges, acheivements, community</li>\n    <li>Analysis compared to regional averages</li>\n    <li>Most effective reduction suggestions</li>\n  </ul>\n</div>\n", 0, false);end;::Haml::Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.upper if @haml_buffer;end;
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:299:in `module_eval'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:299:in `compile'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:248:in `block in compile!'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:236:in `synchronize'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:236:in `compile!'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:142:in `block in render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:161:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:141:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `block in instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/renderer.rb:23:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:97:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/base.rb:189:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:403:in `_run__3233852086758099934__process_action__callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `block in instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/base.rb:136:in `process'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:44:in `process'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal.rb:195:in `dispatch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal.rb:231:in `block in action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:59:in `each'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:59:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/warden-1.2.3/lib/warden/manager.rb:35:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/warden-1.2.3/lib/warden/manager.rb:34:in `catch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/warden-1.2.3/lib/warden/manager.rb:34:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/query_cache.rb:36:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/migration.rb:369:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:373:in `_run__2859613981351586363__call__callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/better_errors-1.1.0/lib/better_errors/middleware.rb:84:in `protected_app_call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/better_errors-1.1.0/lib/better_errors/middleware.rb:79:in `better_errors_call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/better_errors-1.1.0/lib/better_errors/middleware.rb:56:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:38:in `call_app'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:20:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:25:in `tagged'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:67:in `tagged'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:20:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/quiet_assets-1.0.2/lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/static.rb:64:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/engine.rb:511:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/application.rb:97:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered home/index.html.haml within layouts/application (22.9ms)
+Completed 500 Internal Server Error in 70ms
+
+SyntaxError - /home/xidernm/heroku/app/views/home/index.html.haml:10: syntax error, unexpected ';', expecting ')'
+));}\n</div>\n", -1, false);else
+   ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unknown regexp option - h
+unmatched close parenthesis: /div>\n", -1, false);else
+_hamlout.push_text("<h3>Welcome to Carbon Counter 5000, Please sign up for an account</
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tINTEGER, expecting tSTRING_DEND
+...ease sign up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...n up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welc...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...or an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...ccount</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+.../h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon Counte...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected '!', expecting tSTRING_DEND
+...Welcome to Carbon Counter 5000! Our community is designed to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected keyword_and
+...help people track, compare, and reduce their carbon footprin...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tCONSTANT, expecting keyword_do or '{' or '('
+...p and get your 100% free Carbon usage profile and see how yo...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...to your friends, your community, and the average. Then come ...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+... back often for updated average, historical analysis, and to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...ed average, historical analysis, and to see what cool prizes...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unterminated string meets end of file
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected end-of-input, expecting tSTRING_DEND:
+  actionpack (4.0.3) lib/action_view/template.rb:299:in `'
+  actionpack (4.0.3) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.3) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.3) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.3) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.3) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.3) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.3) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.3) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.3) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.3) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.3) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.3) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.0.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.3) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.3) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:403:in `_run__3233852086758099934__process_action__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.3) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.3) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__2859613981351586363__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/19362220/variables" for 127.0.0.1 at 2014-03-15 10:04:14 -0600
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 10:04:15 -0600
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1[0m
+ERROR: compiling _app_views_home_index_html_haml___3503334146435025189_27893640 RAISED /home/xidernm/heroku/app/views/home/index.html.haml:10: syntax error, unexpected ';', expecting ')'
+));}\n</div>\n", -1, false);else
+   ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unknown regexp option - h
+unmatched close parenthesis: /div>\n", -1, false);else
+_hamlout.push_text("<h3>Welcome to Carbon Counter 5000, Please sign up for an account</
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tINTEGER, expecting tSTRING_DEND
+...ease sign up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...n up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welc...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...or an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...ccount</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+.../h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon Counte...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected '!', expecting tSTRING_DEND
+...Welcome to Carbon Counter 5000! Our community is designed to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected keyword_and
+...help people track, compare, and reduce their carbon footprin...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tCONSTANT, expecting keyword_do or '{' or '('
+...p and get your 100% free Carbon usage profile and see how yo...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...to your friends, your community, and the average. Then come ...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+... back often for updated average, historical analysis, and to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...ed average, historical analysis, and to see what cool prizes...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unterminated string meets end of file
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+Function body:           def _app_views_home_index_html_haml___3503334146435025189_27893640(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "home/index";_old_output_buffer = @output_buffer;;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(haml_buffer, {:autoclose=>["area", "base", "basefont", "br", "col", "command", "embed", "frame", "hr", "img", "input", "isindex", "keygen", "link", "menuitem", "meta", "param", "source", "track", "wbr"], :preserve=>["textarea", "pre", "code"], :attr_wrapper=>"'", :ugly=>false, :format=>:html5, :encoding=>"UTF-8", :escape_html=>true, :escape_attrs=>true, :hyphenate_data_attrs=>true, :cdata=>false});_erbout = _hamlout.buffer;@output_buffer = output_buffer ||= ActionView::OutputBuffer.new rescue nil;if current_user!=nil
+_hamlout.push_text("<h3>\n  Welcome Back\n  #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false((current_user.email
+));}\n  !\n</h3>\n<h4>Your Carbon Profile</h4>\n<div>\n  #{
+
+
+_hamlout.format_script_false_false_false_true_false_true_false(( high_chart("UsageChart",@areaGraph)
+));}\n  #{_hamlout.format_script_false_false_false_true_false_true_false(( high_chart("EmissionDistributionChart",@distributionGraph
+));}\n</div>\n", -1, false);else
+_hamlout.push_text("<h3>Welcome to Carbon Counter 5000, Please sign up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon Counter 5000! Our community is designed to help people track, compare, and reduce their carbon footprints. Click sign-up and get your 100% free Carbon usage profile and see how you compare to your friends, your community, and the average. Then come back often for updated average, historical analysis, and to see what cool prizes you've won.\n  </p>\n  <ul>\n    <li>Tracking on a number of usage types and factors</li>\n    <li>History and reduction vectors</li>\n    <li>Badges, acheivements, community</li>\n    <li>Analysis compared to regional averages</li>\n    <li>Most effective reduction suggestions</li>\n  </ul>\n</div>\n", 0, false);end;::Haml::Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.upper if @haml_buffer;end;
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:299:in `module_eval'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:299:in `compile'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:248:in `block in compile!'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:236:in `synchronize'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:236:in `compile!'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:142:in `block in render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:161:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/template.rb:141:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `block in instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_view/renderer/renderer.rb:23:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:97:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/base.rb:189:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:403:in `_run__3233852086758099934__process_action__callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `block in instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/notifications.rb:159:in `instrument'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/base.rb:136:in `process'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/abstract_controller/rendering.rb:44:in `process'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal.rb:195:in `dispatch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_controller/metal.rb:231:in `block in action'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:59:in `each'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:59:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/warden-1.2.3/lib/warden/manager.rb:35:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/warden-1.2.3/lib/warden/manager.rb:34:in `catch'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/warden-1.2.3/lib/warden/manager.rb:34:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/query_cache.rb:36:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/migration.rb:369:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:373:in `_run__2859613981351586363__call__callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/better_errors-1.1.0/lib/better_errors/middleware.rb:84:in `protected_app_call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/better_errors-1.1.0/lib/better_errors/middleware.rb:79:in `better_errors_call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/better_errors-1.1.0/lib/better_errors/middleware.rb:56:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:38:in `call_app'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:20:in `block in call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:25:in `tagged'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:67:in `tagged'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:20:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/quiet_assets-1.0.2/lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.3/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/static.rb:64:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/engine.rb:511:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/railties-4.0.3/lib/rails/application.rb:97:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/home/xidernm/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+/home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered home/index.html.haml within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 9ms
+
+SyntaxError - /home/xidernm/heroku/app/views/home/index.html.haml:10: syntax error, unexpected ';', expecting ')'
+));}\n</div>\n", -1, false);else
+   ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unknown regexp option - h
+unmatched close parenthesis: /div>\n", -1, false);else
+_hamlout.push_text("<h3>Welcome to Carbon Counter 5000, Please sign up for an account</
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tINTEGER, expecting tSTRING_DEND
+...ease sign up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...n up for an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welc...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...or an account</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+...ccount</h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected $undefined
+.../h3>\n<br>\n<br>\n<div>\n  <p>\n    Welcome to Carbon Counte...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected '!', expecting tSTRING_DEND
+...Welcome to Carbon Counter 5000! Our community is designed to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected keyword_and
+...help people track, compare, and reduce their carbon footprin...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tCONSTANT, expecting keyword_do or '{' or '('
+...p and get your 100% free Carbon usage profile and see how yo...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...to your friends, your community, and the average. Then come ...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+... back often for updated average, historical analysis, and to...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...ed average, historical analysis, and to see what cool prizes...
+...                               ^
+/home/xidernm/heroku/app/views/home/index.html.haml:11: unterminated string meets end of file
+/home/xidernm/heroku/app/views/home/index.html.haml:11: syntax error, unexpected end-of-input, expecting tSTRING_DEND:
+  actionpack (4.0.3) lib/action_view/template.rb:299:in `'
+  actionpack (4.0.3) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.3) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.3) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.3) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.3) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.3) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.3) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.3) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.3) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.3) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.3) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.3) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.3) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.0.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.3) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.3) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:403:in `_run__3233852086758099934__process_action__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.3) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.3) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__2859613981351586363__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/43213040/variables" for 127.0.0.1 at 2014-03-15 10:04:15 -0600
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 10:04:56 -0600
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (6.2ms)
+  Rendered layouts/_carousel.html.haml (9.2ms)
+  [1m[36mRole Load (2.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 4]]
+  Rendered layouts/_navigation_links.html.erb (33.1ms)
+  Rendered layouts/_navigation.html.haml (36.6ms)
+  Rendered layouts/_messages.html.haml (1.5ms)
+Completed 200 OK in 268ms (Views: 263.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 10:05:55 -0600
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 4]]
+  Rendered layouts/_navigation_links.html.erb (6.3ms)
+  Rendered layouts/_navigation.html.haml (7.1ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 46ms (Views: 29.1ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-03-15 10:06:43 -0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XRto6GZ6Jn8RKWDN/a5UYJGthv9s208FLu4dSY6ISwk="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 24ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-15 10:06:43 -0600
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.haml (1.4ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 32ms (Views: 21.9ms | ActiveRecord: 0.0ms)

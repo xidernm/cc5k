@@ -5,7 +5,8 @@
     !
   %h4 Your Carbon Profile
   %div
-    = high_chart("bigChart",@usage)
+    = high_chart("UsageChart",@areaGraph)
+    = high_chart("EmissionDistributionChart",@distributionGraph)
 -else
   %h3 Welcome to Carbon Counter 5000, Please sign up for an account
   %br
