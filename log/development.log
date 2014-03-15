@@ -73,3 +73,28 @@ DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a rel
   [1m[35m (0.2ms)[0m  begin transaction
   [1m[36mSQL (0.7ms)[0m  [1mUPDATE "factors" SET "unit" = ?, "updated_at" = ? WHERE "factors"."id" = 7[0m  [["unit", nil], ["updated_at", Sat, 15 Mar 2014 21:47:11 UTC +00:00]]
   [1m[35m (167.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddStateToUser (20140315194655)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "state" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140315194655"]]
+  [1m[36m (141.3ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveZipFromUser (20140315211154)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "name" varchar(255), "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar(255), "region_id" integer, "firstName" varchar(255), "lastName" varchar(255), "zip" integer, "state" varchar(255)) [0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "ausers" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","created_at","updated_at","name","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","region_id","firstName","lastName","zip","state") VALUES (8, 'beenjaminmb@gmail.com', '$2a$10$9VnwefIzpSH/Ftz2YE8Mf.UgwqYNqFEURmgaTz6HzHVEA1hQpFZfS', NULL, NULL, NULL, 1, '2014-03-15 17:24:22.037644', '2014-03-15 17:24:22.037644', '127.0.0.1', '127.0.0.1', '2014-03-15 17:23:26.293496', '2014-03-15 17:24:22.038675', NULL, NULL, '2014-03-15 17:23:46.804656', '2014-03-15 17:23:26.716783', NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "users"
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "name" varchar(255), "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar(255), "region_id" integer, "firstName" varchar(255), "lastName" varchar(255), "state" varchar(255)) [0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "ausers"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "users" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","created_at","updated_at","name","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","region_id","firstName","lastName","state") VALUES (8, 'beenjaminmb@gmail.com', '$2a$10$9VnwefIzpSH/Ftz2YE8Mf.UgwqYNqFEURmgaTz6HzHVEA1hQpFZfS', NULL, NULL, NULL, 1, '2014-03-15 17:24:22.037644', '2014-03-15 17:24:22.037644', '127.0.0.1', '127.0.0.1', '2014-03-15 17:23:26.293496', '2014-03-15 17:24:22.038675', NULL, NULL, '2014-03-15 17:23:46.804656', '2014-03-15 17:23:26.716783', NULL, NULL, NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "ausers"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140315211154"]]
+  [1m[35m (102.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

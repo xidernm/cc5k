@@ -4,9 +4,10 @@
     %hr
     = stat.description
     - stat.factors.each do |factor|
-      .field
-        = label_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]", factor.name
-        = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]"
+      - if factor.amount.nil?
+        .field
+          = label_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]", factor.name
+          = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]"
   = hidden_field_tag "user_id[user]", value: @user.id
   = submit_tag 
     
