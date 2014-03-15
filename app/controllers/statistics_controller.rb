@@ -74,28 +74,28 @@ class StatisticsController < ApplicationController
     end
   end
 
-  def make_factors
-    raise "Fuck You"
-  end
-
   def fill_in_factors
     a = params[:format]
     @factors = Factor.where(:statistic_id => a)
     # raise @factors.inspect
   end
 
+  def submit_factor_changes
+    raise params[:factor_params].inspect
+    redirect_to statistics_path
+  end
 
   def create_answer
     current_stat_id = nil
-    raise params
     params[:form_fields].each do |field|
       current_stat_id = field[0][0] if current_stat_id != field[0][0]
       s = Statistic.find(field[0][0])
       Answer.where(statistic_id: s.id, user_id: current_user.id, name: field[0][1..-1], amount: field[1]).create
     end
-    redirect_to answers_path
+    redirect_to statistics_path
   end
 
+  # Get /fill_out_form
   def fill_out_form
     @statistics = Statistic.all
     @user = current_user
@@ -111,6 +111,11 @@ class StatisticsController < ApplicationController
     def statistic_params
       params.require(:statistic).permit(:equation, :description)
     end
+    
+    def facotr_params
+      params.require(:factor)
+    end
+
 
     def create_factors_for_statistic(statistic)
       Factor.where(statistic_id: statistic.id).destroy_all
@@ -122,9 +127,6 @@ class StatisticsController < ApplicationController
           Factor.where(value: factor, statistic_id: statistic.id).first_or_create
         end
       end
-
-      # TODO: Redirect to page that allows the admin to decide what kind of factor
-      # each variable in the equation is.
-    end
+  end
   end
 

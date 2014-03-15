@@ -1,18 +1,16 @@
-- @factors.each do |fac|
-  = form_for fac do |f|
-    %br
+%h1 This Is Shit
+= form_tag(submit_factor_changes_path, method: "post" ) do
+  - @factors.each do |fac|
     .field
-      = f.label :name
-      = f.text_field :name
+      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.name)}]", fac.name
+      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.name)}]"
     .field
-      = f.label :dependency
-      = f.text_field :dependency
-    .field  
-      = f.label  :amount
-      = f.text_field :amount
+      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.amount.to_s)}]", "Amount"
+      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.amount.to_s)}]"
     .field
-      = f.label :unit
-      = f.text_field :unit
-= link_to "Back", :controller => "statistics", :action => "create_answer"
-\|
-= link_to "Doesn't Save Yet", :controller => "statistics", :action => "index"
+      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.dependency.to_s)}]", "Dependency"
+      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.dependency.to_s)}]"
+    .field
+      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.unit.to_s)}]", "Unit"
+      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.unit.to_s)}]"
+  = submit_tag
