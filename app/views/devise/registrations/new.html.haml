@@ -14,12 +14,9 @@
     %br/
     = f.email_field :email
   %p
-    = f.label :"Zipcode"
+    = f.label :"State"
     %br/
-    = f.text_field :zip
-
-
-
+    = f.select( :state, $stateMap)
   %div
     = f.label :password
     %br/

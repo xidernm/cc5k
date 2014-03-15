@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315174105) do
+ActiveRecord::Schema.define(version: 20140315211154) do
 
   create_table "answered_factors", force: true do |t|
     t.integer  "factor_id"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20140315174105) do
     t.integer  "region_id"
     t.string   "firstName"
     t.string   "lastName"
-    t.integer  "zip"
+    t.string   "state"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
