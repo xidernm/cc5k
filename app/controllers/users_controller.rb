@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :check_admin, :only => [:index, :update, :destroy]
-
   def check_admin
     unless current_user.admin?
       authorize! :index, @user, :message => 'Not authorized as an administrator.'
@@ -23,8 +22,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user].permit(:role_ids))
-      redirect_to users_path, :notice => "User updated."
+    if @user.update_attributes(params[:user].permit(:role_ids, :email, :firstName, :lastName, :zip))
+      redirect_to users_path, :notice => params.inspect
     else
       redirect_to users_path, :alert => "Unable to update user."
     end

@@ -1,7 +1,22 @@
-%h3 User
-%p
-  User: #{@user.name}
- 
-%p
-  Email: #{@user.email if @user.email}
+%h3
+ User:
+ = @user.email
+%table
+ %tr
+  %td First Name:
+  %td
+   = @user.firstName
+ %tr
+  %td Last Name:
+  %td
+   = @user.lastName
+ %tr
+  %td Email:
+  %td
+   = @user.email
+ %tr
+  %td Zip:
+  %td
+   = @user.zip
+
 = link_to 'Edit account', edit_user_path
