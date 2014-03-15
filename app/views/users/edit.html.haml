@@ -1,8 +1,26 @@
 = form_for(@user) do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.label :name
-  = f.text_field :name
-  %br
-  = f.submit "Update"
+ %table
+  %tr
+   %td
+    = f.label :firstName
+   %td
+    = f.text_field :firstName
+  %tr
+   %td
+    = f.label :lastName
+   %td
+    = f.text_field :lastName
+  %tr
+   %td
+    = f.label :email
+   %td
+    = f.text_field :email
+  %tr
+   %td
+    = f.label :zip
+   %td
+    = f.text_field :zip
+
+
+ = f.submit "Update"
 = @user.inspect
