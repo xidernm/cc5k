@@ -80,20 +80,29 @@ class StatisticsController < ApplicationController
     # raise @factors.inspect
   end
 
-  # POST /submit_factor_changes
+  # POST /submit_factor_changesx
   def submit_factor_changes
     current_factor_id = nil
-    raise params[:factor_depends]
     params[:factor_depends].each do |factor|
       current_factor_id = factor[0][0]
-      Factor.where(id: current_factor_id).update(dependency: factor)
-    end
-    
-    params[:factor_amount].each do |factor|
-      current_factor_id = factor[0][0]
-      Factor.where(id: current_factor_id).update(amount: factor)
+      f = Factor.where(id: factor[0][0])
+      f[0].dependency = factor[1..-1].join.to_f
+      f[0].save
     end
 
+    params[:factor_amount].each do |factor|
+      current_factor_id = factor[0][0]
+      f = Factor.where(id: current_factor_id)
+      f[0].amount = factor[1][0..-1]
+      f[0].save
+    end
+    
+    params[:factor_unit].each do |factor|
+      current_factor_id = factor[0][0]
+      f = Factor.where(id: current_factor_id)
+      f[0].unit = factor[1..-1].join
+      f[0].save
+    end
     redirect_to statistics_path
   end
 

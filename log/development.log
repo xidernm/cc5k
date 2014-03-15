@@ -13,3 +13,63 @@ Migrating to AddZipToUser (20140315174105)
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mFactor Load (0.3ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 1
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.5ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "factors"[0m
+  [1m[35mFactor Load (0.5ms)[0m  SELECT "factors".* FROM "factors"
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (8.8ms)[0m  UPDATE "factors" SET "unit" = ?, "updated_at" = ? WHERE "factors"."id" = 4  [["unit", nil], ["updated_at", Sat, 15 Mar 2014 21:41:51 UTC +00:00]]
+  [1m[36m (134.3ms)[0m  [1mcommit transaction[0m
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):24)
+  [1m[35mFactor Load (0.5ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):26)
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2[0m
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):29)
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):32)
+  [1m[36mFactor Load (0.5ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2[0m
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):35)
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 6[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 6
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 6[0m
+  [1m[35mFactor Load (0.5ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 6
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "factors" SET "unit" = ?, "updated_at" = ? WHERE "factors"."id" = 6  [["unit", nil], ["updated_at", Sat, 15 Mar 2014 21:44:17 UTC +00:00]]
+  [1m[36m (145.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mFactor Load (0.6ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 7[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 7 ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 7 ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mFactor Load (0.6ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.3ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.4ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35mFactor Load (0.5ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 4 ORDER BY "factors"."id" ASC LIMIT 1
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 5 ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "factors" SET "unit" = ?, "updated_at" = ? WHERE "factors"."id" = 5[0m  [["unit", nil], ["updated_at", Sat, 15 Mar 2014 21:46:51 UTC +00:00]]
+  [1m[35m (149.2ms)[0m  commit transaction
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 2 AND "factors"."id" = 7 ORDER BY "factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "factors" SET "unit" = ?, "updated_at" = ? WHERE "factors"."id" = 7[0m  [["unit", nil], ["updated_at", Sat, 15 Mar 2014 21:47:11 UTC +00:00]]
+  [1m[35m (167.9ms)[0m  commit transaction

@@ -1,14 +1,14 @@
-%h1 This Is Shit
+%h1 Fill In Factor
 = form_tag(submit_factor_changes_path, method: "post" ) do
   - @factors.each do |fac|
     = fac.name
     .field
       = label_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", "Amount"
-      = text_field_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]"
+      = text_field_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", fac.amount
     .field
       = label_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]", "Dependency"
-      = text_field_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]"
+      = text_field_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]", fac.dependency
     .field
       = label_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", "Unit"
-      = text_field_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]"
+      = text_field_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", fac.unit
   = submit_tag
