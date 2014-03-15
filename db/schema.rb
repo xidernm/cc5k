@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305044829) do
+ActiveRecord::Schema.define(version: 20140315174105) do
 
   create_table "answered_factors", force: true do |t|
     t.integer  "factor_id"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 20140305044829) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "region_id"
+    t.string   "firstName"
+    t.string   "lastName"
+    t.integer  "zip"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
