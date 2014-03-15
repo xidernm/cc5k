@@ -80,7 +80,7 @@ class StatisticsController < ApplicationController
     # raise @factors.inspect
   end
 
-  # POST /submit_factor_changes
+  # POST /submit_factor_changesx
   def submit_factor_changes
     current_factor_id = nil
     raise params[:factor_depends]

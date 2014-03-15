@@ -1,16 +1,14 @@
 %h1 This Is Shit
 = form_tag(submit_factor_changes_path, method: "post" ) do
   - @factors.each do |fac|
+    = fac.name
     .field
-      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.name)}]", fac.name
-      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.name)}]"
+      = label_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", "Amount"
+      = text_field_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]"
     .field
-      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.amount.to_s)}]", "Amount"
-      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.amount.to_s)}]"
+      = label_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]", "Dependency"
+      = text_field_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]"
     .field
-      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.dependency.to_s)}]", "Dependency"
-      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.dependency.to_s)}]"
-    .field
-      = label_tag "factor_params[#{(fac.statistic_id.to_s + fac.unit.to_s)}]", "Unit"
-      = text_field_tag "factor_params[#{(fac.statistic_id.to_s + fac.unit.to_s)}]"
+      = label_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", "Unit"
+      = text_field_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]"
   = submit_tag
