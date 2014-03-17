@@ -14,6 +14,7 @@ class StatisticsController < ApplicationController
     if current_user.admin?
       redirect_to fill_in_factors_path(@statistic.id)
     else
+      @statistic
     end
   end
 
@@ -76,30 +77,27 @@ class StatisticsController < ApplicationController
 
   def fill_in_factors
     a = params[:format]
+    @statistic = Statistic.find_by(:id => a)
     @factors = Factor.where(:statistic_id => a)
-    # raise @factors.inspect
   end
 
-  # POST /submit_factor_changesx
+  # POST /submit_factor_changes
+  # This code needs refactoring!
   def submit_factor_changes
-    current_factor_id = nil
     params[:factor_depends].each do |factor|
-      current_factor_id = factor[0][0]
       f = Factor.where(id: factor[0][0])
-      f[0].dependency = factor[1..-1].join.to_f
+      f[0].dependency = factor[1]
       f[0].save
     end
 
     params[:factor_amount].each do |factor|
-      current_factor_id = factor[0][0]
-      f = Factor.where(id: current_factor_id)
+      f = Factor.where(id: factor[0][0])
       f[0].amount = factor[1][0..-1]
       f[0].save
     end
     
     params[:factor_unit].each do |factor|
-      current_factor_id = factor[0][0]
-      f = Factor.where(id: current_factor_id)
+      f = Factor.where(id: factor[0][0])
       f[0].unit = factor[1..-1].join
       f[0].save
     end
@@ -110,7 +108,6 @@ class StatisticsController < ApplicationController
     current_stat_id = nil
     params[:form_fields].each do |field|
       current_stat_id = field[0][0] if current_stat_id != field[0][0]
-      s = Statistic.find(field[0][0])
       Answer.where(statistic_id: s.id, user_id: current_user.id, name: field[0][1..-1], amount: field[1]).create
     end
     redirect_to statistics_path

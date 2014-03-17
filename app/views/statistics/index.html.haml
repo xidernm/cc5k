@@ -24,8 +24,8 @@
           %td= link_to('Edit', edit_statistic_path(statistic), :class => 'btn btn-mini')
           %td= link_to('Destroy', statistic, :class => 'btn btn-mini', :method => :delete, :data => { :confirm => 'Are you sure?' })
 %br
-
-= link_to 'New Statistic', new_statistic_path
+- if current_user.admin?
+  = link_to 'New Statistic', new_statistic_path
 
 :javascript
   $(document).ready(function()

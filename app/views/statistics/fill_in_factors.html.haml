@@ -1,14 +1,31 @@
 %h1 Fill In Factor
+%table
+%tr
 = form_tag(submit_factor_changes_path, method: "post" ) do
   - @factors.each do |fac|
+    %div
     = fac.name
+    %tr
     .field
+      %td
       = label_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", "Amount"
+      %td
       = text_field_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", fac.amount
+    %tr
     .field
+      %td
       = label_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]", "Dependency"
-      = text_field_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]", fac.dependency
+      %td
+      = select_tag "factor_depends[#{fac.id.to_s}]", options_for_select([["Region", 0],["Admin", 1],["User", 2]], 3)
+    %tr   
     .field
+      %td
       = label_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", "Unit"
+      %td
       = text_field_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", fac.unit
+
   = submit_tag
+  \|
+  = link_to 'Edit Equation', edit_statistic_path(@statistic)
+  \|
+  = link_to 'Back', statistics_path

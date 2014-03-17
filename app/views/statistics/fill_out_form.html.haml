@@ -1,13 +1,13 @@
-%h1 Enter your emissions stuff
+%h1 Update your template!
 = form_tag(create_answer_path, method: "post") do 
   - @statistics.each do |stat|
     %hr
     = stat.description
     - stat.factors.each do |factor|
-      - if factor.amount.nil?
+      - if factor.dependency == 2
         .field
           = label_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]", factor.name
-          = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]"
+          = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name)}]", factor.amount
   = hidden_field_tag "user_id[user]", value: @user.id
   = submit_tag 
     
