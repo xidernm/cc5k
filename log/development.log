@@ -219,3 +219,22 @@ Migrating to AddStatisticIdToAnsweredFactors (20140317040643)
   [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers" ORDER BY "answers"."id" ASC LIMIT 1[0m
   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "answers"
   [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "answered_factors"[0m
+  [1m[35mAnsweredFactor Load (0.4ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.5ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "answers"
+  [1m[36mAnsweredFactor Load (0.4ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 AND "answered_factors"."statistic_id" = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "answered_factors"
+  [1m[36mAnsweredFactor Load (0.4ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.6ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "answered_factors" WHERE "answered_factors"."user_id" = 8[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."statistic_id" = 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "answered_factors" WHERE "answered_factors"."statistic_id" = 1[0m
+  [1m[35mAnsweredFactor Load (0.5ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."statistic_id" = 1 ORDER BY "answered_factors"."created_at" ASC
+  [1m[36mAnsweredFactor Load (0.5ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."statistic_id" = 1 ORDER BY "answered_factors"."created_at" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.6ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."statistic_id" = 1 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.6ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8[0m
+  [1m[35mAnsweredFactor Load (0.6ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."created_at" ASC
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "answers"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m

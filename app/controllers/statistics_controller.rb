@@ -176,7 +176,7 @@ class StatisticsController < ApplicationController
         l = r
         r = r + 1
         if r == fids.count
-          factors << b[r-1..r-1]
+          factors << fids[r-1..r-1]
         end
       end
     end
