@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
+    
   if current_user!=nil
         @areaGraph =LazyHighCharts::HighChart.new('area') do |f|
         f.series(:name=>'Average',:data=>[2, 19, 4, 30] ) 
@@ -24,5 +25,9 @@ class HomeController < ApplicationController
         f.plot_options({:column=>{:stacking=>"percent"}})
         end
     end
+  end
+  private
+  def getAnsweredFactors
+    answeredFactors = Answers.where(user_id: current_user.id)
   end
 end

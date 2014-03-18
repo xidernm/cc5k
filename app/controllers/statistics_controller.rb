@@ -85,32 +85,51 @@ class StatisticsController < ApplicationController
   # This code needs refactoring!
   def submit_factor_changes
     params[:factor_depends].each do |factor|
-      f = Factor.where(id: factor[0][0])
-      f[0].dependency = factor[1]
-      f[0].save
+      f = Factor.find_by(id: factor[0][0..-1])
+      f.dependency = factor[1]
+      f.save
     end
 
     params[:factor_amount].each do |factor|
-      f = Factor.where(id: factor[0][0])
-      f[0].amount = factor[1][0..-1]
-      f[0].save
+      f = Factor.find_by(id: factor[0][0..-1])
+      f.amount = factor[1][0..-1]
+      f.save
     end
     
     params[:factor_unit].each do |factor|
-      f = Factor.where(id: factor[0][0])
-      f[0].unit = factor[1..-1].join
-      f[0].save
+      f = Factor.find_by(id: factor[0])
+      f.unit = factor[1..-1].join
+      f.save
     end
     redirect_to statistics_path
   end
 
   def create_answer
     current_stat_id = nil
+    factorIds = []
     params[:form_fields].each do |field|
       current_stat_id = field[0][0] if current_stat_id != field[0][0]
-      Answer.where(statistic_id: s.id, user_id: current_user.id, name: field[0][1..-1], amount: field[1]).create
+      af = AnsweredFactor.where(factor_id: field[0][2..-1], 
+                                amount: field[1], 
+                                statistic_id: current_stat_id, 
+                                user_id: current_user.id).first_or_create
+    
+      factorIds.push([af.id, current_stat_id])
     end
+    userFactors = rearrangeFactors(factorIds)
+    updateAnswer(userFactors)
     redirect_to statistics_path
+  end
+    
+  def updateAnswer(ls)
+    # ls is a list of list of answerd_factor_id, statistic_id pairs
+    ls.each do |e|
+      # e is a list of answered_factor_id, statistic_id pairs
+      sid = e[0][1].to_i
+      stat = Statistic.where(id: sid)
+      amount = stat[0].EvalEquation(current_user.id, e)
+      ans = Answer.where(amount: amount, user_id: current_user.id, statistic_id: sid).create
+    end
   end
 
   # Get /fill_out_form
@@ -120,31 +139,48 @@ class StatisticsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
- def set_statistic
-      @statistic = Statistic.find(params[:id])
+  # Use callbacks to share common setup or constraints between actions.
+  def set_statistic
+    @statistic = Statistic.find(params[:id])
+  end
+  
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def statistic_params
+    params.require(:statistic).permit(:equation, :description)
+  end
+  
+  def create_factors_for_statistic(statistic)
+    Factor.where(statistic_id: statistic.id).destroy_all
+    statistic.equation.gsub(/\s+/,"").split(/[*+-\/]/).delete_if(&:empty?).each do |factor|
+      name_check = Integer(factor) rescue nil
+      if name_check == nil
+        Factor.where(name: factor, statistic_id: statistic.id).first_or_create
+      else
+        Factor.where(value: factor, statistic_id: statistic.id).first_or_create
+      end
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def statistic_params
-      params.require(:statistic).permit(:equation, :description)
-    end
-    
-    def facotr_params
-      params.require(:factor)
-    end
-
-
-    def create_factors_for_statistic(statistic)
-      Factor.where(statistic_id: statistic.id).destroy_all
-      statistic.equation.gsub(/\s+/,"").split(/[*+-\/]/).delete_if(&:empty?).each do |factor|
-        name_check = Integer(factor) rescue nil
-        if name_check == nil
-          Factor.where(name: factor, statistic_id: statistic.id).first_or_create
-        else
-          Factor.where(value: factor, statistic_id: statistic.id).first_or_create
+  end
+  
+  def rearrangeFactors(fids)
+    factors = []
+    l = 0 
+    r = 1
+    while r < fids.count
+      if fids[l][1] == fids[r][1]
+        r = r + 1
+        if r == fids.count
+          factors << fids[l..r-1]
+        end
+      else
+        factors << fids[l..r-1]
+        l = r
+        r = r + 1
+        if r == fids.count
+          factors << b[r-1..r-1]
         end
       end
+    end
+    return factors
   end
-  end
+end
 

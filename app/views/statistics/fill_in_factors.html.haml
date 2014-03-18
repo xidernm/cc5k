@@ -8,9 +8,9 @@
     %tr
     .field
       %td
-      = label_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", "Amount"
+      = label_tag "factor_amount[#{(fac.id.to_s)}]", "Amount"
       %td
-      = text_field_tag "factor_amount[#{(fac.id.to_s + fac.amount.to_s)}]", fac.amount
+      = text_field_tag "factor_amount[#{(fac.id.to_s)}]", fac.amount
     %tr
     .field
       %td

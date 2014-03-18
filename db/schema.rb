@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315211154) do
+ActiveRecord::Schema.define(version: 20140317040643) do
 
   create_table "answered_factors", force: true do |t|
     t.integer  "factor_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20140315211154) do
     t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "statistic_id"
   end
 
   create_table "answers", force: true do |t|
