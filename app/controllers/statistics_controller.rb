@@ -30,6 +30,8 @@ class StatisticsController < ApplicationController
   # POST /statistics
   # POST /statistics.json
   def create
+    # TODO: We are accepting '=' characters into the Statistic Equation. If we do this 
+    # we need to make sure that we take this into account appropriately.
     if Statistic.IsValidEquation(statistic_params[:equation])
       @statistic = Statistic.new(statistic_params)
       respond_to do |format|
@@ -123,19 +125,9 @@ class StatisticsController < ApplicationController
     redirect_to statistics_path
   end
     
-  def updateAnswer(ls)
-    # ls is a list of list of answerd_factor_id, statistic_id pairs
-    ls.each do |e|
-      # e is a list of answered_factor_id, statistic_id pairs
-      sid = e[0][1].to_i
-      stat = Statistic.where(id: sid)
-      amount = stat[0].EvalEquation(current_user.id, e)
-      ans = Answer.where(amount: amount, user_id: current_user.id, statistic_id: sid).create
-    end
-  end
-
+  
   # Get /fill_out_form
-  def fill_out_form
+  def emissions_template
     @statistics = Statistic.all
     @user = current_user
   end
@@ -184,5 +176,19 @@ class StatisticsController < ApplicationController
     end
     return factors
   end
+  
+  # TODO: Make sure that users arent entering information 
+  # in that could return an Answer of type Float::INFINITY
+  def updateAnswer(ls)
+    # ls is a list of list of answerd_factor_id, statistic_id pairs
+    ls.each do |e|
+      # e is a list of answered_factor_id, statistic_id pairs
+      sid = e[0][1].to_i
+      stat = Statistic.where(id: sid)
+      amount = stat[0].EvalEquation(current_user.id, e)
+      ans = Answer.where(amount: amount, 
+                         user_id: current_user.id, 
+                         statistic_id: sid).create
+    end
+  end
 end
-
