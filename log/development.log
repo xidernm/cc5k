@@ -238,3 +238,12 @@ Migrating to AddStatisticIdToAnsweredFactors (20140317040643)
   [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m
   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "answers"
   [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "answers"
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers" ORDER BY "answers"."id" DESC LIMIT 1[0m
+  [1m[35mAnswer Load (0.5ms)[0m  SELECT "answers".* FROM "answers"
+  [1m[36mAnswer Load (0.5ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."id" = 63
+  [1m[36mStatistic Load (0.4ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 3 LIMIT 1[0m

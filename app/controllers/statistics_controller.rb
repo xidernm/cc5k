@@ -107,17 +107,19 @@ class StatisticsController < ApplicationController
   def create_answer
     current_stat_id = nil
     factorIds = []
-    params[:form_fields].each do |field|
-      current_stat_id = field[0][0] if current_stat_id != field[0][0]
-      af = AnsweredFactor.where(factor_id: field[0][2..-1], 
-                                amount: field[1], 
-                                statistic_id: current_stat_id, 
-                                user_id: current_user.id).first_or_create
-    
-      factorIds.push([af.id, current_stat_id])
+    if params[:form_fields] != nil
+      params[:form_fields].each do |field|
+        current_stat_id = field[0][0] if current_stat_id != field[0][0]
+        af = AnsweredFactor.where(factor_id: field[0][2..-1], 
+                                  amount: field[1], 
+                                  statistic_id: current_stat_id, 
+                                  user_id: current_user.id).first_or_create
+        
+        factorIds.push([af.id, current_stat_id])
+      end
+      userFactors = rearrangeFactors(factorIds)
+      updateAnswer(userFactors)
     end
-    userFactors = rearrangeFactors(factorIds)
-    updateAnswer(userFactors)
     redirect_to statistics_path
   end
     
