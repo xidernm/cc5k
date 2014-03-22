@@ -949,3 +949,729 @@ Processing by HomeController#index as HTML
   Rendered layouts/_messages.html.haml (0.1ms)
 Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.4ms)
   [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:39:31 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (4.5ms)
+  Rendered layouts/_carousel.html.haml (10.7ms)
+  Rendered layouts/_navigation_links.html.erb (1.4ms)
+  Rendered layouts/_navigation.html.haml (8.2ms)
+  Rendered layouts/_messages.html.haml (1.4ms)
+Completed 200 OK in 539ms (Views: 508.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-22 11:39:36 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (89.8ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.haml (1.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 139ms (Views: 118.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-22 11:39:42 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHOjlJN5tdFyptZdSrYeM7A7kGTQ2cPYkj9+klu17k0=", "user"=>{"email"=>"xidernm@unm.edu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'xidernm@unm.edu' ORDER BY "users"."id" ASC LIMIT 1
+Completed 401 Unauthorized in 54ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHOjlJN5tdFyptZdSrYeM7A7kGTQ2cPYkj9+klu17k0=", "user"=>{"email"=>"xidernm@unm.edu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.haml (1.2ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 104ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-22 11:39:52 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHOjlJN5tdFyptZdSrYeM7A7kGTQ2cPYkj9+klu17k0=", "user"=>{"email"=>"taymos@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'taymos@gmail.com' ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 401 Unauthorized in 2ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHOjlJN5tdFyptZdSrYeM7A7kGTQ2cPYkj9+klu17k0=", "user"=>{"email"=>"taymos@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.haml (1.2ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 101ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-03-22 11:41:25 -0600
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.haml (3.1ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (32.4ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.haml (1.5ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 69ms (Views: 67.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-03-22 11:41:34 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHOjlJN5tdFyptZdSrYeM7A7kGTQ2cPYkj9+klu17k0=", "user"=>{"firstName"=>"Justin", "lastName"=>"Edwards", "email"=>"taymos@gmail.com", "state"=>"New Mexico", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'taymos@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."confirmation_token" = '945592f3cfaea31385c8d23b2f0dc48ba6c62c0c4e55c722243a9b5999f5f826' ORDER BY "users"."id" ASC LIMIT 1
+Binary data inserted for `string` type on column `confirmation_token`
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (219.9ms)[0m  [1mINSERT INTO "users" ("confirmation_sent_at", "confirmation_token", "created_at", "email", "encrypted_password", "firstName", "lastName", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["confirmation_sent_at", Sat, 22 Mar 2014 17:41:35 UTC +00:00], ["confirmation_token", "945592f3cfaea31385c8d23b2f0dc48ba6c62c0c4e55c722243a9b5999f5f826"], ["created_at", Sat, 22 Mar 2014 17:41:34 UTC +00:00], ["email", "taymos@gmail.com"], ["encrypted_password", "$2a$10$VAzxiWcvZHnP/LpY1AZd5u80dlX4NNuYlPnfv8rjiVXHp0a6ZNzgm"], ["firstName", "Justin"], ["lastName", "Edwards"], ["state", "New Mexico"], ["updated_at", Sat, 22 Mar 2014 17:41:34 UTC +00:00]]
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.0ms)
+
+Sent mail to taymos@gmail.com (13.7ms)
+Date: Sat, 22 Mar 2014 11:41:36 -0600
+From: info@intense-caverns-3017.herokuapp.com
+Reply-To: info@intense-caverns-3017.herokuapp.com
+To: taymos@gmail.com
+Message-ID: <532dcb50461b8_12561b3442043211@xidernm-lp.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome taymos@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://intense-caverns-3017.herokuapp.com/users/confirmation?confirmation_token=4BPzRD9YNNeLbyTCcq7y">Confirm my account</a></p>
+
+  [1m[35m (158.3ms)[0m  commit transaction
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1753ms (ActiveRecord: 378.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:41:36 -0600
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.5ms)
+  Rendered layouts/_navigation.html.haml (1.2ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=4BPzRD9YNNeLbyTCcq7y" for 127.0.0.1 at 2014-03-22 11:41:59 -0600
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"4BPzRD9YNNeLbyTCcq7y"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = '945592f3cfaea31385c8d23b2f0dc48ba6c62c0c4e55c722243a9b5999f5f826' ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "confirmation_token" = ?, "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = 10[0m  [["confirmation_token", nil], ["confirmed_at", Sat, 22 Mar 2014 17:41:59 UTC +00:00], ["updated_at", Sat, 22 Mar 2014 17:41:59 UTC +00:00]]
+  [1m[35m (263.7ms)[0m  commit transaction
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 271ms (ActiveRecord: 264.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-22 11:41:59 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.haml (1.6ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 25ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (3.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ?  [["user_id", 10]]
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "users_roles" ("user_id", "role_id") VALUES (10, 7)
+  [1m[36m (205.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ?  [["user_id", 10]]
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-22 11:44:15 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHOjlJN5tdFyptZdSrYeM7A7kGTQ2cPYkj9+klu17k0=", "user"=>{"email"=>"taymos@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'taymos@gmail.com' ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `last_sign_in_ip`
+Binary data inserted for `string` type on column `current_sign_in_ip`
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 10[0m  [["last_sign_in_at", Sat, 22 Mar 2014 17:44:15 UTC +00:00], ["current_sign_in_at", Sat, 22 Mar 2014 17:44:15 UTC +00:00], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", Sat, 22 Mar 2014 17:44:15 UTC +00:00]]
+  [1m[35m (177.0ms)[0m  commit transaction
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 279ms (ActiveRecord: 178.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:44:15 -0600
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered home/index.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  Rendered layouts/_navigation_links.html.erb (22.4ms)
+  Rendered layouts/_navigation.html.haml (23.2ms)
+  Rendered layouts/_messages.html.haml (0.3ms)
+Completed 200 OK in 46ms (Views: 42.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/emissions_tempate" for 127.0.0.1 at 2014-03-22 11:44:25 -0600
+Processing by StatisticsController#emissions_template as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics"
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 5]]
+  [1m[35mAnsweredFactor Load (0.3ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 24 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 25 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 26 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 6]]
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 29 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 7]]
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 32 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  Rendered statistics/emissions_template.html.haml within layouts/application (104.6ms)
+  Rendered layouts/_carousel.html.haml (4.7ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 10]]
+  Rendered layouts/_navigation_links.html.erb (2.6ms)
+  Rendered layouts/_navigation.html.haml (5.9ms)
+  Rendered layouts/_messages.html.haml (1.4ms)
+Completed 200 OK in 144ms (Views: 133.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/statistics" for 127.0.0.1 at 2014-03-22 11:44:34 -0600
+Processing by StatisticsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics"[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 10]]
+  Rendered statistics/index.html.haml within layouts/application (9.6ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  Rendered layouts/_navigation_links.html.erb (2.0ms)
+  Rendered layouts/_navigation.html.haml (2.9ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 34ms (Views: 31.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/images/sort_both.png" for 127.0.0.1 at 2014-03-22 11:44:34 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/sort_both.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.3ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (71.8ms)
+
+
+Started GET "/images/sort_asc.png" for 127.0.0.1 at 2014-03-22 11:44:34 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/sort_asc.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (17.3ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (62.5ms)
+
+
+Started GET "/images/back_disabled.png" for 127.0.0.1 at 2014-03-22 11:44:34 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/back_disabled.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.7ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (53.6ms)
+
+
+Started GET "/images/forward_disabled.png" for 127.0.0.1 at 2014-03-22 11:44:34 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/forward_disabled.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.5ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (54.1ms)
+
+
+Started GET "/statistics" for 127.0.0.1 at 2014-03-22 11:55:43 -0600
+Processing by StatisticsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.3ms)[0m  SELECT "statistics".* FROM "statistics"
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  Rendered statistics/index.html.haml within layouts/application (11.4ms)
+  Rendered layouts/_carousel.html.haml (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 10]]
+  Rendered layouts/_navigation_links.html.erb (10.3ms)
+  Rendered layouts/_navigation.html.haml (11.1ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 48ms (Views: 43.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/images/sort_both.png" for 127.0.0.1 at 2014-03-22 11:55:43 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/sort_both.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.3ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (69.0ms)
+
+
+Started GET "/images/sort_asc.png" for 127.0.0.1 at 2014-03-22 11:55:43 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/sort_asc.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.4ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (51.8ms)
+
+
+Started GET "/images/back_disabled.png" for 127.0.0.1 at 2014-03-22 11:55:43 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/back_disabled.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.3ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (51.3ms)
+
+
+Started GET "/images/forward_disabled.png" for 127.0.0.1 at 2014-03-22 11:55:43 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/forward_disabled.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.1ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (60.0ms)
+
+
+Started GET "/emissions_tempate" for 127.0.0.1 at 2014-03-22 12:00:24 -0600
+Processing by StatisticsController#emissions_template as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics"[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 5]]
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 24 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 25 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 26 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 6]]
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 29 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 7]]
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 10 AND "answered_factors"."factor_id" = 32 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  Rendered statistics/emissions_template.html.haml within layouts/application (11.0ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 10]]
+  Rendered layouts/_navigation_links.html.erb (2.9ms)
+  Rendered layouts/_navigation.html.haml (3.9ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 38ms (Views: 34.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 12:04:43 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/create_answer_from_input"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.2ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (14.7ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (79.2ms)
+
+
+Started GET "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 12:04:44 -0600
+
+ActionController::RoutingError (No route matches [GET] "/create_answer_from_input"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.1ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/xidernm/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (58.3ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 12:04:49 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0oct9zQHick1vPMI/OQp2tXPJzGvsvDMk0volW8MV14=", "form_fields"=>{"5N24"=>"10", "5D25"=>"20", "5F26"=>"30", "6A29"=>"10", "7G32"=>"30"}, "user_id"=>{"user"=>"{:value=>10}"}, "commit"=>"Save changes"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 10.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 10 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.8ms)[0m  [1mINSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 10.0], ["created_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["factor_id", 24], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["user_id", 10]]
+  [1m[35m (196.4ms)[0m  commit transaction
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 20.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 10 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 20.0], ["created_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["factor_id", 25], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["user_id", 10]]
+  [1m[35m (140.2ms)[0m  commit transaction
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 30.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 10 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 30.0], ["created_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["factor_id", 26], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["user_id", 10]]
+  [1m[35m (164.7ms)[0m  commit transaction
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 10.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 10 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 10.0], ["created_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["factor_id", 29], ["statistic_id", 6], ["updated_at", Sat, 22 Mar 2014 18:04:49 UTC +00:00], ["user_id", 10]]
+  [1m[35m (131.7ms)[0m  commit transaction
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 30.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 10 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 30.0], ["created_at", Sat, 22 Mar 2014 18:04:50 UTC +00:00], ["factor_id", 32], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 18:04:50 UTC +00:00], ["user_id", 10]]
+  [1m[35m (131.5ms)[0m  commit transaction
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 111 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 111 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 112 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 112 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 113 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 113 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1
+Completed 500 Internal Server Error in 893ms
+
+NoMethodError - undefined method `first_or_create' for #<Answer:0x00000003797f18>:
+  activemodel (4.0.3) lib/active_model/attribute_methods.rb:439:in `method_missing'
+  activerecord (4.0.3) lib/active_record/attribute_methods.rb:155:in `method_missing'
+  app/controllers/statistics_controller.rb:197:in `block in updateAnswer'
+  app/controllers/statistics_controller.rb:188:in `each'
+  app/controllers/statistics_controller.rb:188:in `updateAnswer'
+  app/controllers/statistics_controller.rb:123:in `create_answer'
+  actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.0.3) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.3) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:423:in `_run__4175094910422051573__process_action__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.3) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.3) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.3) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__1324739731997205233__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/xidernm/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/28595340/variables" for 127.0.0.1 at 2014-03-22 12:04:50 -0600
