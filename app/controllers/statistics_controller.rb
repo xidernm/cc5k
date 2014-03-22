@@ -190,9 +190,14 @@ class StatisticsController < ApplicationController
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
       amount = stat[0].EvalEquation(current_user.id, e)
-      ans = Answer.where(amount: amount, 
+      ans = Answer.new(amount: amount, 
                          user_id: current_user.id, 
-                         statistic_id: sid).create
+                         statistic_id: sid)
+      if ans.amount != Float::INFINITY
+        ans.first_or_create
+      else
+        redirect_to root_path
+      end
     end
   end
 end

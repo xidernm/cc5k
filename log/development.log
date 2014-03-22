@@ -724,3 +724,228 @@ Processing by HomeController#index as HTML
   Rendered layouts/_navigation.html.haml (2.9ms)
   Rendered layouts/_messages.html.haml (0.1ms)
 Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:19:33 -0600
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered home/index.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (4.7ms)
+  Rendered layouts/_navigation.html.haml (5.3ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 45ms (Views: 29.7ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m
+
+
+Started GET "/emissions_tempate" for 127.0.0.1 at 2014-03-22 11:19:54 -0600
+Processing by StatisticsController#emissions_template as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics"
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 5]]
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 24 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 25 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 26 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 6]]
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 29 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 7]]
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 32 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  Rendered statistics/emissions_template.html.haml within layouts/application (29.5ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (1.6ms)
+  Rendered layouts/_navigation.html.haml (2.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 57ms (Views: 45.2ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 11:20:00 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"blu0AEplxPX+mbJsGEKGFyNDxnCYX5Jr4cEVzW8JWDo=", "form_fields"=>{"5N24"=>"1.0", "5D25"=>"1.0", "5F26"=>"1.0", "6A29"=>"1.0", "7G32"=>"1.0"}, "user_id"=>{"user"=>"{:value=>9}"}, "commit"=>"Save changes"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.1ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."amount" = 1000.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 5 ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 6[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 29 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."amount" = 2205.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 6 ORDER BY "answers"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.1ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 7
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 109 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 109 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 32 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'D' LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."amount" = 1.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 7 ORDER BY "answers"."id" ASC LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 34ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:20:00 -0600
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered home/index.html.haml within layouts/application (4.0ms)
+  Rendered layouts/_carousel.html.haml (0.5ms)
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (2.0ms)
+  Rendered layouts/_navigation.html.haml (3.1ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "answers"
+
+
+Started GET "/emissions_tempate" for 127.0.0.1 at 2014-03-22 11:20:06 -0600
+Processing by StatisticsController#emissions_template as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics"
+  [1m[36mFactor Load (0.4ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 5]]
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 24 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 25 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 26 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 6]]
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 29 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?[0m  [["statistic_id", 7]]
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 32 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  Rendered statistics/emissions_template.html.haml within layouts/application (10.9ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (1.5ms)
+  Rendered layouts/_navigation.html.haml (2.2ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 32ms (Views: 28.3ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 11:20:09 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"blu0AEplxPX+mbJsGEKGFyNDxnCYX5Jr4cEVzW8JWDo=", "form_fields"=>{"5N24"=>"1.0", "5D25"=>"1.0", "5F26"=>"1.0", "6A29"=>"1.0", "7G32"=>"12\\.0"}, "user_id"=>{"user"=>"{:value=>9}"}, "commit"=>"Save changes"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (3.6ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.3ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 12.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 12.0], ["created_at", Sat, 22 Mar 2014 17:20:10 UTC +00:00], ["factor_id", 32], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 17:20:10 UTC +00:00], ["user_id", 9]]
+  [1m[35m (173.9ms)[0m  commit transaction
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."amount" = 1000.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 5 ORDER BY "answers"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.1ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 6
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 29 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."amount" = 2205.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 6 ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.1ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 7[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 110 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 110 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 32 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'D' LIMIT 1[0m
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."amount" = 0.08333333333333333 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 7 ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 0.08333333333333333], ["created_at", Sat, 22 Mar 2014 17:20:10 UTC +00:00], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 17:20:10 UTC +00:00], ["user_id", 9]]
+  [1m[36m (125.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 335ms (ActiveRecord: 309.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:20:10 -0600
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered home/index.html.haml within layouts/application (1.9ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (2.1ms)
+  Rendered layouts/_navigation.html.haml (2.9ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 11:20:20 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"blu0AEplxPX+mbJsGEKGFyNDxnCYX5Jr4cEVzW8JWDo=", "form_fields"=>{"5N24"=>"1.0", "5D25"=>"1.0", "5F26"=>"1.0", "6A29"=>"1.0", "7G32"=>"12.0"}, "user_id"=>{"user"=>"{:value=>9}"}, "commit"=>"Save changes"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.3ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.3ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 12.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."amount" = 1000.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 5 ORDER BY "answers"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.1ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 6
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 29 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."amount" = 2205.0 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 6 ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.1ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 7[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 110 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 110 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 32 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'D' LIMIT 1[0m
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."amount" = 0.08333333333333333 AND "answers"."user_id" = 9 AND "answers"."statistic_id" = 7 ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 9]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 24ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 11:20:20 -0600
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (1.6ms)
+  Rendered layouts/_navigation.html.haml (2.3ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "answers"[0m
