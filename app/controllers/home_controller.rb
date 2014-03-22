@@ -3,8 +3,12 @@ class HomeController < ApplicationController
   def index
     
   if current_user!=nil
+
+        @ans = Answer.where(user_id: current_user.id)
+        @ans.each do |a|
+        a.name = Statistic.find(a.statistic_id).description
+        end
         @areaGraph =LazyHighCharts::HighChart.new('area') do |f|
-        f.series(:name=>'Average',:data=>[2, 19, 4, 30] ) 
         f.series(:name=>current_user.firstName,:data=> [10, 20, 12,10]) # << Now we can query the Answer table for the user
         f.title({ :text=>"Carbon Usage Compared to Regional Average"})
         f.options[:chart][:defaultSeriesType] = "area"
@@ -12,7 +16,6 @@ class HomeController < ApplicationController
         f.colors
         f.plot_options({:column=>{:stacking=>"percent"}})
         end
-    #The data for these graphs should be generated dynamically and be based on the equations the admin defines
         @distributionGraph =LazyHighCharts::HighChart.new('column') do |f|
         f.series(:name=>'Vehicle',:data=>[10,12,9] )  
         f.series(:name=>'Food',:data=>[10,10,10] ) 

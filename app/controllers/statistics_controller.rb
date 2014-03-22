@@ -194,14 +194,17 @@ class StatisticsController < ApplicationController
   # in that could return an Answer of type Float::INFINITY
   def updateAnswer(ls)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
+
     ls.each do |e|
       # e is a list of answered_factor_id, statistic_id pairs
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
       amount = stat[0].EvalEquation(current_user.id, e)
-      ans = Answer.where(amount: amount, 
-                         user_id: current_user.id, 
-                         statistic_id: sid).first_or_create
+      if Answer.where(user_id: current_user.id,statistic_id: sid).first !=nil #If the answer exists TODO: ADD TIME!! 
+        Answer.where(user_id: current_user.id,statistic_id: sid).first.update(:amount =>amount) #update the amount only
+      else
+        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid).first_or_create #otherwise create the field.
+      end
     end
   end
 end
