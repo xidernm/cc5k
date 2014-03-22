@@ -1,13 +1,13 @@
--if current_user!=nil
+-#if current_user!=nil
   %h3
     Welcome Back
-    =current_user.firstName
+    =#current_user.firstName
     !
   %h4 Your Carbon Profile
   %div
-    = high_chart("UsageChart",@areaGraph)
-    = high_chart("EmissionDistributionChart",@distributionGraph)
--else
+    = #high_chart("UsageChart",@areaGraph)
+    = #high_chart("EmissionDistributionChart",@distributionGraph)
+-#else
   %h3 Welcome to Carbon Counter 5000, Please sign up for an account
   %br
   %br
