@@ -77,6 +77,7 @@ class StatisticsController < ApplicationController
     end
   end
 
+  # Routes to the fill in factors form
   def fill_in_factors
     a = params[:format]
     @statistic = Statistic.find_by(:id => a)
@@ -85,6 +86,10 @@ class StatisticsController < ApplicationController
 
   # POST /submit_factor_changes
   # This code needs refactoring!
+  
+  # This function updates the changes that the admin wants to make to
+  # the dependency, amount, and unit fields, then sends them back
+  # to the statistics show page.
   def submit_factor_changes
     params[:factor_depends].each do |factor|
       f = Factor.find_by(id: factor[0][0..-1])
@@ -106,6 +111,7 @@ class StatisticsController < ApplicationController
     redirect_to statistics_path
   end
 
+  # Dynamically create answers from user input.
   def create_answer
     current_stat_id = nil
     factorIds = []
@@ -120,7 +126,6 @@ class StatisticsController < ApplicationController
         if af == ""
           raise "FUCK"
         end
-        
         factorIds.push([af.id, current_stat_id])
       end
       userFactors = rearrangeFactors(factorIds)
@@ -134,7 +139,7 @@ class StatisticsController < ApplicationController
   end
     
   
-  # Get /fill_out_form
+  # Get /emissions_template
   def emissions_template
     @statistics = Statistic.all
     @user = current_user
