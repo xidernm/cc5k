@@ -254,3 +254,473 @@ Migrating to AddStatisticIdToAnsweredFactors (20140317040643)
   [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers" ORDER BY "answers"."id" ASC LIMIT 1[0m
   [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers" ORDER BY "answers"."id" ASC LIMIT 1
   [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers" ORDER BY "answers"."id" DESC LIMIT 1[0m
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers" ORDER BY "answers"."id" ASC LIMIT 1[0m
+  [1m[35mAnswer Load (0.6ms)[0m  SELECT "answers".* FROM "answers" ORDER BY "answers"."id" DESC LIMIT 1
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 09:14:09 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (4.0ms)
+  Rendered layouts/_carousel.html.haml (11.0ms)
+  Rendered layouts/_navigation_links.html.erb (1.4ms)
+  Rendered layouts/_navigation.html.haml (5.6ms)
+  Rendered layouts/_messages.html.haml (1.7ms)
+Completed 200 OK in 2030ms (Views: 1994.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-22 09:14:17 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.5ms)
+  Rendered layouts/_navigation.html.haml (1.2ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 51ms (Views: 32.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-22 09:14:31 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N1+V6UEuJ0TbkFobAnFCn+QZPPAJrTVrYKtHwIfZnJQ=", "user"=>{"email"=>"beenjaminmb@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'beenjaminmb@gmail.com' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 8  [["last_sign_in_at", Wed, 19 Mar 2014 23:04:10 UTC +00:00], ["current_sign_in_at", Sat, 22 Mar 2014 15:14:31 UTC +00:00], ["sign_in_count", 7], ["updated_at", Sat, 22 Mar 2014 15:14:31 UTC +00:00]]
+  [1m[36m (1080.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1170ms (ActiveRecord: 1085.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 09:14:32 -0600
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 8]]
+  Rendered layouts/_navigation_links.html.erb (26.9ms)
+  Rendered layouts/_navigation.html.haml (27.7ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/emissions_tempate" for 127.0.0.1 at 2014-03-22 09:15:29 -0600
+Processing by StatisticsController#emissions_template as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics"[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 5]]
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 AND "answered_factors"."factor_id" = 24 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 AND "answered_factors"."factor_id" = 25 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 AND "answered_factors"."factor_id" = 26 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 6]]
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 AND "answered_factors"."factor_id" = 29 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 7]]
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 8 AND "answered_factors"."factor_id" = 32 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  Rendered statistics/emissions_template.html.haml within layouts/application (29.8ms)
+  Rendered layouts/_carousel.html.haml (3.4ms)
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 8]]
+  Rendered layouts/_navigation_links.html.erb (3.1ms)
+  Rendered layouts/_navigation.html.haml (6.2ms)
+  Rendered layouts/_messages.html.haml (1.9ms)
+Completed 200 OK in 64ms (Views: 54.1ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 09:15:35 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/+hWEBnJg1yxmQTxMAUHu/I62UD10S6PdYaU1wLiH5A=", "form_fields"=>{"5N24"=>"1.0", "5D25"=>"1.0", "5F26"=>"1.0", "6A29"=>"1.0", "7G32"=>"2"}, "user_id"=>{"user"=>"{:value=>8}"}, "commit"=>"Save changes"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 2.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["amount", 2.0], ["created_at", Sat, 22 Mar 2014 15:15:35 UTC +00:00], ["factor_id", 32], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 15:15:35 UTC +00:00], ["user_id", 8]]
+  [1m[36m (177.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mStatistic Load (0.3ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 99 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 99 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.3ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 100 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 100 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 102 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 102 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 1000.0], ["created_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["user_id", 8]]
+  [1m[35m (126.3ms)[0m  commit transaction
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 6[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 103 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 103 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 29 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 2205.0], ["created_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["statistic_id", 6], ["updated_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["user_id", 8]]
+  [1m[36m (151.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mStatistic Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 7
+  [1m[36mAnsweredFactor Load (0.3ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 104 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 104 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 32 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'D' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 0.5], ["created_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["user_id", 8]]
+  [1m[36m (152.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/statistics
+Completed 302 Found in 660ms (ActiveRecord: 614.5ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 09:15:36 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/+hWEBnJg1yxmQTxMAUHu/I62UD10S6PdYaU1wLiH5A=", "form_fields"=>{"5N24"=>"1.0", "5D25"=>"1.0", "5F26"=>"1.0", "6A29"=>"1.0", "7G32"=>"2"}, "user_id"=>{"user"=>"{:value=>8}"}, "commit"=>"Save changes"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 2.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 8 ORDER BY "answered_factors"."id" ASC LIMIT 1[0m
+  [1m[35mStatistic Load (0.1ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 99 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 99 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 100 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 100 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 102 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 102 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 1000.0], ["created_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["user_id", 8]]
+  [1m[35m (110.9ms)[0m  commit transaction
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 6[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 103 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 103 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 29 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 2205.0], ["created_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["statistic_id", 6], ["updated_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["user_id", 8]]
+  [1m[36m (128.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mStatistic Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 7
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 104 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 104 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 32 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'D' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 0.5], ["created_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 15:15:36 UTC +00:00], ["user_id", 8]]
+  [1m[36m (128.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/statistics
+Completed 302 Found in 392ms (ActiveRecord: 373.1ms)
+
+
+Started GET "/statistics" for 127.0.0.1 at 2014-03-22 09:15:36 -0600
+Processing by StatisticsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics"[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 8]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 8]]
+  Rendered statistics/index.html.haml within layouts/application (8.5ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 8]]
+  Rendered layouts/_navigation_links.html.erb (1.1ms)
+  Rendered layouts/_navigation.html.haml (1.8ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/images/sort_both.png" for 127.0.0.1 at 2014-03-22 09:15:37 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/sort_both.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.5ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.2ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (56.9ms)
+
+
+Started GET "/images/sort_asc.png" for 127.0.0.1 at 2014-03-22 09:15:37 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/sort_asc.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.1ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (43.4ms)
+
+
+Started GET "/images/back_disabled.png" for 127.0.0.1 at 2014-03-22 09:15:37 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/back_disabled.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.6ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (39.2ms)
+
+
+Started GET "/images/forward_disabled.png" for 127.0.0.1 at 2014-03-22 09:15:37 -0600
+
+ActionController::RoutingError (No route matches [GET] "/images/forward_disabled.png"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/n00b/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.5ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/n00b/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (43.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-03-22 09:17:34 -0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/+hWEBnJg1yxmQTxMAUHu/I62UD10S6PdYaU1wLiH5A="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 09:17:34 -0600
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_carousel.html.haml (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.haml (1.8ms)
+  Rendered layouts/_messages.html.haml (0.3ms)
+Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-03-22 09:17:37 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.haml (1.2ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-03-22 09:17:44 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rYfEWFrYnzZZof5GbCajJKbXgLUCrGHjWIFFITpERT0=", "user"=>{"email"=>"a@b.c", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'a@b.c' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 9  [["last_sign_in_at", Wed, 19 Mar 2014 22:53:59 UTC +00:00], ["current_sign_in_at", Sat, 22 Mar 2014 15:17:44 UTC +00:00], ["sign_in_count", 7], ["updated_at", Sat, 22 Mar 2014 15:17:44 UTC +00:00]]
+  [1m[36m (199.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 278ms (ActiveRecord: 200.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 09:17:45 -0600
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered home/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1[0m  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (5.1ms)
+  Rendered layouts/_navigation.html.haml (5.8ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/emissions_tempate" for 127.0.0.1 at 2014-03-22 09:17:50 -0600
+Processing by StatisticsController#emissions_template as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics"[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 5]]
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 24 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 25 ORDER BY "answered_factors"."created_at" DESC LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 26 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 6]]
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 29 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = ?  [["statistic_id", 7]]
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."user_id" = 9 AND "answered_factors"."factor_id" = 32 ORDER BY "answered_factors"."created_at" DESC LIMIT 1[0m
+  Rendered statistics/emissions_template.html.haml within layouts/application (23.2ms)
+  Rendered layouts/_carousel.html.haml (0.3ms)
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (1.3ms)
+  Rendered layouts/_navigation.html.haml (2.0ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 45ms (Views: 37.7ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/create_answer_from_input" for 127.0.0.1 at 2014-03-22 09:17:55 -0600
+Processing by StatisticsController#create_answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"blu0AEplxPX+mbJsGEKGFyNDxnCYX5Jr4cEVzW8JWDo=", "form_fields"=>{"5N24"=>"1", "5D25"=>"1", "5F26"=>"1", "6A29"=>"1", "7G32"=>"1"}, "user_id"=>{"user"=>"{:value=>9}"}, "commit"=>"Save changes"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 24 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["amount", 1.0], ["created_at", Sat, 22 Mar 2014 15:17:55 UTC +00:00], ["factor_id", 24], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 15:17:55 UTC +00:00], ["user_id", 9]]
+  [1m[36m (161.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mAnsweredFactor Load (0.4ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 25 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["amount", 1.0], ["created_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["factor_id", 25], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["user_id", 9]]
+  [1m[36m (140.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mAnsweredFactor Load (0.4ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 26 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 5 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["amount", 1.0], ["created_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["factor_id", 26], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["user_id", 9]]
+  [1m[36m (150.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mAnsweredFactor Load (0.2ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 29 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 6 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["amount", 1.0], ["created_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["factor_id", 29], ["statistic_id", 6], ["updated_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["user_id", 9]]
+  [1m[36m (175.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mAnsweredFactor Load (0.4ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."factor_id" = 32 AND "answered_factors"."amount" = 1.0 AND "answered_factors"."statistic_id" = 7 AND "answered_factors"."user_id" = 9 ORDER BY "answered_factors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "answered_factors" ("amount", "created_at", "factor_id", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["amount", 1.0], ["created_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["factor_id", 32], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["user_id", 9]]
+  [1m[36m (162.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mStatistic Load (0.3ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 5
+  [1m[36mAnsweredFactor Load (0.2ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 105 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 24 LIMIT 1[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 106 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 25 LIMIT 1
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 107 LIMIT 1
+  [1m[36mFactor Load (0.2ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 26 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 5 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 1000.0], ["created_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["statistic_id", 5], ["updated_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["user_id", 9]]
+  [1m[35m (156.7ms)[0m  commit transaction
+  [1m[36mStatistic Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 6[0m
+  [1m[35mAnsweredFactor Load (0.1ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 108 LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."id" = 29 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'E' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 6 AND "factors"."name" = 'C' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 2205.0], ["created_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["statistic_id", 6], ["updated_at", Sat, 22 Mar 2014 15:17:56 UTC +00:00], ["user_id", 9]]
+  [1m[36m (117.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mStatistic Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE "statistics"."id" = 7
+  [1m[36mAnsweredFactor Load (0.1ms)[0m  [1mSELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 109 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "answered_factors".* FROM "answered_factors" WHERE "answered_factors"."id" = 109 LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."id" = 32 LIMIT 1[0m
+  [1m[35mFactor Load (0.2ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'E' LIMIT 1
+  [1m[36mFactor Load (0.1ms)[0m  [1mSELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'C' LIMIT 1[0m
+  [1m[35mFactor Load (0.1ms)[0m  SELECT "factors".* FROM "factors" WHERE "factors"."statistic_id" = 7 AND "factors"."name" = 'D' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("amount", "created_at", "statistic_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["amount", 1.0], ["created_at", Sat, 22 Mar 2014 15:17:57 UTC +00:00], ["statistic_id", 7], ["updated_at", Sat, 22 Mar 2014 15:17:57 UTC +00:00], ["user_id", 9]]
+  [1m[36m (150.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 1283ms (ActiveRecord: 1227.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-22 09:17:57 -0600
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered home/index.html.haml within layouts/application (4.4ms)
+  Rendered layouts/_carousel.html.haml (0.4ms)
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."name" = 'Admin' LIMIT 1  [["user_id", 9]]
+  Rendered layouts/_navigation_links.html.erb (2.1ms)
+  Rendered layouts/_navigation.html.haml (2.9ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.7ms)

@@ -122,7 +122,11 @@ class StatisticsController < ApplicationController
       userFactors = rearrangeFactors(factorIds)
       updateAnswer(userFactors)
     end
-    redirect_to statistics_path
+    if current_user.admin?
+      redirect_to statistics_path
+    else
+      redirect_to root_path
+    end
   end
     
   
