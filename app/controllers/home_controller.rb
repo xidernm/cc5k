@@ -3,20 +3,25 @@ class HomeController < ApplicationController
   def index
     
   if current_user!=nil
-
         fieldMap = Hash.new
        
         ans = Answer.where(user_id: current_user.id)
         ans.each do |a|
         fieldMap[Statistic.find(a.statistic_id).description] = a.amount
         end
-        @areaGraph =LazyHighCharts::HighChart.new('area') do |f|
-        f.series(:name=>current_user.firstName,:data=> fieldMap.values) # << Now we can query the Answer table for the user
-        f.title({ :text=>"Carbon Usage By Category"})
-        f.options[:chart][:defaultSeriesType] = "area"
-        f.options[:xAxis][:categories] = fieldMap.keys
-        f.colors
-        f.plot_options({:column=>{:stacking=>"percent"}})
+
+        if fieldMap.first = nil
+          @areaGraph = "NO GRAPH"
+          @distributionGraph = "NO GRAPH"
+        else
+          @areaGraph =LazyHighCharts::HighChart.new('area') do |f|
+          f.series(:name=>current_user.firstName,:data=> fieldMap.values) # << Now we can query the Answer table for the user
+          f.title({ :text=>"Carbon Usage By Category"})
+          f.options[:chart][:defaultSeriesType] = "area"
+          f.options[:xAxis][:categories] = fieldMap.keys
+          f.colors
+          f.plot_options({:column=>{:stacking=>"percent"}})
+          end
         end
     
         @distributionGraph =LazyHighCharts::HighChart.new('column') do |f|
