@@ -117,6 +117,10 @@ class StatisticsController < ApplicationController
                                   statistic_id: current_stat_id, 
                                   user_id: current_user.id).first_or_create
         
+        if af == ""
+          raise "FUCK"
+        end
+        
         factorIds.push([af.id, current_stat_id])
       end
       userFactors = rearrangeFactors(factorIds)
