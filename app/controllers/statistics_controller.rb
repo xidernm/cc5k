@@ -115,6 +115,8 @@ class StatisticsController < ApplicationController
   def create_answer
     current_stat_id = nil
     factorIds = []
+    badFactors = []
+    bad = true
     if params[:form_fields] != nil
       params[:form_fields].each do |field|
         current_stat_id = field[0][0] if current_stat_id != field[0][0]
@@ -123,18 +125,22 @@ class StatisticsController < ApplicationController
                                   statistic_id: current_stat_id, 
                                   user_id: current_user.id).first_or_create
         
-        if af == ""
-          raise "FUCK"
+        if af.amount == nil
+          af.delete
+          badFactors << af
+        else
+          factorIds.push([af.id, current_stat_id])
         end
-        factorIds.push([af.id, current_stat_id])
       end
-      userFactors = rearrangeFactors(factorIds)
-      updateAnswer(userFactors)
+      if badFactors.count == 0
+        userFactors = rearrangeFactors(factorIds)
+        updateAnswer(userFactors)
+      end
     end
-    if current_user.admin?
-      redirect_to statistics_path
-    else
+    if badFactors.count == 0
       redirect_to root_path
+    else
+      redirect_to emissions_template_path, alert: "Factor cannot be left blank."
     end
   end
     
