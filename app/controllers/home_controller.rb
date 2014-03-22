@@ -5,7 +5,8 @@ def index
   if current_user!=nil
     fieldMap = Hash.new
     
-    ans = Answer.where(user_id: current_user.id)
+#    ans = Answer.where(user_id: current_user.id)
+    ans = nil
     if ans != nil
       ans.each do |a|
         fieldMap[Statistic.find(a.statistic_id).description] = a.amount
