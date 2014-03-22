@@ -194,7 +194,7 @@ class StatisticsController < ApplicationController
   # in that could return an Answer of type Float::INFINITY
   def updateAnswer(ls)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
-    printf"\n\n\nLS: %s\n\n\n",ls.insepct)
+    printf("\n\n\nLS: %s\n\n\n",ls.insepct)
     ls.each do |e|
       # e is a list of answered_factor_id, statistic_id pairs
       sid = e[0][1].to_i
