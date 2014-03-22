@@ -146,7 +146,7 @@ class StatisticsController < ApplicationController
   def statistic_params
     params.require(:statistic).permit(:equation, :description)
   end
-  
+
   def create_factors_for_statistic(statistic)
     Factor.where(statistic_id: statistic.id).destroy_all
     statistic.equation.gsub(/\s+/,"").split(/[*+-\/]/).delete_if(&:empty?).each do |factor|
@@ -190,14 +190,9 @@ class StatisticsController < ApplicationController
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
       amount = stat[0].EvalEquation(current_user.id, e)
-      ans = Answer.new(amount: amount, 
+      ans = Answer.where(amount: amount, 
                          user_id: current_user.id, 
-                         statistic_id: sid)
-      if ans.amount != Float::INFINITY
-        ans.first_or_create
-      else
-        redirect_to root_path
-      end
+                         statistic_id: sid).first_or_create
     end
   end
 end
