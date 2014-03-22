@@ -1,5 +1,5 @@
 #*#
-log/development.log
+log/*
 rails_dev
 
 #Below from Old Repo
