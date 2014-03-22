@@ -209,7 +209,7 @@ class StatisticsController < ApplicationController
       if Answer.where(user_id: current_user.id,statistic_id: sid).first !=nil #If the answer exists TODO: ADD TIME!! 
         Answer.where(user_id: current_user.id,statistic_id: sid).first.update(:amount =>amount) #update the amount only
       else
-        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid).first_or_create #otherwise create the field.
+        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid).create #otherwise create the field.
       end
     end
   end

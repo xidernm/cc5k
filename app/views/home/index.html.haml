@@ -5,9 +5,21 @@
     !
   %h4 Your Carbon Profile
   %div
+<<<<<<< HEAD
     = high_chart("UsageChart",@areaGraph)
     = high_chart("EmissionDistributionChart",@distributionGraph)
 - else
+=======
+    -if @areaGraph != nil
+      = high_chart("UsageChart",@areaGraph)
+    -if @distributionGraph !=nil
+      = high_chart("EmissionDistributionChart",@distributionGraph)
+    -if @areaGraph == nil && @distributionGrah == nil
+      %p
+        Thank you for joining Carbon Counter 5000! Please enter your information to get started!
+
+-else
+>>>>>>> 8de47969864cf410b069004d7f7e480f4c0c957b
   %h3 Welcome to Carbon Counter 5000, Please sign up for an account
   %br
   %br
@@ -20,6 +32,8 @@
       %li Badges, acheivements, community
       %li Analysis compared to regional averages
       %li Most effective reduction suggestions
+
+
 
 
 
