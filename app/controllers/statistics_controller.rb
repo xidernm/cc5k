@@ -146,7 +146,7 @@ class StatisticsController < ApplicationController
   def statistic_params
     params.require(:statistic).permit(:equation, :description)
   end
-  
+
   def create_factors_for_statistic(statistic)
     Factor.where(statistic_id: statistic.id).destroy_all
     statistic.equation.gsub(/\s+/,"").split(/[*+-\/]/).delete_if(&:empty?).each do |factor|
