@@ -23,8 +23,6 @@
       = label_tag "factor_fields[factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]]", "Unit"
       %td
       = text_field_tag "factor_fields[factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]]", fac.unit
-
-      - raise "FUCK"
   = submit_tag
   \|
   = link_to 'Edit Equation', edit_statistic_path(@statistic)
