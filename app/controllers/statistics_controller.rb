@@ -116,29 +116,29 @@ class StatisticsController < ApplicationController
     current_stat_id = nil
     factorIds = []
     badFactors = []
-    bad = true
     if params[:form_fields] != nil
       params[:form_fields].each do |field|
-        current_stat_id = field[0][0] if current_stat_id != field[0][0]
-        af = AnsweredFactor.where(factor_id: field[0][2..-1], 
+        current_stat_id = field[0].split(/[A-Z]/)[0] if current_stat_id != field[0].split(/[A-Z]/)[0]
+        af = AnsweredFactor.where(factor_id: field[0].split(/[A-Z]/)[1], 
                                   amount: field[1], 
                                   statistic_id: current_stat_id, 
                                   user_id: current_user.id).first_or_create
         
         if af.amount == nil
+          badFactors.push(af)
           af.delete
-          badFactors << af
         else
           factorIds.push([af.id, current_stat_id])
         end
       end
-      if badFactors.count == 0
+ 
+      if badFactors.count == 0 and factorIds.count != 0 
         userFactors = rearrangeFactors(factorIds)
         updateAnswer(userFactors)
       end
     end
-    if badFactors.count == 0
-      redirect_to root_path
+    if badFactors.count == 0 and factorIds.count != 0
+      redirect_to statistics_path
     else
       redirect_to emissions_template_path, alert: "Factor cannot be left blank."
     end
@@ -200,11 +200,10 @@ class StatisticsController < ApplicationController
   # in that could return an Answer of type Float::INFINITY
   def updateAnswer(ls)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
-
     ls.each do |e|
-      # e is a list of answered_factor_id, statistic_id pairs
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
+      
       amount = stat[0].EvalEquation(current_user.id, e)
       if Answer.where(user_id: current_user.id,statistic_id: sid).first !=nil #If the answer exists TODO: ADD TIME!! 
         Answer.where(user_id: current_user.id,statistic_id: sid).first.update(:amount =>amount) #update the amount only

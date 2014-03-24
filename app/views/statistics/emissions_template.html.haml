@@ -9,10 +9,8 @@
           - af = AnsweredFactor.where(user_id: @user.id, factor_id: factor.id).order(:created_at).last
           = label_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]", factor.name
           - if af != nil
-            = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name  + factor.id.to_s)}]", af.amount 
+            = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]", af.amount 
           - else
-            = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name  + factor.id.to_s)}]"
-
+            = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]"
   = hidden_field_tag "user_id[user]", value: @user.id
   = submit_tag 
-

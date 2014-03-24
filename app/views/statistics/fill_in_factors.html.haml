@@ -8,21 +8,21 @@
     %tr
     .field
       %td
-      = label_tag "factor_fields[factor_amount[#{(fac.id.to_s)}]]", "Amount"
+      = label_tag "factor_amount[#{(fac.id.to_s)}]", "Amount"
       %td
-      = text_field_tag "factor_fields[factor_amount[#{(fac.id.to_s)}]]", fac.amount
+      = text_field_tag "factor_amount[#{(fac.id.to_s)}]", fac.amount
     %tr
     .field
       %td
-      = label_tag "factor_fields[factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]]", "Dependency"
+      = label_tag "factor_depends[#{(fac.id.to_s + fac.dependency.to_s)}]", "Dependency"
       %td
-      = select_tag "factor_fields[factor_depends[#{fac.id.to_s}]]", options_for_select([["Region", 0],["Admin", 1],["User", 2]], 3)
+      = select_tag "factor_depends[#{fac.id.to_s}]", options_for_select([["Region", 0],["Admin", 1],["User", 2]], 3)
     %tr   
     .field
       %td
-      = label_tag "factor_fields[factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]]", "Unit"
+      = label_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", "Unit"
       %td
-      = text_field_tag "factor_fields[factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]]", fac.unit
+      = text_field_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", fac.unit
   = submit_tag
   \|
   = link_to 'Edit Equation', edit_statistic_path(@statistic)
