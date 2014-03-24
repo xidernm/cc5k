@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+<<<<<<< HEAD
 
   def index
     if current_user!=nil
@@ -39,5 +40,4 @@ class HomeController < ApplicationController
   def getAnsweredFactors
     answeredFactors = Answers.where(user_id: current_user.id)
   end
-
 end
