@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-<<<<<<< HEAD
 
   def index
     if current_user!=nil
