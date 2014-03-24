@@ -1,6 +1,6 @@
 class Statistic < ActiveRecord::Base
   has_many :factors, dependent: :destroy
-  
+  has_many :answers, dependent: :destroy
   
   def self.IsValidEquation(eqstr)
     /[A-Z]([+\-*\/][A-Z])*/ =~ eqstr.gsub(/\s+/,"")

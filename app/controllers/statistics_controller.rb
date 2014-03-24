@@ -68,9 +68,7 @@ class StatisticsController < ApplicationController
   # DELETE /statistics/1.json
   def destroy
     @statistic.destroy
-    Factor.where(:statistic_id => @statistic.id).each do |s|
-      s.destroy
-    end
+   
     respond_to do |format|
       format.html { redirect_to statistics_url }
       format.json { head :no_content }

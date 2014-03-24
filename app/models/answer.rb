@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
-  belongs_to :statistic, dependent: :destroy
-  has_many :answered_factors
+  belongs_to :statistic
+  has_many :answered_factors, dependent: :destroy
 end
