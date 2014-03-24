@@ -5,9 +5,14 @@
     !
   %h4 Your Carbon Profile
   %div
-    = high_chart("UsageChart",@areaGraph)
-    = high_chart("EmissionDistributionChart",@distributionGraph)
-- else
+    -if @areaGraph != nil
+      = high_chart("UsageChart",@areaGraph)
+    -if @distributionGraph !=nil
+      = high_chart("EmissionDistributionChart",@distributionGraph)
+    -if @areaGraph == nil && @distributionGrah == nil
+      %p
+        Thank you for joining Carbon Counter 5000! Please enter your information to get started!
+-else
   %h3 Welcome to Carbon Counter 5000, Please sign up for an account
   %br
   %br

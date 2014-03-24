@@ -21,3 +21,9 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# emacs backup stuff
+*~
+
+# This escapes the '#' character
+[#]*[#]

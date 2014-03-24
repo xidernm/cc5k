@@ -15,3 +15,9 @@
         %main{:role => "main"}
           = render 'layouts/messages'
           = yield
+          %div{"style" => "height:128px"}
+          = image_tag "box-rock.png"
+        %div{"style" => "color:#DDDDDD"}
+          Copyright 2014 CarbonCounter5000 ----
+          = mail_to "webmaster@cc5k.com", "Contact Us"
+          = image_tag "cc5kstones.png"

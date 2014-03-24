@@ -11,7 +11,11 @@ class HomeController < ApplicationController
         end
 
         @areaGraph =LazyHighCharts::HighChart.new('area') do |f|
+<<<<<<< HEAD
           f.series(:name=>current_user.firstName,:data=> fieldMap.values) 
+=======
+          f.series(:name=>current_user.firstName,:data=> fieldMap.values) # << Now we can query the Answer table for the user
+>>>>>>> 391f02e42c143e77a556cef7b011f99d9fefdb72
           f.title({ :text=>"Carbon Usage By Category"})
           f.options[:chart][:defaultSeriesType] = "area"
           f.options[:xAxis][:categories] = fieldMap.keys

@@ -34,7 +34,7 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
+  background-color: #E7D7BE;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
@@ -93,6 +93,10 @@ section {
 
     /* IE8-9 gradient filter */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5A995B', endColorstr='#375E38', GradientType=0);
+}
+
+.carousel-control:hover, .carousel-control:focus {
+    opacity: 0.2;
 }
 
 .navbar-inverse .navbar-brand {
