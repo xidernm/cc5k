@@ -203,10 +203,13 @@ class StatisticsController < ApplicationController
       stat = Statistic.where(id: sid)
       
       amount = stat[0].EvalEquation(current_user.id, e)
-      if Answer.where(user_id: current_user.id,statistic_id: sid).first !=nil #If the answer exists TODO: ADD TIME!! 
-        Answer.where(user_id: current_user.id,statistic_id: sid).first.update(:amount =>amount) #update the amount only
+      #If the answer exists TODO: ADD TIME!! 
+      if Answer.where(user_id: current_user.id,statistic_id: sid).first != nil && Answer.where(user_id: current_user.id,statistic_id: sid).first != []
+        Answer.where(user_id: current_user.id,statistic_id: sid).first.update(:amount =>amount)#update amount
+        printf("\n\n\n%s\n\n\n",Answer.where(user_id: current_user.id,statistic_id: sid).first.inspect)
       else
-        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid).create #otherwise create the field.
+        printf("\n\n\nNIL so CREATE\n\n\n")
+        Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid).first_or_create #otherwise create the field.
       end
     end
   end
