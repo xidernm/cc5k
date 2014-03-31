@@ -5,13 +5,17 @@
     !
   %h4 Your Carbon Profile
   %div
-    -if @areaGraph != nil
+    - if @areaGraph != nil
       = high_chart("UsageChart",@areaGraph)
-    -if @distributionGraph !=nil
+    - if @distributionGraph !=nil
       = high_chart("EmissionDistributionChart",@distributionGraph)
-    -if @areaGraph == nil && @distributionGrah == nil
+    - if @areaGraph == nil && @distributionGrah == nil
       %p
         Thank you for joining Carbon Counter 5000! Please enter your information to get started!
+
+      %applet{"codebase" => "http://localhost:3000/applets", "width" => "400", "height" => "400", "archive" => "testapplet.jar", "code" => "com/lunagameserve/TestApplet/TestApplet.class", "name" => "testapplet", "id" => "testapplet", "align" => "center"}
+        You can't view applets :( Go install Java or upgrade your browser or something.
+        %param{"name" => "appletparam", "value" => current_user.email}
 - else
   %h3 Welcome to Carbon Counter 5000, Please sign up for an account
   %br
@@ -25,4 +29,3 @@
       %li Badges, acheivements, community
       %li Analysis compared to regional averages
       %li Most effective reduction suggestions
-

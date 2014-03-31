@@ -1,17 +1,23 @@
-%h1 Listing earned_badges
+%div{"style" => "height:20px"}
+%applet{"codebase" => "http://localhost:3000/applets", "width" => "1140", "height" => "400", "archive" => "testapplet.jar", "code" => "com/lunagameserve/TestApplet/TestApplet.class", "name" => "testapplet", "id" => "testapplet", "align" => "center"}
+  %param{"name" => "appletparam", "value" => current_user.email}
+  - @earned_badges.each do |badge|
+    %param{"name" => "badge_#{badge.id}", "value" => @user_badges.include?(badge).to_s}
+    %param{"name" => "badge_#{badge.id}_description", "value" => "#{badge.badge.description}"}
 
-%table
-  %tr
-    %th
-    %th
-    %th
+  %param
 
-  - @earned_badges.each do |earned_badge|
+  %h1 Your Badges
+  %table
     %tr
-      %td= link_to 'Show', earned_badge
-      %td= link_to 'Edit', edit_earned_badge_path(earned_badge)
-      %td= link_to 'Destroy', earned_badge, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th
+      %th
+      %th
 
-%br
-
-= link_to 'New Earned badge', new_earned_badge_path
+      - @earned_badges.each do |earned_badge|
+        %tr
+          %td= link_to 'Show', earned_badge
+          %td= link_to 'Edit', edit_earned_badge_path(earned_badge)
+          %td= link_to 'Destroy', earned_badge, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %br
+%div{"style" => "height:512px"}
