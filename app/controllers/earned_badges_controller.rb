@@ -1,10 +1,19 @@
 class EarnedBadgesController < ApplicationController
   before_action :set_earned_badge, only: [:show, :edit, :update, :destroy]
+  before_action :login_redirect
+
+
+  def login_redirect
+    if current_user == nil
+      redirect_to root_path, alert: "Log in to view your badges."
+    end
+  end
 
   # GET /earned_badges
   # GET /earned_badges.json
   def index
     @earned_badges = EarnedBadge.all
+    @user_badges = EarnedBadge.where(user_id: current_user.id)
   end
 
   # GET /earned_badges/1

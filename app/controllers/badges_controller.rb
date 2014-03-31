@@ -1,5 +1,12 @@
 class BadgesController < ApplicationController
   before_action :set_badge, only: [:show, :edit, :update, :destroy]
+  before_action :login_redirect
+
+  def login_redirect
+    if current_user == nil or (not current_user.admin?)
+      redirect_to root_path, alert: "You are not an administrator."
+    end
+  end
 
   # GET /badges
   # GET /badges.json
