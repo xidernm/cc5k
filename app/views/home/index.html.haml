@@ -1,15 +1,15 @@
 - if current_user!=nil
   %h3
     Welcome Back
-    =current_user.firstName
+    = current_user.firstName
     !
   %h4 Your Carbon Profile
   %div
-    -if @areaGraph != nil
+    - if @areaGraph != nil
       = high_chart("UsageChart",@areaGraph)
-    -if @distributionGraph !=nil
+    - if @distributionGraph !=nil
       = high_chart("EmissionDistributionChart",@distributionGraph)
-    -if @areaGraph == nil && @distributionGrah == nil
+    - if @areaGraph == nil && @distributionGrah == nil
       %p
         Thank you for joining Carbon Counter 5000! Please enter your information to get started!
 - else
