@@ -12,6 +12,7 @@ gem 'cancan'
 gem 'devise'
 gem 'haml-rails'
 gem 'rolify'
+gem 'rbtree'
 gem 'therubyracer', :platform=>:ruby
 gem 'lazy_high_charts'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
