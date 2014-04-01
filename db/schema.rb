@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326012615) do
+ActiveRecord::Schema.define(version: 20140331153129) do
 
   create_table "answered_factors", force: true do |t|
     t.integer  "factor_id"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140326012615) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "statistic_id"
+    t.integer  "month"
+    t.integer  "year"
   end
 
   create_table "answers", force: true do |t|
@@ -30,6 +32,8 @@ ActiveRecord::Schema.define(version: 20140326012615) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "month"
+    t.integer  "year"
   end
 
   create_table "badges", force: true do |t|

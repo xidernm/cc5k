@@ -68,7 +68,6 @@ class StatisticsController < ApplicationController
   # DELETE /statistics/1.json
   def destroy
     @statistic.destroy
-   
     respond_to do |format|
       format.html { redirect_to statistics_url }
       format.json { head :no_content }
@@ -88,7 +87,7 @@ class StatisticsController < ApplicationController
   # This function updates the changes that the admin wants to make to
   # the dependency, amount, and unit fields, then sends them back
   # to the statistics show page.
-  def submit_factor_changes
+ def submit_factor_changes
     params[:factor_depends].each do |factor|
       f = Factor.find_by(id: factor[0][0..-1])
       f.dependency = factor[1]
@@ -109,6 +108,7 @@ class StatisticsController < ApplicationController
     redirect_to statistics_path
   end
 
+
   # Dynamically create answers from user input.
   def create_answer
     current_stat_id = nil
@@ -119,8 +119,11 @@ class StatisticsController < ApplicationController
         current_stat_id = field[0].split(/[A-Z]/)[0] if current_stat_id != field[0].split(/[A-Z]/)[0]
         af = AnsweredFactor.where(factor_id: field[0].split(/[A-Z]/)[1], 
                                   amount: field[1], 
-                                  statistic_id: current_stat_id, 
+                                  statistic_id: current_stat_id,
+                                  month: params[:month],
+                                  year: params[:year],
                                   user_id: current_user.id).first_or_create
+                                  
         
         if af.amount == nil
           badFactors.push(af)
@@ -132,7 +135,7 @@ class StatisticsController < ApplicationController
  
       if badFactors.count == 0 and factorIds.count != 0 
         userFactors = rearrangeFactors(factorIds)
-        updateAnswer(userFactors)
+        updateAnswer(userFactors,{:month=>params[:month],:year=>params[:year]})
       end
     end
     if badFactors.count == 0 and factorIds.count != 0
@@ -147,6 +150,13 @@ class StatisticsController < ApplicationController
   def emissions_template
     @statistics = Statistic.all
     @user = current_user
+    if params[:month] !=nil && params[:year]!=nil
+      @time = Time.new(params[:year],params[:month])    
+    end
+    if @time == nil
+      @time = Time.new
+    end
+
   end
 
   private
@@ -196,20 +206,19 @@ class StatisticsController < ApplicationController
   
   # TODO: Make sure that users arent entering information 
   # in that could return an Answer of type Float::INFINITY
-  def updateAnswer(ls)
+  def updateAnswer(ls,t)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
+    # t contains date information
     ls.each do |e|
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
       
       amount = stat[0].EvalEquation(current_user.id, e)
-      # If the answer exists TODO: ADD TIME!! 
-      if Answer.where(user_id: current_user.id,statistic_id: sid).first != nil && Answer.where(user_id: current_user.id,statistic_id: sid).first != []
-        Answer.where(user_id: current_user.id,statistic_id: sid).first.update(:amount =>amount)#update amount
-        printf("\n\n\n%s\n\n\n",Answer.where(user_id: current_user.id,statistic_id: sid).first.inspect)
+      #if exists
+      if Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first.present?
+        Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first.update(:amount =>amount) #update the amount only
       else
-        printf("\n\n\nNIL so CREATE\n\n\n")
-        Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid).first_or_create #otherwise create the field.
+        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).create #otherwise create the field.
       end
     end
   end
