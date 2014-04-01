@@ -1,16 +1,30 @@
-%h1 Update your template!
-= form_tag(create_answer_path, method: "post") do 
+%h1
+  Update your usage for 
+  = @time.strftime("%B %Y")
+
+
+= form_tag(emissions_template_path, method: "get") do
+  =select_tag(:month,options_for_select([['January',1],['February',2],['March',3],['April',4],['May',5],['June',6],['July',7],['August',8],['September',9],['October',10],['November',11],['December',12]],selected: @time.month),{:onchange=>"this.form.submit();"})
+
+  =select_tag(:year,options_for_select([[2004,2004],[2005,2005],[2006,2006],[2007,2007],[2008,2008],[2009,2009],[2010,2010],[2011,2011],[2012,2012],[2013,2013],[2012,2012],[2013,2013],[2014,2014]],selected: @time.year),{:onchange=>"this.form.submit();"})
+
+= form_tag(create_answer_path, method: "post") do
   - @statistics.each do |stat|
     %hr
-    = stat.description
-    - stat.factors.each do |factor|
-      - if factor.dependency == 2
-        .field
-          - af = AnsweredFactor.where(user_id: @user.id, factor_id: factor.id).order(:created_at).last
-          = label_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]", factor.name
-          - if af != nil
-            = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]", af.amount 
-          - else
-            = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]"
+    -if stat.factors.where(dependency:2).present?
+      = stat.description
+      - stat.factors.each do |factor|
+        - if factor.dependency == 2
+          .field
+            - af = AnsweredFactor.where(user_id: @user.id, factor_id: factor.id, month: @time.month, year: @time.year).order(:created_at).last
+            = label_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]", factor.name
+            - if af != nil
+              = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]", af.amount 
+            - else
+              = text_field_tag "form_fields[#{(factor.statistic_id.to_s + factor.name + factor.id.to_s)}]"
   = hidden_field_tag "user_id[user]", value: @user.id
+  = hidden_field_tag "month",@time.month
+  = hidden_field_tag "year", @time.year
+
+  
   = submit_tag 
