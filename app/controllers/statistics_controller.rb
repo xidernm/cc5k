@@ -214,7 +214,8 @@ class StatisticsController < ApplicationController
       stat = Statistic.where(id: sid)
       
       amount = stat[0].EvalEquation(current_user.id, e)
-      if Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first !=nil #If the answer exists TODO: ADD TIME!! 
+      #if exists
+      if Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first.present?
         Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first.update(:amount =>amount) #update the amount only
       else
         ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).create #otherwise create the field.
