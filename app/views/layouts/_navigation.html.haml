@@ -1,16 +1,24 @@
--# navigation styled for Bootstrap 3.0
-.navbar-wrapper
-  .container
-    .navbar.navbar-inverse.navbar-static-top{:role => "navigation"}
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a{"class" => "navbar-brand", "href" => root_path}
-            Carbon Count
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            = render 'layouts/navigation_links'
+-# #sidebar-wrapper
+-#   .container
+-#     .navbar.navbar-inverse.navbar-static-top{:role => "navigation"}
+-#       .container
+-#         .navbar-header
+-#           %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+-#             %span.sr-only Toggle navigation
+-#             %span.icon-bar
+-#             %span.icon-bar
+-#             %span.icon-bar
+-#           %a{"class" => "navbar-brand", "href" => root_path}
+-#             Carbon Counter 5000
+-#         .collapse.navbar-collapse
+-#           %ul.nav.navbar-nav
+-#             = render 'layouts/navigation_links'
+
+#sidebar-wrapper
+  %ul.sidebar-nav
+    %li.sidebar-brand= link_to 'G.E.R.A', root_path
+    - if user_signed_in?
+      %li= link_to 'Log out', destroy_user_session_path, :method => 'delete'
+      %li= link_to "#{current_user.firstName} #{current_user.lastName}", edit_user_registration_path
+    - else
+      %li= link_to 'Log in', new_user_session_path

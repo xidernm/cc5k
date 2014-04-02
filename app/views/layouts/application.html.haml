@@ -1,5 +1,5 @@
 !!!
-%html
+%html{"style" => "width: 1170px; height: 1280px;"}
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'Carbonator'
@@ -8,8 +8,7 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     %body
-      - # %header
-      %div{"style" => "width: 1170px; margin-left: auto; margin-right: auto;"}
+      #wrapper
         = render 'layouts/navigation'
         %main{:role => "main"}
           = render 'layouts/messages'
