@@ -5,43 +5,57 @@
   %h3
     Try out the Carbon calculator by providing some data anonymously!
 
-.authform
+%div{:float => "left"}
   #question
-  #answer.textBox
-  #skip.button
-    Skip
-  #next.button
-    Next
+  %input#answer.textBox{:type => "number", :hidden => "true"}
+  .authform
+    #skip.button{:float => "left"}
+      Skip
+    #next.button
+      Next
 
 :javascript
+  $(document).ready(function() 
+  {
+    $('#question').text('Click next to begin answering questions and filling out a basic profile.').addClass('header1');
+  })
   var variables =
     #{
       @factors.to_json
     };
+  var counter 	= -1;
 
   var displayNextQuestion = function()
   {
-    $('#question').text(variables[0].);
+    if(counter < variables.length)
+    {
+      $('#question').text(variables[++counter].variableName);
+      $('#answer').removeAttr('hidden');
+      $('#answer').val('');
+    }
+    else
+    {
+      $('#question').text("There are no more questions to ask!");
+      $('#skip').attr('hidden', 'true');
+      $('#next').attr('hidden', 'true');
+      $('#answer').attr('hidden', 'true');
+    }
   }
 
   var submitQuestion = function()
   {
-    var value = $('#answer').text();
-    
+    var value = $('#answer').val();
+    if(!value.
   }
 
-  $('#next').onclick(function()
+  $('#next').click(function()
   {
     displayNextQuestion();
+    if()
   });
 
 
-  $('#skip').onclick(function()
+  $('#skip').click(function()
   {
     displayNextQuestion();
   });
-
-  $(document).ready(function() 
-  {
-    $('#question').text('Click next to begin answering questions and filling out a basic profile.');
-  }
