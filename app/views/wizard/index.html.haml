@@ -27,7 +27,7 @@
 
   var displayNextQuestion = function()
   {
-    if(counter < variables.length)
+    if(counter < variables.length - 1)
     {
       $('#question').text(variables[++counter].variableName);
       $('#answer').removeAttr('hidden');
@@ -36,22 +36,37 @@
     else
     {
       $('#question').text("There are no more questions to ask!");
-      $('#skip').attr('hidden', 'true');
-      $('#next').attr('hidden', 'true');
-      $('#answer').attr('hidden', 'true');
+      $('#skip').hide();
+      $('#next').hide();
+      $('#answer').hide();
     }
   }
 
   var submitQuestion = function()
   {
     var value = $('#answer').val();
-    if(!value.
+    if(!value)
+      return $('#answer').attr('hidden');
+    var data = {};
+    data.amount = value;
+    data.factor_id = variables[counter].id;
+
+    $.ajax({
+      type: "POST",
+      url: "/create_answer_from_input",
+      data: data,
+      datatype:"html",
+      success: function(data){},
+      async: true
+    });
+
+    return true;
   }
 
   $('#next').click(function()
   {
-    displayNextQuestion();
-    if()
+    if(submitQuestion())
+      displayNextQuestion();
   });
 
 
