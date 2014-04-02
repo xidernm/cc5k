@@ -18,7 +18,7 @@ Myapp::Application.routes.draw do
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations", :calculators => "calculators"}
   resources :users
-  
+  get "/contribution", to: "home#contribution", as: "contribution"
   get "/emissions_tempate", to: "statistics#emissions_template", as: "emissions_template" 
   post "/create_answer_from_input", to: "statistics#create_answer", as: "create_answer"
   get "/fill_in_factors", to: "statistics#fill_in_factors", as: "fill_in_factors" 

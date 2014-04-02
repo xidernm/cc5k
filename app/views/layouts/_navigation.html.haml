@@ -18,8 +18,10 @@
   %ul.sidebar-nav
     %li.sidebar-brand= link_to 'G.E.R.A', root_path
     - if user_signed_in?
-      %li= link_to 'Log out', destroy_user_session_path, :method => 'delete'
-      %li= link_to "#{current_user.firstName} #{current_user.lastName}", edit_user_registration_path
+      %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete'
+      %li.sidebar-brand= link_to "#{current_user.firstName} #{current_user.lastName}", edit_user_registration_path
+      %li.sidebar-brand= link_to "Big Carbon Contributions", contribution_path
     - else
-      %li= link_to 'Log in', new_user_session_path
-    %li= link_to 'Missions', wizard_path
+      %li.sidebar-brand= link_to 'LOGIN', new_user_session_path
+      %li.sidebar-brand= link_to 'Join The Alliance', new_user_registration_path
+    %li.sidebar-brand= link_to 'Missions', wizard_path

@@ -29,12 +29,13 @@
 }
 
 .sidebar-nav li {
-  line-height: 40px;
-  text-indent: 20px;
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
 }
 
 .sidebar-nav li a {
-  color: #999999;
+  color: #00555B;
   display: block;
   text-decoration: none;
 }

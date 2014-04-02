@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 
   def index
+  end
+  
+  def contribution
+    
     if current_user!=nil
       fieldMap = MultiRBTree.new #non unique valued RedBlack Tree map from times to lists of answers
       ans = Answer.where(user_id: current_user.id)
@@ -52,7 +56,6 @@ class HomeController < ApplicationController
       end
     end
   end
-
   private
 
   def getAnsweredFactors
