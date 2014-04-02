@@ -22,3 +22,4 @@
       %li= link_to "#{current_user.firstName} #{current_user.lastName}", edit_user_registration_path
     - else
       %li= link_to 'Log in', new_user_session_path
+    %li= link_to 'Missions', wizard_path

@@ -1,0 +1,47 @@
+- if current_user!=nil
+  %h3
+    Help us fill out your Carbon profile!
+- else
+  %h3
+    Try out the Carbon calculator by providing some data anonymously!
+
+.authform
+  #question
+  #answer.textBox
+  #skip.button
+    Skip
+  #next.button
+    Next
+
+:javascript
+  var variables =
+    #{
+      @factors.to_json
+    };
+
+  var displayNextQuestion = function()
+  {
+    $('#question').text(variables[0].);
+  }
+
+  var submitQuestion = function()
+  {
+    var value = $('#answer').text();
+    
+  }
+
+  $('#next').onclick(function()
+  {
+    displayNextQuestion();
+  });
+
+
+  $('#skip').onclick(function()
+  {
+    displayNextQuestion();
+  });
+
+  $(document).ready(function() 
+  {
+    $('#question').text('Click next to begin answering questions and filling out a basic profile.');
+  }
