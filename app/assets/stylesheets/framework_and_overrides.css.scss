@@ -56,6 +56,7 @@ section {
   @extend .well;
   @extend .well-lg;
   padding-bottom: 40px;
+  background-color: #222;
 }
 .authform .right {
   float: right !important;
@@ -115,4 +116,26 @@ body {
     background-image: linear-gradient(top, #00555B, #375E38);
 
     background-repeat: repeat-x;
+}
+
+input, button, select, textarea{
+  background-color: #00555B;
+  border-color: #00555B;
+}
+
+.form-control {
+  background-color: #00555B;
+  color: #BBB;
+}
+
+.alert-success {
+  background-color: #030;
+  border-color: #040;
+  color: #3c763d;
+}
+
+.alert-danger {
+  background-color: #0300;
+  border-color: #400;
+  color: #a94442;
 }
