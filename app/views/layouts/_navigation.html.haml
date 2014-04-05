@@ -1,14 +1,14 @@
 #sidebar-wrapper
   %ul.sidebar-nav
-    %li.sidebar-brand= link_to 'G.E.R.A', root_path, :id => "HQ"
+    %li.sidebar-brand= link_to 'G.E.R.A', root_path
+    %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path
     - if user_signed_in?
-      %li.sidebar-content= link_to 'Log out', destroy_user_session_path, :method => 'delete'
-      %li.sidebar-content= link_to "#{current_user.firstName} #{current_user.lastName}", edit_user_registration_path
-      %li.sidebar-content= link_to "Big Petrol Contributions", contribution_path, :id => 'bpc'
-      - if current_user.admin?
-        %li.sidebar-content= link_to "Statistics", statistics_path
-        %li.sidebar-content= link_to "Users", users_path
+      %li.sidebar-brand= link_to "#{current_user.lastName}: Personnel File", edit_user_registration_path
+      %li.sidebar-brand= link_to "Intelligence", contribution_path
+      %li.sidebar-brand= link_to 'Missions', wizard_path
+      %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete'
     - else
-      %li.sidebar-content= link_to 'LOGIN', new_user_session_path, :id => 'login'
-      %li.sidebar-content= link_to 'Join The Alliance', new_user_registration_path, :id => 'joinAlli'
-    %li.sidebar-content= link_to 'Missions', wizard_path, :id => 'mish'
+      %li.sidebar-brand= link_to 'LOGIN', new_user_session_path
+      %li.sidebar-brand= link_to 'Join The Alliance', new_user_registration_path
+
+
