@@ -24,4 +24,5 @@ Myapp::Application.routes.draw do
   get "/fill_in_factors", to: "statistics#fill_in_factors", as: "fill_in_factors" 
   post "/submit_factor_changes", to: "statistics#submit_factor_changes", as: "submit_factor_changes" 
   get "/wizard", to:"wizard#index", as:"wizard"
+  get "/mission_objective", to: "mission_objective#index", as: "mission_objective"
 end
