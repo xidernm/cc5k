@@ -25,4 +25,5 @@ Myapp::Application.routes.draw do
   post "/submit_factor_changes", to: "statistics#submit_factor_changes", as: "submit_factor_changes" 
   get "/wizard", to:"wizard#index", as:"wizard"
   get "/mission_objective", to: "mission_objective#index", as: "mission_objective"
+  post "/update_anon", to: "anon_users#update", as: "update_anon"
 end

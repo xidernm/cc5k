@@ -21,3 +21,25 @@
   %div
     %p
       Welcome Brother or Sister to the Global Emissions Reduction Alliance or G.E.R.A. If you have reached us then you are not alone. You have been called upon to join us in the struggle against Big Petroleum, better know to us as B.P. . Please help us end the enslavement of our people from the clutches of this most powerful foe!
+- if current_user != nil 
+  - if current_user.visited_page == nil
+    - current_user.visited_page = ""
+  - if !current_user.visited_page.include?(request.original_url)
+    - current_user.visited_page << request.original_url
+    - current_user.save
+    :javascript
+      $.guider({
+      next: "second",
+      title: "Welcome To GERA",
+      description: "Hello friend, and welcome to the Global Emissions Reduction Alliance or GERA for short. This and other guides are meant to help you become familar with the site.",
+      overlay: "dark",
+      draggable: true,
+      buttons: {
+      Close: true,
+      Next: {
+      click: true,
+      className: "primary",
+      focus: true
+      }
+      }
+      }).show()
