@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331153129) do
+ActiveRecord::Schema.define(version: 20140406200049) do
+
+  create_table "anon_users", force: true do |t|
+    t.string   "ip"
+    t.string   "visited_page"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answered_factors", force: true do |t|
     t.integer  "factor_id"
@@ -118,6 +125,7 @@ ActiveRecord::Schema.define(version: 20140331153129) do
     t.string   "firstName"
     t.string   "lastName"
     t.string   "state"
+    t.string   "visited_page"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
