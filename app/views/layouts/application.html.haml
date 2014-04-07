@@ -1,5 +1,5 @@
 !!!
-%html{"style" => "width: 1170px; height: 1280px;"}
+%html{"style" => "width: 1170px; height: 1080px;"}
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'G.E.R.A'
@@ -15,8 +15,8 @@
         %main{:role => "main"}
           = render 'layouts/messages'
           = yield
-          %div{"style" => "height:128px"}
-        %div{"style" => "color:#DDDDDD"}
+        %div{:style =>"text-align:center;"}
           Copyright 2014 G.E.R.A ----
           = mail_to "webmaster@GERA.com", "Contact Us"
           = image_tag "cc5kstones.png"
+
