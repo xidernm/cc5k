@@ -4,6 +4,7 @@
   %br
   %br
   %div
+
     - if @areaGraph != nil
       = high_chart("UsageChart",@areaGraph)
     - if @distributionGraph !=nil
@@ -15,3 +16,4 @@
       %applet{"codebase" => "http://localhost:3000/applets", "width" => "400", "height" => "400", "archive" => "testapplet.jar", "code" => "com/lunagameserve/TestApplet/TestApplet.class", "name" => "testapplet", "id" => "testapplet", "align" => "center"}
         You can't view applets :( Go install Java or upgrade your browser or something.
         %param{"name" => "appletparam", "value" => current_user.email}
+
