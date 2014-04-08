@@ -112,7 +112,7 @@ section {
 }
 
 body {
-    background-image: image_url("background.jpg");
+    background-image: url(image-path('background.jpg'));
     background-repeat:no-repeat;
 }
 
