@@ -23,6 +23,12 @@
       = label_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", "Unit"
       %td
       = text_field_tag "factor_unit[#{(fac.id.to_s + fac.unit.to_s)}]", fac.unit
+    %tr   
+    .field
+      %td
+      = label_tag "factor_question[#{(fac.id.to_s + fac.variableName.to_s)}]", "Question to ask the user when filling in."
+      %td
+      = text_field_tag "factor_question[#{(fac.id.to_s + fac.variableName.to_s)}]", fac.variableName
   = submit_tag
   \|
   = link_to 'Edit Equation', edit_statistic_path(@statistic)

@@ -87,24 +87,31 @@ class StatisticsController < ApplicationController
   # This function updates the changes that the admin wants to make to
   # the dependency, amount, and unit fields, then sends them back
   # to the statistics show page.
- def submit_factor_changes
+  def submit_factor_changes
     params[:factor_depends].each do |factor|
       f = Factor.find_by(id: factor[0][0..-1])
       f.dependency = factor[1]
       f.save
     end
-
+   
     params[:factor_amount].each do |factor|
       f = Factor.find_by(id: factor[0][0..-1])
       f.amount = factor[1][0..-1]
       f.save
-    end
+     end
     
     params[:factor_unit].each do |factor|
       f = Factor.find_by(id: factor[0])
       f.unit = factor[1..-1].join
       f.save
     end
+   
+   params[:factor_question].each do |factor|
+      f = Factor.find_by(id: factor[0])
+      f.variableName = factor[1..-1].join
+      f.save
+    end
+
     redirect_to statistics_path
   end
 
