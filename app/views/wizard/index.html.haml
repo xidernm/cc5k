@@ -5,6 +5,10 @@
   %h3
     Try out the Carbon calculator by providing some data anonymously!
 
+#tabs
+  %ul#tabList.nav.nav-tabs
+
+
 %div{:float => "left"}
   #question
   %input#answer.textBox{:type => "number", :hidden => "true"}
@@ -17,19 +21,59 @@
 :javascript
   $(document).ready(function() 
   {
-    $('#question').text('Click next to begin answering questions and filling out a basic profile.').addClass('header1');
+    $('#question').text('Click next to begin answering questions and filling out a basic profile, or choose a tab above to fill out specific information.').addClass('header1');
+    initTabs();
   })
   var variables =
     #{
       @factors.to_json
     };
-  var counter 	= -1;
+  var categories =
+    #{
+      @categories.to_json
+    }
+  var counter = -1;
+  var current;
+  var questions = {};
+
+  var initTabs = function()
+  {
+    for(i in categories)
+    {
+      var category = categories[i];
+      var wrapper = $("<li class='button'>");
+      var tab = $("<a>");
+      var counter = 0;
+      tab.attr("href", "#"+category.name);
+      tab.attr("data-toggle", "tab");
+      tab.text(category.name);
+      tab.click(function(){
+        current = category.name;
+        counter = -1;
+        displayNextQuestion();
+      });
+      wrapper.append(tab);
+      $("#tabList").append(wrapper);
+      for(x in variables)
+      {
+        var variable = variables[x];
+        questions[variable.name] = [];
+        if(variable.dependency == 1 && variable.category_id == category.id)
+          questions[variable.name][x++] = variable;
+      }
+    }
+  }
 
   var displayNextQuestion = function()
   {
+    var currentQuestions = current ? questions[current] : variables;
+    var next;
+    while(counter < variables.length - 1 && !next)
+      next = variables[++counter].variableName;
+
     if(counter < variables.length - 1)
     {
-      $('#question').text(variables[++counter].variableName);
+      $('#question').text(next);
       $('#answer').removeAttr('hidden');
       $('#answer').val('');
     }
