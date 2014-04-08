@@ -10,21 +10,6 @@
       %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
       %li.sidebar-brand= link_to 'Missions', wizard_path, :id => "missions"
       %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"
-      - if false 
-        :javascript 
-          $.guider({
-          name: "dude",
-          title: "Welcome!",
-          description: "Stuff",
-          overlay: "dark",
-          width: 400,
-          position: "right",
-          alignButtons: "right",
-          closable: true,
-          buttons: {
-          Close: true
-          }}).show()
-          
       - if !current_user.visited_page.include?("navigation")
         - current_user.visited_page += "navigation"
         - current_user.save
