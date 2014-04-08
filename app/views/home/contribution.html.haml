@@ -4,7 +4,7 @@
   %br
   %br
   %div
-
+    -javascript_include_tag "highcharts/highcharts"
     - if @areaGraph != nil
       = high_chart("UsageChart",@areaGraph)
     - if @distributionGraph !=nil
