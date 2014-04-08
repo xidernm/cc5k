@@ -1,6 +1,7 @@
 - if current_user!=nil
   %h3
-    Welcome Back To G.E.R.A Head Quarters
+    .typeout
+      Welcome Back To G.E.R.A Head Quarters
     = current_user.firstName
     !
   = image_tag "res_fist.png"
@@ -14,13 +15,15 @@
     %ul
 
 - else
-  %h3 Welcome to the Global Emissions Resitance Alliance
+  %h3
+    Welcome to the Global Emissions Resitance Alliance
   = image_tag "res_fist.png"
   %br
   %br
-  %div
+  %div.typeout
     %p
       Welcome Brother or Sister to the Global Emissions Reduction Alliance or G.E.R.A. If you have reached us then you are not alone. You have been called upon to join us in the struggle against Big Petroleum, better know to us as B.P. . Please help us end the enslavement of our people from the clutches of this most powerful foe!
+    
 - if current_user != nil 
   - if current_user.visited_page == nil
     - current_user.visited_page = ""
@@ -43,3 +46,13 @@
       }
       }
       }).show()
+      
+:javascript
+  $(document).ready(function() {
+  $('.typeout').typewrite({
+  'callback': function(){
+  $('.typeout').css();
+  },
+  'delay': 50
+  });
+  });
