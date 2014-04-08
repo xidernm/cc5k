@@ -4,6 +4,7 @@
 }
 
 #sidebar-wrapper {
+  background-image: image_url("circuit_board.jpg");  
   margin-left: -250px;
   left: 250px;
   width: 250px;

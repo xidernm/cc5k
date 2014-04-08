@@ -16,7 +16,10 @@ Myapp::Application.routes.draw do
   resources :badges
 
   root :to => "home#index"
-  devise_for :users, :controllers => {:registrations => "registrations", :calculators => "calculators"}
+  devise_for :users do 
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session 
+  end 
+  devise_for :controllers => {:registrations => "registrations", :calculators => "calculators"}
   resources :users
   get "/contribution", to: "home#contribution", as: "contribution"
   get "/emissions_tempate", to: "statistics#emissions_template", as: "emissions_template" 

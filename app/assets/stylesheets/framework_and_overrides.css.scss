@@ -65,6 +65,7 @@ section {
   float: right !important;
 }
 .authform .button {
+  background-color: #222;
   @extend .btn;
   @extend .btn-primary;
 }
@@ -116,13 +117,13 @@ body {
 }
 
 input, button, select, textarea{
-  background-color: #00555B;
+  background-color: #005500;
   border-color: #00555B;
 }
 
 .form-control {
-    background-color: #00555B;
-    color: #BBB;
+    background-color: #005500;
+    color: #BBB
 }
 
 .alert-success {
