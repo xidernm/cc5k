@@ -9,7 +9,8 @@
       %li.sidebar-brand= link_to "#{current_user.lastName}: Personnel File", edit_user_registration_path , :id => 'prof'
       %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
       %li.sidebar-brand= link_to 'Missions', wizard_path, :id => "missions"
-      %li.sidebar-brand= link_to 'Statisitcs', statistics_path, :id => 'stats'
+      - if current_user.admin? 
+        %li.sidebar-brand= link_to 'Statisitcs', statistics_path, :id => 'stats'
       %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"
     - if !current_user.visited_page.include?("navigation")
       - current_user.visited_page += "navigation"
