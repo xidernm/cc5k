@@ -13,84 +13,84 @@
       - if !current_user.visited_page.include?("navigation")
         - current_user.visited_page += "navigation"
         - current_user.save
-        :javascript 
-          $.guider({
-          name: "first",
-          next: "second",
-          title: "Welcome!",
-          description: "Stuff",
-          overlay: "dark",
-          width: 400,
-          position: "right",
-          alignButtons: "right",
-          closable: true,
-          buttons: {
-          Close: true,
-          Next: {
-          click: true,
-          className: "primary"
-          }}}).show()
-
-          $("#prof").guider({
-          name: "second",
-          next: "third",
-          title: "Personnel File",
-          description: "Here you will be able to update any personal information that we have about you in an effort to better evaluate your progess",
-          overlay: "dark",
-          width: 400,
-          position: "right",
-          alignButtons: "right",
-          closable: true,
-          buttons: {
-          Close: true,
-          Next: {
-          click: true,
-          className: "primary"
-          }}})
-          $("#contrib").guider({
-          name: "third",
-          next: "forth",
-          title: "Intelligence",
-          description: "This is where you can see visually how you are progessing in the alliance.",
-          overlay: "dark",
-          width: 400,
-          position: "right",
-          alignButtons: "right",
-          closable: true,
-          buttons: {
-          Close: true,
-          Next: {
-          click: true,
-          className: "primary"
-          }}})
-          $("#missions").guider({
-          name: "forth",
-          next: "finally",
-          title: "Missions",
-          description: "To earn badges, you must enter information about your emissions so that we can calculate your progess.",
-          overlay: "dark",
-          width: 400,
-          position: "right",
-          alignButtons: "right",
-          closable: true,
-          buttons: {
-          Close: true,
-          Next: {
-          click: true,
-          className: "primary"
-          }}})
-          $("#lgout").guider({
-          name: "finally",
-          title: "Logging Out",
-          description: "Whenever you want to leave, click this link and you will be logged out.",
-          overlay: "dark",
-          width: 400,
-          position: "right",
-          alignButtons: "right",
-          closable: true,
-          buttons: {
-          Close: true
-          }})
+      :javascript 
+        $.guider({
+        name: "first",
+        next: "second",
+        title: "Welcome!",
+        description: "Stuff",
+        overlay: "dark",
+        width: 400,
+        position: "right",
+        alignButtons: "right",
+        closable: true,
+        buttons: {
+        Close: true,
+        Next: {
+        click: true,
+        className: "primary"
+        }}}).show()
+        
+        $("#prof").guider({
+        name: "second",
+        next: "third",
+        title: "Personnel File",
+        description: "Here you will be able to update any personal information that we have about you in an effort to better evaluate your progess",
+        overlay: "dark",
+        width: 400,
+        position: "right",
+        alignButtons: "right",
+        closable: true,
+        buttons: {
+        Close: true,
+        Next: {
+        click: true,
+        className: "primary"
+        }}})
+        $("#contrib").guider({
+        name: "third",
+        next: "forth",
+        title: "Intelligence",
+        description: "This is where you can see visually how you are progessing in the alliance.",
+        overlay: "dark",
+        width: 400,
+        position: "right",
+        alignButtons: "right",
+        closable: true,
+        buttons: {
+        Close: true,
+        Next: {
+        click: true,
+        className: "primary"
+        }}})
+        $("#missions").guider({
+        name: "forth",
+        next: "finally",
+        title: "Missions",
+        description: "To earn badges, you must enter information about your emissions so that we can calculate your progess.",
+        overlay: "dark",
+        width: 400,
+        position: "right",
+        alignButtons: "right",
+        closable: true,
+        buttons: {
+        Close: true,
+        Next: {
+        click: true,
+        className: "primary"
+        }}})
+        $("#lgout").guider({
+        name: "finally",
+        title: "Logging Out",
+        description: "Whenever you want to leave, click this link and you will be logged out.",
+        overlay: "dark",
+        width: 400,
+        position: "right",
+        alignButtons: "right",
+        closable: true,
+        buttons: {
+        Close: true
+        }})
   - else
     - if current_user == nil
       - anon = AnonUser.where(ip: request.remote_ip).first_or_create
