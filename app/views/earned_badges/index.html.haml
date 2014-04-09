@@ -1,6 +1,15 @@
 %div{"style" => "height:20px"}
-%applet{"codebase" => "http://localhost:3000/applets", "width" => "1140", "height" => "400", "archive" => "testapplet.jar", "code" => "com/lunagameserve/TestApplet/TestApplet.class", "name" => "testapplet", "id" => "testapplet", "align" => "center"}
+%applet{"codebase" => "http://localhost:3000/applets", "width" => "890", "height" => "400", "archive" => "badgeapplet.jar", "code" => "com/lunagameserve/badgeapplet/BadgeApplet.class", "name" => "badgeapplet", "id" => "badgeapplet", "align" => "center"}
   %param{"name" => "appletparam", "value" => current_user.email}
+  - if @user_badges.count < 3
+    %param{"name" => "forecolor", "value" => "c30000"}
+  - elsif @user_badges.count < 6
+    %param{"name" => "forecolor", "value" => "c39000"}
+  - elsif @user_badges.count < 12
+    %param{"name" => "forecolor", "value" => "90c300"}
+  - else
+    %param{"name" => "forecolor", "value" => "00c300"}
+
   - @earned_badges.each do |badge|
     %param{"name" => "badge_#{badge.id}", "value" => @user_badges.include?(badge).to_s}
     %param{"name" => "badge_#{badge.id}_description", "value" => "#{badge.badge.description}"}
