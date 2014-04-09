@@ -43,7 +43,7 @@
       var category = categories[i];
       var wrapper = $("<li class='button'>");
       var tab = $("<a>");
-      var counter = 0;
+      var qCounter = 0;
       tab.attr("href", "#"+category.name);
       tab.attr("data-toggle", "tab");
       tab.text(category.name);
@@ -54,12 +54,12 @@
       });
       wrapper.append(tab);
       $("#tabList").append(wrapper);
-      questions[variable.name] = [];
+      questions[category.name] = [];
       for(x in variables)
       {
         var variable = variables[x];
         if(variable.dependency == 1 && variable.category_id == category.id)
-          questions[variable.name][x++] = variable;
+          questions[variable.name][qCounter++] = variable;
       }
     }
   }
