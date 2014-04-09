@@ -33,7 +33,6 @@
       @categories.to_json
     }
   var counter = -1;
-  var current;
   var questions = [];
 
   var initTabs = function()
@@ -47,9 +46,8 @@
       tab.attr("data-toggle", "tab");
       tab.text(category.name);
       tab.click(function(){
-        current = category.name;
         counter = -1;
-        questions[category.name] = [];
+        questions = [];
         for(x in variables)
         {
           var variable = variables[x];
@@ -73,7 +71,7 @@
   {
     var next;
     while(counter < questions.length - 1 && !next)
-      next = questions[++counter].variableName;
+      next = questions[++counter];
 
     if(counter < questions.length - 1)
     {
