@@ -33,8 +33,7 @@
       @categories.to_json
     }
   var counter = -1;
-  var current;
-  var questions = {};
+  var questions = [];
 
   var initTabs = function()
   {
@@ -43,39 +42,44 @@
       var category = categories[i];
       var wrapper = $("<li class='button'>");
       var tab = $("<a>");
-      var qCounter = 0;
       tab.attr("href", "#"+category.name);
       tab.attr("data-toggle", "tab");
       tab.text(category.name);
       tab.click(function(){
-        current = category.name;
         counter = -1;
+        questions = [];
+        for(x in variables)
+        {
+          var variable = variables[x];
+          if(variable.dependency == 2 && variable.category_id == category.id)
+            questions.push(variable.variableName);
+        }
         displayNextQuestion();
       });
       wrapper.append(tab);
       $("#tabList").append(wrapper);
-      questions[category.name] = [];
-      for(x in variables)
-      {
-        var variable = variables[x];
-        if(variable.dependency == 1 && variable.category_id == category.id)
-          questions[variable.name][qCounter++] = variable;
-      }
+    }
+    for(x in variables)
+    {
+      var variable = variables[x];
+      if(variable.dependency == 2 && variable.variableName)
+        questions.push(variable.variableName);
     }
   }
 
   var displayNextQuestion = function()
   {
-    var currentQuestions = current ? questions[current] : variables;
     var next;
-    while(counter < variables.length - 1 && !next)
-      next = currentQuestions[++counter].variableName;
+    while(counter < questions.length - 1 && !next)
+      next = questions[++counter];
 
-    if(counter < variables.length - 1)
+    if(counter < questions.length - 1)
     {
       $('#question').text(next);
       $('#answer').removeAttr('hidden');
       $('#answer').val('');
+      $('#skip').removeAttr('hidden');
+      $('#next').removeAttr('hidden');
     }
     else
     {

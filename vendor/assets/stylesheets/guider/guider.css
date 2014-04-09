@@ -58,12 +58,12 @@
     height: 29px;
     min-width: 72px; *min-width: auto;
     margin: 25px 16px 0 0;
-    border: 1px solid #dcdcdc; border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f0f0; border: 1px solid rgba(153, 32, 32, 0.1);
     -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
     outline: none 0;
     padding: 0 8px;
-    color: #444;
-    background-color: #f5f5f5;
+    color: #333;
+    background-color: f5f5f5;
     background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
     background-image: -moz-linear-gradient(top, #f5f5f5, #f1f1f1);
     background-image: -ms-linear-gradient(top, #f5f5f5, #f1f1f1);
@@ -89,7 +89,7 @@
 .jGuider button:active {
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1); -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1); box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
 }
-.jGuider button:focus { border: 1px solid #4d90fe; }
+.jGuider button:focus { border: 1px solid #000000; }
 .jGuider button[disabled] {
     -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;
     border: 1px solid #f3f3f3; border: 1px solid rgba(0, 0, 0, .05);
@@ -97,26 +97,27 @@
     background: #fff;
     background-image: none;
 }
-
+/* This is the color of the next button before it is hovered over.*/
 .jGuider .primary {
-    background-color: #4d90fe;
-    background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
-    background-image: -moz-linear-gradient(top, #4d90fe, #4787ed);
-    background-image: -ms-linear-gradient(top, #4d90fe, #4787ed);
-    background-image: -o-linear-gradient(top, #4d90fe, #4787ed);
-    background-image: linear-gradient(top, #4d90fe, #4787ed);
-    border: 1px solid #3079ed;
-    color: #fff;
+    background-color: #5A995B;
+    background-image: -webkit-linear-gradient(top, #5A995B, #375E38);
+    background-image: -moz-linear-gradient(top, #5A995B, #375E38);
+    background-image: -ms-linear-gradient(top, #5A995B, #375E38);
+    background-image: -o-linear-gradient(top, #5A995B, #375E38);
+    background-image: linear-gradient(top, #5A995B, #375E38);
+    border: 1px solid #f0f0f0;
+    color: #000;
 }
+ /*This is controls the color of the next button when it is being hovered over*/
 .jGuider .primary:hover, .jGuider .primary:active {
     border: 1px solid #2f5bb7;
-    color: #fff;
-    background-color: #357ae8;
-    background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
-    background-image: -moz-linear-gradient(top, #4d90fe, #357ae8);
-    background-image: -ms-linear-gradient(top, #4d90fe, #357ae8);
-    background-image: -o-linear-gradient(top, #4d90fe, #357ae8);
-    background-image: linear-gradient(top, #4d90fe, #357ae8);
+    color: #000;
+    background-color: #5A895B;
+    background-image: -webkit-linear-gradient(top, #5A895B, #374f38);
+    background-image: -moz-linear-gradient(top, #5A895B, #374f38);
+    background-image: -ms-linear-gradient(top, #5A895B, #374f38);
+    background-image: -o-linear-gradient(top, #5A895B, #374f38);
+    background-image: linear-gradient(top, #5A895B, #374f38);
 }
 .jGuider .primary:active {
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3); -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -124,12 +125,12 @@
 .jGuider .primary:focus {
     -webkit-box-shadow: inset 0 0 0 1px #fff; -moz-box-shadow: inset 0 0 0 1px #fff; box-shadow: inset 0 0 0 1px #fff;
     border: 1px solid #fff; border: 1px solid rgba(0, 0, 0, 0);
-    outline: 1px solid #4d90fe; outline: 0 rgba(0, 0, 0, 0);
+    outline: 1px solid #000000; outline: 0 rgba(0, 0, 0, 0);
 }
 .jGuider .primary[disabled] {
     -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;
     color: #fff;
-    background: #4d90fe;
+    background: #0f0f0f;
     filter: alpha(opacity=50); opacity: .5;
 }
 
