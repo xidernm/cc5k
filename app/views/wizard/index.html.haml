@@ -54,10 +54,10 @@
       });
       wrapper.append(tab);
       $("#tabList").append(wrapper);
+      questions[variable.name] = [];
       for(x in variables)
       {
         var variable = variables[x];
-        questions[variable.name] = [];
         if(variable.dependency == 1 && variable.category_id == category.id)
           questions[variable.name][x++] = variable;
       }
@@ -69,7 +69,7 @@
     var currentQuestions = current ? questions[current] : variables;
     var next;
     while(counter < variables.length - 1 && !next)
-      next = variables[++counter].variableName;
+      next = currentQuestions[++counter].variableName;
 
     if(counter < variables.length - 1)
     {
