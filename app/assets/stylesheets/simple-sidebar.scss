@@ -36,7 +36,8 @@
 }
 
 .sidebar-nav li a {
-  color: #00555B;
+  
+  border-color: #5A995B;  
   display: block;
   text-decoration: none;
 }
@@ -56,10 +57,11 @@
   height: 65px;
   line-height: 60px;
   font-size: 18px;
+  
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #00555B;
+   color: #115E00;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
