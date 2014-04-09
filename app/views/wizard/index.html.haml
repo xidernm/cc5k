@@ -68,10 +68,10 @@
   {
     var currentQuestions = current ? questions[current] : variables;
     var next;
-    while(counter < variables.length - 1 && !next)
+    while(counter < currentQuestions.length - 1 && !next)
       next = currentQuestions[++counter].variableName;
 
-    if(counter < variables.length - 1)
+    if(counter < currentQuestions.length - 1)
     {
       $('#question').text(next);
       $('#answer').removeAttr('hidden');
