@@ -9,16 +9,33 @@
     %th
     %tr
      %td
-      %h3
+      %h2
        Agent:
        = "#{@user.firstName} #{@user.lastName}"
     %tr
-     %td Agend ID:
+     %td Agent ID:
      %td= (@user.email.hash.abs * 5).to_s.bytes.take(5).pack('c*')
     %tr
      %td State:
      %td= @user.state
+    %tr
+     %td Member for:
+     %td= distance_of_time_in_words_to_now(@user.created_at)
+    %tr
+     %td
+%h2
+ Earned Badges
 
--# - for badge in @user_badges do
--#  - bid = badge.badge_id
--#  = image_tag("badge#{bid+2}.png")
+- for eb in @user_badges do
+ - badge = Badge.where(id: eb.badge_id).first
+ %table
+  %th
+  %th
+  %tr
+   %td{width: 300}
+    = image_tag("badge#{badge.id}.png", :size => "150")
+   %td
+    %h3= badge.title
+    %h4= badge.description
+    %h5= "Earned #{distance_of_time_in_words_to_now(eb.created_at)} ago"
+ %br
