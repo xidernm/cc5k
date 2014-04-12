@@ -47,7 +47,11 @@ main {
   max-height:1080px;
   height:100%;
   overflow-y:auto;  
+  font-family:"Trebuchet MS", Verdana, sans-serif;
   }
+ main p {
+  font-size:17px;
+}
 section {
   @extend .row;
   margin-top: 20px;
@@ -91,7 +95,7 @@ section {
 }
 
 .typeout{
-    font-size: 15px;
+    font-size: 17px;
     line-height: 20px;
 }
 .navbar-inverse {
@@ -122,6 +126,8 @@ section {
 }
 
 body {
+    font-size:17px;
+    font-family:"Trebuchet MS", Verdana, sans-serif;
     background-image: url(image-path('background.jpg'));
     background-repeat:no-repeat;
 }
