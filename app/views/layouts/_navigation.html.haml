@@ -3,6 +3,8 @@
     - anon = AnonUser.find_by(ip: request.remote_ip)
     - if anon != nil
       - anon.delete
+    - if anon.visited_page == nil
+      - anon.visited_page = ""
     %ul.sidebar-nav
       %li.sidebar-brand= link_to 'G.E.R.A', root_path, :id => 'hq'
       %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
@@ -11,7 +13,7 @@
       %li.sidebar-brand= link_to 'Missions', wizard_path, :id => "missions"
       %li.sidebar-brand= link_to 'Badges', earned_badges_path, :id => 'earned_badges'
       - if current_user.admin?
-        %li.sidebar-brand= link_to 'Statisitcs', statistics_path, :id => 'stats'
+        %li.sidebar-brand= link_to 'Statistics', statistics_path, :id => 'stats'
       %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"
     - if !current_user.visited_page.include?("navigation")
       - current_user.visited_page += "navigation"
@@ -20,7 +22,7 @@
         $.guider({
         name: "first",
         next: "second",
-        title: "Welcome Fried!",
+        title: "Welcome Friend!",
         description: "To start the alliance guide click <b>Next</b>",
         overlay: "dark",
         width: 400,
@@ -97,6 +99,8 @@
   - else
     - if current_user == nil
       - anon = AnonUser.where(ip: request.remote_ip).first_or_create
+      - if anon.visited_page == nil
+        - anon.visited_page = ""
     %ul.sidebar-nav
       %li.sidebar-brand= link_to 'G.E.R.A', root_path , :id => 'hq'
       %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
