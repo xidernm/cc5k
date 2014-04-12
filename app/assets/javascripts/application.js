@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
+//= require highcharts/gray
 //= require guiders/guiders
 //= require typewriter/jquerytypewriter

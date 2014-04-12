@@ -11,5 +11,8 @@
   .field
     = f.label :equation
     = f.text_field :equation
+  .field
+    = f.label :category_id
+    = f.select :category_id, options_for_select(@categories.map{|c| [c.name,c.id]})
   .actions
     = f.submit 'Save'
