@@ -2,7 +2,6 @@
   Update your usage for 
   = @time.strftime("%B %Y")
 
-
 = form_tag(emissions_template_path, method: "get") do
   =select_tag(:month,options_for_select([['January',1],['February',2],['March',3],['April',4],['May',5],['June',6],['July',7],['August',8],['September',9],['October',10],['November',11],['December',12]],selected: @time.month),{:onchange=>"this.form.submit();"})
 

@@ -17,5 +17,6 @@
 //= require_tree .
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
+//= require highcharts/gray
 //= require guiders/guiders
 //= require typewriter/jquerytypewriter
