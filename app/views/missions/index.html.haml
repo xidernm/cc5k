@@ -1,0 +1,40 @@
+%h1 Listing missions
+%table#cc5kmissionTable
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Value
+      %th User
+      %th
+      %th
+      %th
+  %tfoot
+    %tr
+      %th Name
+      %th Description
+      %th Value
+      %th User
+      %th
+      %th
+      %th
+  %tbody
+    - @missions.each do |mission|
+      %tr
+        %td= mission.name
+        %td= mission.description
+        %td= mission.value
+        %td= mission.user_id
+        %td= link_to 'Show', mission
+        %td= link_to 'Edit', edit_mission_path(mission)
+        %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+- if current_user != nil && current_user.admin?
+  = link_to 'New Mission', new_mission_path
+
+:javascript
+  $(document).ready(function()
+  {
+    $("#cc5kmissionTable").dataTable();
+  });
