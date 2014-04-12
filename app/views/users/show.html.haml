@@ -1,22 +1,41 @@
-%h3
- User:
- = @user.email
 %table
+ %th
+ %th
  %tr
-  %td First Name:
+  %td{:width => "300"}= image_tag("badge#{@most_recent_badge.badge_id}.gif", :align => "left")
   %td
-   = @user.firstName
- %tr
-  %td Last Name:
-  %td
-   = @user.lastName
- %tr
-  %td Email:
-  %td
-   = @user.email
- %tr
-  %td State:
-  %td
-   = @user.state
+   %table
+    %th
+    %th
+    %tr
+     %td
+      %h2
+       Agent:
+       = "#{@user.firstName} #{@user.lastName}"
+    %tr
+     %td Agent ID:
+     %td= (@user.email.hash.abs * 5).to_s.bytes.take(5).pack('c*')
+    %tr
+     %td State:
+     %td= @user.state
+    %tr
+     %td Member for:
+     %td= distance_of_time_in_words_to_now(@user.created_at)
+    %tr
+     %td
+%h2
+ Earned Badges
 
-= link_to 'Edit account', edit_user_path
+- for eb in @user_badges do
+ - badge = Badge.where(id: eb.badge_id).first
+ %table
+  %th
+  %th
+  %tr
+   %td{width: 300}
+    = image_tag("badge#{badge.id}.png", :size => "150")
+   %td
+    %h3= badge.title
+    %h4= badge.description
+    %h5= "Earned #{distance_of_time_in_words_to_now(eb.created_at)} ago"
+ %br

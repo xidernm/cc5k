@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_badges = EarnedBadge.all.where(user_id: current_user.id)
+    @most_recent_badge = @user_badges.last
     @user = User.find(params[:id])
   end
 
