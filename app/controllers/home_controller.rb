@@ -8,9 +8,23 @@ class HomeController < ApplicationController
         @anon.save
     end
   end
-  
+  def month_chart
+    if params[:month] !=nil && params[:year]!=nil
+      @time = Time.new(params[:year],params[:month])    
+    end
+    if @time == nil
+      @time = Time.new
+    end
+     @user = current_user                                                                                                   
+  end
   def contribution
-    
+    if params[:month] !=nil && params[:year]!=nil
+      @time = Time.new(params[:year],params[:month])    
+    end
+    if @time == nil
+      @time = Time.new
+    end
+     @user = current_user                                                                                                   
     if current_user!=nil
       fieldMap = MultiRBTree.new #non unique valued RedBlack Tree map from times to lists of answers
       ans = Answer.where(user_id: current_user.id)
@@ -50,24 +64,7 @@ class HomeController < ApplicationController
         end
         catValSums[key] =sums
 end
-#        series: [{
-#                name: 'Asia',
-#                data: [502, 635, 809, 947, 1402, 3634, 5268]
-#                 }, {
-#                name: 'Africa',
-#                data: [106, 107, 111, 133, 221, 767, 1766]
-#                 }, {
-#                name: 'Europe',
-#                data: [163, 203, 276, 408, 547, 729, 628]
-#                 }, {
-#                name: 'America',
-#                data: [18, 31, 54, 156, 339, 818, 1201]
-#                 }, {
-#                name: 'Oceania',
-#                data: [2, 2, 2, 6, 13, 30, 46]
-#                 }]
 
-        printf("\n\n\n\n\n\n\nfieldMAP\n\n\n\n\n\n\n%s\n\n:",catValSums.inspect)
         @areaGraph =LazyHighCharts::HighChart.new('area') do |f|
           catValSums.each do |key,val| 
           f.series(:name=>key,:data=> val)
@@ -77,9 +74,10 @@ end
           f.options[:xAxis][:categories] = times
           f.options[:chart][:backgroundColor] = "#333"
           f.options[:colors] = ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263','#6AF9C4']
+          f.options[:yAxis][:title] = {:text=>"Carbon Emitted (Tons)"}
           f.plot_options({:area=>{:stacking=>"normal"}})
        end
-
+        
         @distributionGraph =LazyHighCharts::HighChart.new('column') do |f|
           catValMap.each_key {|key|  f.series(:name=>key,:data=>catValMap[key] )}
           f.title({ :text=> current_user.firstName + ": Carbon Usage History By Month"})
@@ -91,9 +89,44 @@ end
           f.options[:colors] = ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263','#6AF9C4']
           f.plot_options({:column=>{:stacking=>"normal"}})
         end
+
+        monthData = [];
+        thisMonth = fieldMap[Time.new(@time.year,@time.month)];
+        sum = 0;
+        if thisMonth !=nil
+        thisMonth.each do |i|
+        sum+=i[:val]
+        end
+
+        thisMonth.each do |i|
+          monthData.push([i[:name],i[:val]/sum])
+        end
+        
+  @monthChart = LazyHighCharts::HighChart.new('pie') do |f|
+  f.chart({:defaultSeriesType=>"pie"})
+  series = {
+    :type=> 'pie',
+    :name=> 'Current Month Distribution of Emissions',
+    :data=> monthData
+  }
+  f.series(series)
+  f.options[:title][:text] = 'Current Month Distribution of Emissions'
+  f.plot_options(:pie=>{
+    :allowPointSelect=>true, 
+    :dataLabels=>{
+    :enabled=>true,
+    :color=>"white",
+    :style=>{
+    :font=>"15px Trebuchet MS, Verdana, sans-serif"
+          }
+        }
+       }
+  )
+        end
       end
     end
   end
+end
 
 
   private
