@@ -107,7 +107,8 @@ end
   series = {
     :type=> 'pie',
     :name=> 'Current Month Distribution of Emissions',
-    :data=> monthData
+    :data=> monthData,
+      
   }
   f.series(series)
   f.options[:title][:text] = 'Current Month Distribution of Emissions'
@@ -117,7 +118,7 @@ end
     :enabled=>true,
     :color=>"white",
     :style=>{
-    :font=>"15px Trebuchet MS, Verdana, sans-serif"
+    :font=>"15cd ..px Trebuchet MS, Verdana, sans-serif"
           }
         }
        }
