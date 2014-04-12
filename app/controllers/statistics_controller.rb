@@ -21,6 +21,7 @@ class StatisticsController < ApplicationController
   # GET /statistics/new
   def new
     @statistic = Statistic.new
+    @categories = Category.all
   end
 
   # GET /statistics/1/edit
