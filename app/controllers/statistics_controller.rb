@@ -123,16 +123,19 @@ class StatisticsController < ApplicationController
     current_stat_id = nil
     factorIds = []
     badFactors = []
+    puts params.inspect
     if params[:form_fields] != nil
       params[:form_fields].each do |field|
         current_stat_id = field[1][:statistic_id].to_i
         af = AnsweredFactor.where(factor_id: field[1][:factor_id],
-                                  amount: field[1][:value], 
                                   statistic_id: current_stat_id,
                                   month: params[:month],
                                   year: params[:year],
                                   user_id: current_user.id).first_or_create
-        
+       
+        af[:amount] = field[1][:value]
+        af.save
+
         if af.amount == nil
           badFactors.push(af)
           af.delete
@@ -141,8 +144,10 @@ class StatisticsController < ApplicationController
         end
       end
  
-      if badFactors.count == 0 and factorIds.count != 0 
+      if badFactors.count == 0 and factorIds.count != 0
+        puts factorIds.inspect 
         userFactors = rearrangeFactors(factorIds)
+        puts userFactors.inspect
         updateAnswer(userFactors,{:month=>params[:month],:year=>params[:year]})
       end
     end
@@ -215,19 +220,20 @@ class StatisticsController < ApplicationController
   
   # TODO: Make sure that users arent entering information 
   # in that could return an Answer of type Float::INFINITY
-  def updateAnswer(ls,t)
+  def updateAnswer(ls,time)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
     # t contains date information
     ls.each do |e|
+      puts e.inspect
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
       
       amount = stat[0].EvalEquation(current_user.id, e)
       #if exists
-      if Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first.present?
-        Answer.where(user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).first.update(:amount =>amount) #update the amount only
+      if Answer.where(user_id: current_user.id,statistic_id: sid,month: time[:month], year: time[:year]).first.present?
+        Answer.where(user_id: current_user.id,statistic_id: sid,month: time[:month], year: time[:year]).first.update(:amount =>amount) #update the amount only
       else
-        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid,month: t[:month], year: t[:year]).create #otherwise create the field.
+        ans = Answer.where(amount: amount,user_id: current_user.id,statistic_id: sid,month: time[:month], year: time[:year]).create #otherwise create the field.
       end
     end
   end

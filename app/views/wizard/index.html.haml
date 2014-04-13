@@ -111,7 +111,8 @@
 
     var factor = questions[counter];
    
-    data.form_fields.push({statistic_id:variables[counter].statistic_id, name:variables[counter].name, factor_id:variables[counter].id, value:value});
+    data.form_fields.push({statistic_id:factor.statistic_id, name:factor.name, factor_id:factor.id, value:value});
+    console.debug(data);
 
     if(!questions[counter + 1] || questions[counter + 1].statistic_id != factor.statistic_id)
     {
