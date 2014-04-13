@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_badges = EarnedBadge.all.where(user_id: current_user.id)
-    @most_recent_badge = @user_badges.last
+    @user_badges = EarnedBadge.order('created_at DESC').where(user_id: current_user.id)
+    @most_recent_badge = @user_badges.first
     @user = User.find(params[:id])
   end
 
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    printf("FUCKYOURFACENIGGAAA\n\n\n\n\n\n\n");
     if @user.update_attributes(params[:user].permit(:role_ids, :email, :firstName, :lastName, :state))
       redirect_to users_path, :notice => params.inspect
     else

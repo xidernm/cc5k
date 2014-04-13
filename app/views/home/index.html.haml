@@ -30,13 +30,12 @@
     =#link_to("I don't know (more information)",about_us_path)
 
 - if current_user != nil 
-  - if current_user.visited_page == nil
-    - current_user.visited_page = ""
-  - if !current_user.visited_page.include?(request.original_url)
+  - if current_user.visited_page != "true"
     - javascript_include_tag 'showGuiders.js'
     :javascript
       showGuiders()
-    - current_user.visited_page << request.original_url
+
+    - current_user.visited_page = "true"
     - current_user.save
 :javascript
   $(document).ready(function() {
