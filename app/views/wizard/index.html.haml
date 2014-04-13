@@ -16,9 +16,11 @@
     #skip.button{:float => "left"}
       Skip
     #next.button
-      Next
+      Start
 
 :javascript
+  $('#skip').hide();
+
   $(document).ready(function() 
   {
     $('#question').text('Click next to begin answering questions and filling out a basic profile, or choose a tab above to fill out specific information.').addClass('header1');
@@ -88,6 +90,7 @@
       next = questions[++counter].variableName;
       $('#question').text(next);
       $('#answer').val('');
+      $('#next').text('Next');
       $('#answer').show();
       $('#skip').show();
       $('#next').show();
