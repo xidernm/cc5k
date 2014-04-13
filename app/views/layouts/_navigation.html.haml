@@ -14,7 +14,6 @@
         %li= link_to "Edit Account", edit_user_registration_path
       %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
       %li.sidebar-brand= link_to 'Missions', wizard_path, :id => "missions"
-      %li.sidebar-brand= link_to 'Badges', earned_badges_path, :id => 'earned_badges'
       - if current_user.admin?
         %li.sidebar-brand= link_to 'Statistics', statistics_path, :id => 'stats'
       %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"

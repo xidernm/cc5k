@@ -1,10 +1,10 @@
 <div class="authform">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3>Log In</h3>
+    <h3>Enter Security Credentials</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%- if devise_mapping.registerable? %>
-        <%= link_to 'Sign up', new_registration_path(resource_name), class: 'right'  %>
+        <%= link_to 'Apply for a clearance', new_registration_path(resource_name), class: 'right'  %>
       <% end -%>
       <%= f.label :email %>
       <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
@@ -16,7 +16,7 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
-      <%= f.submit 'Log in', :class => 'button right' %>
+      <%= f.submit 'Enter Application', :class => 'button right' %>
       <% if devise_mapping.rememberable? -%>
         <div class="checkbox">
           <%= f.check_box :remember_me %> <%= f.label :remember_me %>

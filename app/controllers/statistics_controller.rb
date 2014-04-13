@@ -175,7 +175,7 @@ class StatisticsController < ApplicationController
   
   # Never trust parameters from the scary internet, only allow the white list through.
   def statistic_params
-    params.require(:statistic).permit(:equation, :description)
+    params.require(:statistic).permit(:equation, :description, :category_id)
   end
 
   def create_factors_for_statistic(statistic)
@@ -183,10 +183,12 @@ class StatisticsController < ApplicationController
     statistic.equation.gsub(/\s+/,"").split(/[*+-\/]/).delete_if(&:empty?).each do |factor|
       name_check = Integer(factor) rescue nil
       if name_check == nil
-        Factor.where(name: factor, statistic_id: statistic.id).first_or_create
+        factor = Factor.where(name: factor, statistic_id: statistic.id).first_or_create
       else
-        Factor.where(value: factor, statistic_id: statistic.id).first_or_create
+        factor = Factor.where(value: factor, statistic_id: statistic.id).first_or_create
       end
+      factor.category_id = statistic.category_id 
+      factor.save
     end
   end
   

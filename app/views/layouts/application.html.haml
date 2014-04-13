@@ -11,7 +11,8 @@
     
     %body
       #wrapper
-        = render 'layouts/navigation'
+        -if current_user!=nil;
+          = render 'layouts/navigation'
         %main{:role => "main"}
           = render 'layouts/messages'
           = yield

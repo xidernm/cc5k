@@ -15,13 +15,20 @@
 
 - else
   %h3
-    Welcome to the Global Emissions Resitance Alliance
+    Welcome to the Global Emissions Reduction Alliance
   = image_tag "res_fist.png"
   %br
   %br
-  %div.typeout
+  %div.typeout{:style=>"height:70px;"}
     %p
-      Welcome Brother or Sister to the Global Emissions Reduction Alliance or G.E.R.A. If you have reached us then you are not alone. You have been called upon to join us in the struggle against Big Petroleum, better know to us as B.P. . Please help us end the enslavement of our people from the clutches of this most powerful foe!
+      Welcome Brother or Sister to the Global Emissions Reduction Alliance(G.E.R.A.) Headquarters. Do you have security credentials to enter our facility, or are you here to apply for a clearance?
+  %div{:style=>"width:100%; text-align:center; font-size:22px; padding-top:50px;"}
+    =link_to("Here are my Credentials(Login)",new_user_session_path)
+    %br/
+    %br/
+    =link_to("I need to apply for a clearance (Sign-up)", new_user_registration_path)
+    =#link_to("I don't know (more information)",about_us_path)
+
     
 - if current_user != nil 
   - if current_user.visited_page == nil
