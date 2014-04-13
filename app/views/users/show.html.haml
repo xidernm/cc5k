@@ -1,8 +1,14 @@
 %table
  %th
  %th
- %tr 
-  %td{:width => "300"}= image_tag("badge#{@most_recent_badge.badge_id}.gif", :align => "left")
+ %tr
+  -if @most_recent_badge!=nil 
+   %td{:width => "300"} = image_tag("badge#{@most_recent_badge.badge_id}.gif", :align => "left")
+  -else
+   %td{:width => "300"} 
+    No badges yet.
+    %br/
+    =link_to "Click here to earn badges", wizard_path
   %td
    %table
     %th
