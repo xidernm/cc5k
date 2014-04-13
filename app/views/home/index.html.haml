@@ -1,6 +1,6 @@
 - if current_user!=nil
   %h3
-    Welcome Back To G.E.R.A Head Quarters
+    Welcome Back To G.E.R.A Headquarters
     = current_user.firstName
     !
   = image_tag "res_fist.png"
@@ -29,30 +29,15 @@
     =link_to("I need to apply for a clearance (Sign-up)", new_user_registration_path)
     =#link_to("I don't know (more information)",about_us_path)
 
-    
 - if current_user != nil 
   - if current_user.visited_page == nil
     - current_user.visited_page = ""
   - if !current_user.visited_page.include?(request.original_url)
+    - javascript_include_tag 'showGuiders.js'
+    :javascript
+      showGuiders()
     - current_user.visited_page << request.original_url
     - current_user.save
-    :javascript
-      $.guider({
-      next: "second",
-      title: "Welcome To GERA",
-      description: "Hello friend, and welcome to the Global Emissions Reduction Alliance or GERA for short. This and other guides are meant to help you become familar with the site.",
-      overlay: "dark",
-      draggable: true,
-      buttons: {
-      Close: true,
-      Next: {
-      click: true,
-      className: "primary",
-      focus: true
-      }
-      }
-      }).show()
-      
 :javascript
   $(document).ready(function() {
   $('.typeout').typewrite({
@@ -63,3 +48,4 @@
   'extra_char': ' '
   });
   });
+
