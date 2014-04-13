@@ -164,7 +164,6 @@ class StatisticsController < ApplicationController
     if @time == nil
       @time = Time.new
     end
-
   end
 
   private

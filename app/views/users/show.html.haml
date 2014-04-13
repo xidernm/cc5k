@@ -2,9 +2,9 @@
  %th
  %th
  %tr
-  -if @most_recent_badge!=nil 
+  - if @most_recent_badge!=nil 
    %td{:width => "300"} = image_tag("badge#{@most_recent_badge.badge_id}.gif", :align => "left")
-  -else
+  - else
    %td{:width => "300"} 
     No badges yet.
     %br/
@@ -29,6 +29,14 @@
      %td= distance_of_time_in_words_to_now(@user.created_at)
     %tr
      %td
+    %tr
+     %td Rank:
+     %td= @user.rank
+    %tr
+     %td Score:
+     %td= @user.score
+    %tr
+
 %h2
  Earned Badges
 

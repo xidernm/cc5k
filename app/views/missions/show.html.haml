@@ -1,18 +1,19 @@
-%p#notice= notice
-
 %p
-  %b Name:
+  %b Mission:
   = @mission.name
 %p
-  %b Description:
+  %b Objective:
   = @mission.description
 %p
   %b Value:
   = @mission.value
-%p
-  %b User:
-  = @mission.user_id
 
-= link_to 'Edit', edit_mission_path(@mission)
-\|
-= link_to 'Back', missions_path
+:javascript
+  $(document).ready(function() {
+  'callback': function(){
+  $('.typeout').css();
+  },
+  'delay': 5,
+  'extra_char': ' '
+  });
+  });
