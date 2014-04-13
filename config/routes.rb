@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  resources :missions
+
   resources :answers
 
   resources :statistics
