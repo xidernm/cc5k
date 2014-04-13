@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    printf("\n\n\n\n\n\n\nBLAHHHH\n\n\n\n\n\n\n");
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:firstName, :lastName, :email,:state, :password, :password_confirmation)}
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:firstName, :lastName, :email,:state, :password, :password_confirmation, :current_password)}
     devise_parameter_sanitizer.for(:update) {|u| u.permit(:firstName, :lastName, :email,:state, :password, :password_confirmation, :current_password)}

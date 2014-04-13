@@ -1,33 +1,16 @@
 #sidebar-wrapper
-  - if current_user != nil
-    - anon = AnonUser.find_by(ip: request.remote_ip)
-    - if anon != nil
-      - anon.delete
-      - if anon.visited_page == nil
-        - anon.visited_page = ""
-    - if current_user.visited_page == nil
-      - current_user.visited_page = request.original_url;
-    - if !current_user.visited_page.include?("navigation")
-      - current_user.visited_page += "navigation"
-      - current_user.save
-    %ul.sidebar-nav
-      %li.sidebar-brand= link_to 'G.E.R.A', root_path, :id => 'hq'
-      %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
-      %li.sidebar-brand= link_to "#{current_user.lastName}: Personnel File", user_path(current_user), :id=>"prof"
-      %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
-      %li.sidebar-brand= link_to 'Missions', wizard_path, :id => "missions"
-      - if current_user.admin?
-        %li.sidebar-brand= link_to 'Statistics', statistics_path, :id => 'stats'
-      %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"
+ %ul.sidebar-nav
+  %li.sidebar-brand= link_to 'G.E.R.A', root_path, :id => 'hq'
+  %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
+  %li.sidebar-brand= link_to "#{current_user.lastName}: Personnel File", user_path(current_user), :id=>"prof"
+  %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
+  %li.sidebar-brand= link_to 'Missions', wizard_path, :id => "missions"
+  - if current_user.admin?
+   %li.sidebar-brand= link_to 'Statistics', statistics_path, :id => 'stats'
+   %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"
   - else
-    - anon = AnonUser.where(ip: request.remote_ip).first_or_create
-    - if anon.visited_page == nil
-      - anon.visited_page = ""
-    %ul.sidebar-nav
-      %li.sidebar-brand= link_to 'G.E.R.A', root_path , :id => 'hq'
-      %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
-      %li.sidebar-brand= link_to 'LOGIN', new_user_session_path, :id => 'lgin'
-      %li.sidebar-brand= link_to 'Join The Alliance', new_user_registration_path, :id => 'reg'
-    - if current_user == nil && !anon.visited_page.include?("navigation")
-      - anon.visited_page += "navigation"
-      - anon.save
+   %ul.sidebar-nav
+    %li.sidebar-brand= link_to 'G.E.R.A', root_path , :id => 'hq'
+    %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
+    %li.sidebar-brand= link_to 'LOGIN', new_user_session_path, :id => 'lgin'
+    %li.sidebar-brand= link_to 'Join The Alliance', new_user_registration_path, :id => 'reg'
