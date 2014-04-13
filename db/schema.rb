@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412174313) do
+ActiveRecord::Schema.define(version: 20140413182936) do
 
   create_table "anon_users", force: true do |t|
     t.string   "ip"
@@ -144,6 +144,8 @@ ActiveRecord::Schema.define(version: 20140412174313) do
     t.string   "lastName"
     t.string   "state"
     t.string   "visited_page"
+    t.integer  "rank"
+    t.integer  "score"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
