@@ -125,9 +125,9 @@ class StatisticsController < ApplicationController
     badFactors = []
     if params[:form_fields] != nil
       params[:form_fields].each do |field|
-        current_stat_id = field[:statistic_id].to_i if current_stat_id != field[:statistic_id].to_i
-        af = AnsweredFactor.where(factor_id: field[:factor_id],
-                                  amount: field[:value], 
+        current_stat_id = field[1][:statistic_id].to_i
+        af = AnsweredFactor.where(factor_id: field[1][:factor_id],
+                                  amount: field[1][:value], 
                                   statistic_id: current_stat_id,
                                   month: params[:month],
                                   year: params[:year],
