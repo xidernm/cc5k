@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 
   def show
     @user_badges = EarnedBadge.order('created_at DESC').where(user_id: current_user.id)
+    if(@user_badges.count == 0) # Earn the signed up badge if haven't already
+      eb = EarnedBadge.create
+      eb.user_id = current_user.id
+      eb.badge_id = Badge.where(title: "Signed Up").first.id
+      eb.save
+    end
     @most_recent_badge = @user_badges.first
     @user = User.find(params[:id])
   end
