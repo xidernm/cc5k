@@ -106,7 +106,7 @@
     if(!value || counter == -1)
       return $('#answer').attr('hidden');
 
-    var factor = variables[counter];
+    var factor = questions[counter];
    
     data.form_fields.push({statistic_id:variables[counter].statistic_id, name:variables[counter].name, factor_id:variables[counter].id, value:value});
 
