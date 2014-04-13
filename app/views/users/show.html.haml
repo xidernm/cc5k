@@ -2,13 +2,13 @@
  %th
  %th
  %tr
-  - if @most_recent_badge!=nil 
-   %td{:width => "300"} = image_tag("badge#{@most_recent_badge.badge_id}.gif", :align => "left")
+  - if @most_recent_badge!=nil
+   %td{:width => "180"}= image_tag("badge#{@most_recent_badge.badge_id}.gif", :align => "left")
   - else
-   %td{:width => "300"} 
+   %td{:width => "180"}
     No badges yet.
-    %br/
-    =link_to "Click here to earn badges", wizard_path
+    %br
+    = link_to "Click here to earn badges", wizard_path
   %td
    %table
     %th
@@ -28,6 +28,7 @@
      %td Member for:
      %td= distance_of_time_in_words_to_now(@user.created_at)
     %tr
+     %td= link_to "Edit account", edit_user_registration_path
      %td
     %tr
      %td Rank:
@@ -42,11 +43,11 @@
 
 - for eb in @user_badges do
  - badge = Badge.where(id: eb.badge_id).first
- %table
+ %table.badgetable
   %th
   %th
   %tr
-   %td{width: 300}
+   %td{width: 180}
     = image_tag("badge#{badge.id}.png", :size => "150")
    %td
     %h3= badge.title

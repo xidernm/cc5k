@@ -2,7 +2,8 @@ class WizardController < ApplicationController
 
   def index
     @factors = Factor.all
-    @categories = Category.all(:include => :factors)
+    @categories = Category.all
+    @date = Time.new
   end
 
 end

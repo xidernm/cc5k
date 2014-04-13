@@ -26,6 +26,7 @@ class StatisticsController < ApplicationController
 
   # GET /statistics/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /statistics
@@ -124,14 +125,13 @@ class StatisticsController < ApplicationController
     badFactors = []
     if params[:form_fields] != nil
       params[:form_fields].each do |field|
-        current_stat_id = field[0].split(/[A-Z]/)[0] if current_stat_id != field[0].split(/[A-Z]/)[0]
-        af = AnsweredFactor.where(factor_id: field[0].split(/[A-Z]/)[1], 
-                                  amount: field[1], 
+        current_stat_id = field[:statistic_id].to_i if current_stat_id != field[:statistic_id].to_i
+        af = AnsweredFactor.where(factor_id: field[:factor_id],
+                                  amount: field[:value], 
                                   statistic_id: current_stat_id,
                                   month: params[:month],
                                   year: params[:year],
                                   user_id: current_user.id).first_or_create
-                                  
         
         if af.amount == nil
           badFactors.push(af)

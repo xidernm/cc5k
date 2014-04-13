@@ -1,6 +1,6 @@
 - if current_user!=nil
   %h3
-    Help us fill out your Carbon profile!
+    Information is power!
 - else
   %h3
     Try out the Carbon calculator by providing some data anonymously!
@@ -34,6 +34,28 @@
     }
   var counter = -1;
   var questions = [];
+  var data = {form_fields:[],
+              year:#{@date.year},
+              month:#{@date.month}};
+
+  var getQuestionsForCategory = function(category_id)
+  {
+    var questions = [];
+    for(var x in variables)
+      if(variables[x].category_id == category_id && variables[x].variableName)
+        questions.push(variables[x]);
+    return questions;
+  }
+
+  var addClick = function(value, target)
+  {
+    target.click(function()
+    {
+        questions = getQuestionsForCategory(value);
+        counter = -1;
+        displayNextQuestion();
+    });
+  }
 
   var initTabs = function()
   {
@@ -45,13 +67,7 @@
       tab.attr("href", "#"+category.name);
       tab.attr("data-toggle", "tab");
       tab.text(category.name);
-      tab.click(function(){
-        questions = category.factor.map(function(value){
-          return value.variableName;
-        });
-        counter = -1;
-        displayNextQuestion();
-      });
+      addClick(category.id, tab);
       wrapper.append(tab);
       $("#tabList").append(wrapper);
     }
@@ -59,23 +75,22 @@
     {
       var variable = variables[x];
       if(variable.dependency == 2 && variable.variableName)
-        questions.push(variable.variableName);
+        questions.push(variable);
     }
   }
 
   var displayNextQuestion = function()
   {
     var next;
-    while(counter < questions.length - 1 && !next)
-      next = questions[++counter];
 
     if(counter < questions.length - 1)
     {
+      next = questions[++counter].variableName;
       $('#question').text(next);
-      $('#answer').removeAttr('hidden');
       $('#answer').val('');
-      $('#skip').removeAttr('hidden');
-      $('#next').removeAttr('hidden');
+      $('#answer').show();
+      $('#skip').show();
+      $('#next').show();
     }
     else
     {
@@ -86,36 +101,44 @@
     }
   }
 
-  var submitQuestion = function()
+  var submitQuestion = function(value)
   {
-    var value = $('#answer').val();
-    if(!value)
+    if(!value || counter == -1)
       return $('#answer').attr('hidden');
-    var data = {};
-    data.amount = value;
-    data.factor_id = variables[counter].id;
 
-    $.ajax({
-      type: "POST",
-      url: "/create_answer_from_input",
-      data: data,
-      datatype:"html",
-      success: function(data){},
-      async: true
-    });
+    var factor = variables[counter];
+   
+    data.form_fields.push({statistic_id:variables[counter].statistic_id, name:variables[counter].name, factor_id:variables[counter].id, value:value});
+
+    if(!questions[counter + 1] || questions[counter + 1].statistic_id != factor.statistic_id)
+    {
+      $.ajax({
+        type: "POST",
+        url: "/create_answer_from_input",
+        data: data,
+        datatype:"html",
+        success: function(data){},
+        async: true
+      });
+
+      data = {"form_fields":[],
+              "year":#{@date.year},
+              "month":#{@date.month}};
+    }
 
     return true;
   }
 
   $('#next').click(function()
   {
-    if(submitQuestion())
+    if(submitQuestion($('#answer').val()))
       displayNextQuestion();
   });
 
 
   $('#skip').click(function()
   {
+    submitQuestion(1);
     displayNextQuestion();
   });
   
