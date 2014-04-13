@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    printf("FUCKYOURFACENIGGAAA\n\n\n\n\n\n\n");
     if @user.update_attributes(params[:user].permit(:role_ids, :email, :firstName, :lastName, :state))
       redirect_to users_path, :notice => params.inspect
     else
