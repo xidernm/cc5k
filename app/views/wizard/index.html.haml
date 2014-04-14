@@ -158,6 +158,7 @@
     if(counter == questions.length - 1 || questions[counter + 1].statistic_id != factor.statistic_id)
     {
       console.debug("To Server");
+      console.debug(data);
       $.ajax({
         type: "POST",
         url: "/create_answer_from_input",
