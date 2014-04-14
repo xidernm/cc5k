@@ -82,12 +82,28 @@ showGuiders = function() {
     })
     $('#missions').guider({
     name: "mission",
+    next: "final",
     title: "Missions",
     description: "Here you will find a listing of your current assignments and objective in the fight against Big Petroleum.",
     overlay: "dark",
     draggable: true,
     buttons: {
     Close: true,
+    Next: {
+    click: true,
+    className: "primary",
+    focus: true
+    }
+    }
+    })
+    $.guider({
+    name: "final",
+    title: "Welcome",
+    description: "Now that you have a better understanding of the application it's time to get started fighting Big Petroleum. Click on 'missions' to see your objectives. You can access this tool again by clicking 'Show me how to use this application' near the bottom of the page",
+    overlay: "dark",
+    draggable: true,
+    buttons: {
+    Close: true   
     }
     })
 }

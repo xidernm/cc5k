@@ -39,7 +39,6 @@ class HomeController < ApplicationController
           end
       end
 
-
         times =[]
         fieldMap.each_key do |k|
           times.push(k.strftime("%b %y"))

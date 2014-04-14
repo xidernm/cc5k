@@ -1,18 +1,23 @@
 - if current_user!=nil
-  %h3
-    Welcome Back To G.E.R.A Headquarters
-    = current_user.firstName
+  %h2.typeout{:style=>"height:30px"}
+    Welcome Back To G.E.R.A Headquarters Agent 
+    = current_user.lastName
     !
   = image_tag "res_fist.png"
-  %br
-  %br
-  %div.typeout
-    %p
-      The struggle against Big Petrol is ongoing 
-      = current_user.firstName
-      Lets keep doing our part to reduce our carbon emissions and show B.P. that we mean Business!
-    %ul
-
+  %br/
+  %br/
+  %p
+    The struggle against Big Petroleum is ongoing Agent
+    = current_user.lastName
+  %p    
+    Report to 
+    =link_to "Missions ", missions_path
+    to view your current assignments,
+    =link_to "Personnel File", user_path(current_user)
+    to see your badges, rank, rewards, and other information. You may additionally view graphs and statistics you have helped G.E.R.A collect in the
+    =link_to "Intelligence ", contribution_path
+    screen
+ 
 - else
   %h3
     Welcome to the Global Emissions Reduction Alliance
@@ -21,7 +26,7 @@
   %br
   %div.typeout{:style=>"height:70px;"}
     %p
-      Welcome Brother or Sister to the Global Emissions Reduction Alliance(G.E.R.A.) Headquarters. Do you have security credentials to enter our facility, or are you here to apply for a clearance?
+      Welcome Brother or Sister to the Global Emissions Reduction Alliance(G.E.R.A.) Headquarters. Do you have security credentials to enter our application, or are you here to apply for a clearance?
   %div{:style=>"width:100%; text-align:center; font-size:22px; padding-top:50px;"}
     =link_to("Here are my Credentials(Login)",new_user_session_path)
     %br/
@@ -34,9 +39,9 @@
     - javascript_include_tag 'showGuiders.js'
     :javascript
       showGuiders()
-
     - current_user.visited_page = "true"
     - current_user.save
+
 :javascript
   $(document).ready(function() {
   $('.typeout').typewrite({
