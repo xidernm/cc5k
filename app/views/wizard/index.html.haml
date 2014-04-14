@@ -12,6 +12,9 @@
 %div{:float => "left"}
   #question
   %input#answer.textBox{:type => "number", :hidden => "true"}
+  %div
+    %select#month
+    %select#year
   .authform
     #skip.button{:float => "left"}
       Skip
@@ -25,7 +28,19 @@
   {
     $('#question').text('Click next to begin answering questions and filling out a basic profile, or choose a tab above to fill out specific information.').addClass('header1');
     initTabs();
+    addOptions($('#month'), months, time.month, updateMonth);
+    addOptions($('#year'), years, time.year, updateYear);
+    $('#year').show();
+    $('#month').show();
   })
+
+  var months = [['January',1],['February',2],['March',3],['April',4],['May',5],['June',6],['July',7],['August',8],['September',9],['October',10],['November',11],['December',12]];
+  var years = [[2004,2004],[2005,2005],[2006,2006],[2007,2007],[2008,2008],[2009,2009],[2010,2010],[2011,2011],[2012,2012],[2013,2013],[2012,2012],[2013,2013],[2014,2014]];
+
+  var time = {
+    month:#{@date.month},
+    year:#{@date.year}
+  };
   var variables =
     #{
       @factors.to_json
@@ -37,8 +52,33 @@
   var counter = -1;
   var questions = [];
   var data = {form_fields:[],
-              year:#{@date.year},
-              month:#{@date.month}};
+              year:time.year,
+              month:time.month};
+
+  var updateMonth = function()
+  {
+    data.month = time.month = $('#month').val();
+  }
+
+  var updateYear = function()
+  {
+    data.year = time.year = $('#year').val();
+  }
+
+  var addOptions = function(target, options, select, onupdate)
+  {
+    for(var item in options)
+    {
+      var option = "<option";
+      if(options[item][1] == select)
+        option += ' selected="selected"';
+      option += ' value="'+options[item][1]+'">';
+      option += options[item][0];
+      option += '</option>';
+      target.append(option);
+    }
+    target.change(onupdate);
+  }
 
   var getQuestionsForCategory = function(category_id)
   {
@@ -91,6 +131,8 @@
       $('#question').text(next);
       $('#answer').val('');
       $('#next').text('Next');
+      $('#year').hide();
+      $('#month').hide();
       $('#answer').show();
       $('#skip').show();
       $('#next').show();
@@ -112,7 +154,6 @@
     var factor = questions[counter];
    
     data.form_fields.push({statistic_id:factor.statistic_id, name:factor.name, factor_id:factor.id, value:value});
-    console.debug(data);
 
     if(!questions[counter + 1] || questions[counter + 1].statistic_id != factor.statistic_id)
     {
@@ -126,8 +167,9 @@
       });
 
       data = {"form_fields":[],
-              "year":#{@date.year},
-              "month":#{@date.month}};
+              "year": time.year,
+              "month":time.month
+        };
     }
 
     return true;
