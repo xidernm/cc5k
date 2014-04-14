@@ -84,7 +84,7 @@
   {
     var questions = [];
     for(var x in variables)
-      if(variables[x].category_id == category_id && variables[x].variableName)
+      if(variables[x].category_id == category_id && variables[x].variableName && variables[x].dependency == 2)
         questions.push(variables[x]);
     return questions;
   }
@@ -155,8 +155,10 @@
    
     data.form_fields.push({statistic_id:factor.statistic_id, name:factor.name, factor_id:factor.id, value:value});
 
-    if(!questions[counter + 1] || questions[counter + 1].statistic_id != factor.statistic_id)
+    if(counter == questions.length - 1 || questions[counter + 1].statistic_id != factor.statistic_id)
     {
+      console.debug("To Server");
+      console.debug(data);
       $.ajax({
         type: "POST",
         url: "/create_answer_from_input",
