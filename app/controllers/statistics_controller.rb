@@ -123,7 +123,6 @@ class StatisticsController < ApplicationController
     current_stat_id = nil
     factorIds = []
     badFactors = []
-    puts params.inspect
     if params[:form_fields] != nil
       params[:form_fields].each do |field|
         current_stat_id = field[1][:statistic_id].to_i
@@ -143,11 +142,8 @@ class StatisticsController < ApplicationController
           factorIds.push([af.id, current_stat_id])
         end
       end
- 
-      if badFactors.count == 0 and factorIds.count != 0
-        puts factorIds.inspect 
+      if badFactors.count == 0
         userFactors = rearrangeFactors(factorIds)
-        puts userFactors.inspect
         updateAnswer(userFactors,{:month=>params[:month],:year=>params[:year]})
       end
     end
@@ -215,6 +211,9 @@ class StatisticsController < ApplicationController
         end
       end
     end
+    if(fids.count == 1)
+      factors << fids
+    end
     return factors
   end
   
@@ -224,7 +223,6 @@ class StatisticsController < ApplicationController
     # ls is a list of list of answerd_factor_id, statistic_id pairs
     # t contains date information
     ls.each do |e|
-      puts e.inspect
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
       
