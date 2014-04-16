@@ -28,9 +28,5 @@ class User < ActiveRecord::Base
       return
     end
     
-    answers
-    
-    if
-    end false
   end
 end
