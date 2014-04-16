@@ -1,13 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @anon = AnonUser.new
-    @anon.visited_page = "" << request.original_url
-    @anon.ip = request.remote_ip
-    if AnonUser.find_by(ip: request.remote_ip) == nil 
-        @anon.save
-    end
-
+   
     if current_user != nil
       current_user.updateRank
     end
