@@ -7,7 +7,12 @@ class HomeController < ApplicationController
     if AnonUser.find_by(ip: request.remote_ip) == nil 
         @anon.save
     end
+
+    if current_user != nil
+      current_user.updateRank
+    end
   end
+
   def month_chart
     if params[:month] !=nil && params[:year]!=nil
       @time = Time.new(params[:year],params[:month])    
