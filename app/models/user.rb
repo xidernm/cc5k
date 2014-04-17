@@ -14,6 +14,21 @@ class User < ActiveRecord::Base
   end
 
   def updateRank
-        
+    numberAnswers = Answer.where(user_id: id).count
+    if rank == nil
+      rank = 0
+    end
+
+    if  numberAnswers >= 0 && numberAnswers < 4
+      
+    elsif numberAnswers >= 4 && numberAnswers < 8 
+
+    elsif numberAnswers >= 8 && numberAnswers < 16
+      puts "More than 8 and less than 16 answers "
+      puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
+    else 
+            puts "More than 16 answers "
+    end
+    puts self.save
   end
 end
