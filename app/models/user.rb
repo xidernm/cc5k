@@ -33,28 +33,29 @@ class User < ActiveRecord::Base
     end
 
     if numberAnswers >= 0 && numberAnswers < 4
-      self.score += 5      
-       if self.score > 50
-        self.score = 50
+      self.score += 10      
+       if self.score > 100
+        self.score = 100
       end        
       puts "Less than four answers " + self.score.to_s
       puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
     elsif numberAnswers >= 4 && numberAnswers < 8 
       
-      self.score += 10
-      if self.score > 100
-        self.score = 100
+      self.score += 50
+      if self.score > 1000
+        self.score = 1000
       end
       puts "More than 3 and less than 8 answers "  + self.score.to_s
       puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
     elsif numberAnswers >= 8 && numberAnswers < 16
-      self.score += 50
+      self.score += 100
        if self.score > 1000
         self.score = 1000
       end        
       puts "More than 7 and less than 16 answers "  + self.score.to_s
       puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
     else
+      self.score += 500
       if self.score > 10000
         self.score = 10000
       end
