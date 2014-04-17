@@ -20,15 +20,19 @@ class User < ActiveRecord::Base
     end
 
     if  numberAnswers >= 0 && numberAnswers < 4
+      self.rank +=1
       puts "Less than four answers "
       puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
     elsif numberAnswers >= 4 && numberAnswers < 8 
+      self.rank +=1
       puts "More than 3 and less than 8 answers "
       puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
     elsif numberAnswers >= 8 && numberAnswers < 16
+      self.rank +=1
       puts "More than 7 and less than 16 answers "
       puts 'rank ' + self.rank.to_s + ', ' + id.to_s 
-    else 
+    else
+      self.rank +=1
       puts "More than 16 answers "
     end
     puts self.save
