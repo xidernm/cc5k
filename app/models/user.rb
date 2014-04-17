@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
 
   def updateRank
     numberAnswers = Answer.where(user_id: id).count
-    if rank == nil
-      rank = 0
+    if self.rank == nil
+      self.rank = 0
     end
 
     if  numberAnswers >= 0 && numberAnswers < 4
