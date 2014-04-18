@@ -33,4 +33,5 @@ Myapp::Application.routes.draw do
   get "/wizard", to:"wizard#index", as:"wizard"
   get "/mission_objective", to: "mission_objective#index", as: "mission_objective"
   post "/update_anon", to: "anon_users#update", as: "update_anon"
+  get "/missions_wizard", to: "wizard#index_from_missions", as: "mission_explorer"
 end

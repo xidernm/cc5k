@@ -10,9 +10,8 @@ class MissionsController < ApplicationController
   # GET /missions/1
   # GET /missions/1.json
   def show
-    if current_user != nil &&current_user.admin?
-    else
-    end
+      raise "fuck"
+      redirect_to mission_explorer_path(id)
   end
 
   # GET /missions/new
@@ -29,7 +28,10 @@ class MissionsController < ApplicationController
   def edit
     if current_user != nil && !current_user.admin?
       redirect_to missions_path
+    else
+      @categories = Category.all
     end
+    
   end
 
   # POST /missions

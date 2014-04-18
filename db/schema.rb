@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413192601) do
+ActiveRecord::Schema.define(version: 20140418203104) do
 
   create_table "anon_users", force: true do |t|
     t.string   "ip"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140413192601) do
     t.datetime "updated_at"
     t.integer  "times_completed"
     t.integer  "min_rank"
+    t.integer  "category_id"
   end
 
   create_table "region_statistics", force: true do |t|
