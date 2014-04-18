@@ -22,7 +22,7 @@
         %td= mission.name
         %td= mission.description
         %td= mission.value
-        %td= link_to 'Show', wizard_path
+        %td= link_to 'Show', wizard_path(mission)
         %td= link_to 'Edit', edit_mission_path(mission)
         %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

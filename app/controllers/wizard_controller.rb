@@ -1,14 +1,13 @@
 class WizardController < ApplicationController
 
   def index
-    @missions = Mission.all
+    mid = params[:format]
+    @mission = Mission.find_by(mid)
     @factors = Factor.all
     @categories = Category.all
     @date = Time.new
-  end
-
-  def index_from_missions(mid)
-    @mission = Mission.find_by(id: mid)
+    current_user.score += (@mission.value * current_user.rank)
+    current_user.save
   end
 
 end
