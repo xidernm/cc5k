@@ -9,24 +9,16 @@
       %th
       %th
       %th
-  %tfoot
-    %tr
-      %th Name
-      %th Description
-      %th Value
-      %th
-      %th
-      %th
   %tbody
     - @missions.each do |mission|
       %tr
         %td= mission.name
-        %td= mission.description
+        %td= link_to mission.description, wizard_path(mission)
         %td= mission.value
-        %td= link_to 'Show', wizard_path(mission)
+        %td= link_to 'Start Mission', mission_path(mission)
         - if current_user.admin?
-          %td= link_to 'Edit', edit_mission_path(mission)
-          %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Edit Mission', edit_mission_path(mission)
+          %td= link_to 'Destroy Mission', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if current_user != nil && current_user.admin?

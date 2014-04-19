@@ -8,6 +8,8 @@
   %b Value:
   = @mission.value
 
+= link_to "Start Mission", wizard_path(@mission.id)
+
 :javascript
   $(document).ready(function() {
   'callback': function(){

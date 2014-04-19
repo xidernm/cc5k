@@ -12,7 +12,6 @@ class MissionsController < ApplicationController
   def show
     if current_user != nil && !current_user.admin?
     else
-      redirect_to wizard_path(params[:id])
     end
   end
 
