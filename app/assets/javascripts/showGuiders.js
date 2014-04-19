@@ -82,7 +82,7 @@ showGuiders = function() {
     })
     $('#missions').guider({
     name: "mission",
-    next: "comm",
+    next: "final",
     title: "Missions",
     description: "Here you will find a listing of your current assignments and objective in the fight against Big Petroleum.",
     overlay: "dark",
@@ -96,7 +96,7 @@ showGuiders = function() {
     }
     }
     })
-    $("comm")({
+/*    $("comm")({
     name: "comm",
     next: "final",
     title: "Communications are the life blood of agents. This is where you will earn points.",
@@ -111,7 +111,7 @@ showGuiders = function() {
     focus: true
     }
     }	
-    })
+    })*/
     $.guider({
     name: "final",
     title: "Welcome",
