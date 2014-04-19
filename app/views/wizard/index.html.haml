@@ -27,6 +27,11 @@
 
 %div
   = @mission.description
+
+%div
+  %small{:onClick=>"methodPopup()"}
+    %a How are these numbers used?
+    
 :javascript
   $('#skip').hide();
   $('#back').hide();
