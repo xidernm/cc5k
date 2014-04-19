@@ -49,7 +49,7 @@ class HomeController < ApplicationController
             if !catValMap[m[:name]].present?
               catValMap[m[:name]] = []
             end
-            catValMap[m[:name]].push(m[:val])
+            catValMap[m[:name]].push(m[:val].round(3))
           end
         end
   catValSums = Hash.new
@@ -58,7 +58,7 @@ class HomeController < ApplicationController
         sums = []
         val.each do |n|
           cSum += n
-          sums.push(cSum);
+          sums.push(cSum.round(3));
         end
         catValSums[key] =sums
 end
@@ -72,17 +72,17 @@ end
           f.options[:xAxis][:categories] = times
           f.options[:chart][:backgroundColor] = "#333"
           f.options[:colors] = ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263','#6AF9C4']
-          f.options[:yAxis][:title] = {:text=>"Carbon Emitted (Tons)"}
+          f.options[:yAxis][:title] = {:text=>"Carbon Emitted (pounds)"}
           f.plot_options({:area=>{:stacking=>"normal"}})
        end
         
         @distributionGraph =LazyHighCharts::HighChart.new('column') do |f|
           catValMap.each_key {|key|  f.series(:name=>key,:data=>catValMap[key] )}
-          f.title({ :text=> current_user.firstName + ": Carbon Usage History By Month"})
+          f.title({ :text=> current_user.lastName + ": Carbon Usage History By Month"})
           f.options[:chart][:defaultSeriesType] = "column"
           f.options[:chart][:backgroundColor] = "#333"
           f.options[:xAxis][:categories] = times
-          f.options[:yAxis][:title] = {:text=>"Carbon Emitted (Tons)"}
+          f.options[:yAxis][:title] = {:text=>"Carbon Emitted (pounds)"}
 
           f.options[:colors] = ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263','#6AF9C4']
           f.plot_options({:column=>{:stacking=>"normal"}})
@@ -97,7 +97,7 @@ end
         end
 
         thisMonth.each do |i|
-          monthData.push([i[:name],i[:val]/sum])
+          monthData.push([i[:name],((i[:val]/sum)*100).round(3)])
         end
         
   @monthChart = LazyHighCharts::HighChart.new('pie') do |f|
