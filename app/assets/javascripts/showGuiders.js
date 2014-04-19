@@ -1,5 +1,5 @@
 showGuiders = function() {
-   console.log("Called");
+
    $.guider({
     next: "hq",
     title: "Welcome To G.E.R.A Headquarters",
