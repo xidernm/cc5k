@@ -11,7 +11,6 @@ class MissionsController < ApplicationController
   # GET /missions/1.json
   def show
     if current_user != nil && !current_user.admin?
-      redirect_to mission_explorer_path(id)
     else
       redirect_to wizard_path(params[:id])
     end
