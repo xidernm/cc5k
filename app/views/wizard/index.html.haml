@@ -67,6 +67,15 @@
     data.year = time.year = $('#year').val();
   }
 
+  var updateFactor = function(id)
+  {
+    console.debug("Sending statistic_id " + id);
+    $.post("/answeredFactor", {id:id, month:data.month, year:data.year},
+          function(result){
+            if(result != null)
+              $('#answer').val(result.amount)});
+  }
+
   var addOptions = function(target, options, select, onupdate)
   {
     for(var item in options)
@@ -138,10 +147,11 @@
       $('#answer').show();
       $('#skip').show();
       $('#next').show();
+      updateFactor(questions[counter].statistic_id);
     }
     else
     {
-      $('#question').text("There are no more questions to ask!");
+      $('#question').text("Data received.");
       $('#skip').hide();
       $('#next').hide();
       $('#answer').hide();
