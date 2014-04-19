@@ -58,7 +58,7 @@ class HomeController < ApplicationController
         sums = []
         val.each do |n|
           cSum += n
-          sums.push(cSum);
+          sums.push(cSum.round(3));
         end
         catValSums[key] =sums
 end
