@@ -16,7 +16,16 @@ class WizardController < ApplicationController
     if current_user!=nil
       fieldMap = MultiRBTree.new #non unique valued RedBlack Tree map from times to lists of answers
       ans = Answer.where(user_id: current_user.id)
-
+    if ans != []
+        ans.each do |a|
+          if(a.month!=nil&&a.year!=nil&&a.amount!=nil)
+            if(!fieldMap[Time.new(a.year,a.month)].present?)
+              fieldMap[Time.new(a.year,a.month)] = []
+            end
+            fieldMap[Time.new(a.year,a.month)].push({:name =>Statistic.find(a.statistic_id).description,:val=>a.amount,:time => Time.new(a.year,a.month)})
+          end
+      end
+end
       monthData = [];
       thisMonth = fieldMap[Time.new(params[:year],params[:month])];
       sum = 0;
@@ -48,9 +57,13 @@ class WizardController < ApplicationController
           }
           }
         })
-        @chart
+
       end
+
     end
+printf("\n\n\n\nchart: %s\n\n\n\n",@chart);
+asdf = 5
+render :text =>@chart
     end
   end
 
