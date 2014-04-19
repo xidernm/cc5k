@@ -1,4 +1,5 @@
-%h1 Listing missions
+%h2.typeout.header Listing missions
+%p Your current assignments are listed below. Please complete them to earn points and advance your G.E.R.A rank and career.
 %table#cc5kmissionTable
   %thead
     %tr
@@ -23,8 +24,9 @@
         %td= mission.description
         %td= mission.value
         %td= link_to 'Show', wizard_path(mission)
-        %td= link_to 'Edit', edit_mission_path(mission)
-        %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if current_user.admin?
+          %td= link_to 'Edit', edit_mission_path(mission)
+          %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if current_user != nil && current_user.admin?
