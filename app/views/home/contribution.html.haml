@@ -1,9 +1,12 @@
-%h3 
+%h3.header.typeout 
   = current_user.lastName
   Cumulative Contribution Report
   %br
   %br
-%div
+%p 
+  G.E.R.A has taken the data you have collected on your missions and performed data analysis. To build a more complete view of your contributions and to help G.E.R.A. fight big petrolum please complete more
+  =link_to "Missions ", missions_path
+  %div
   - if @areaGraph != nil
     = high_chart("UsageChart",@areaGraph)
   - if @distributionGraph !=nil

@@ -1,5 +1,5 @@
 - if current_user!=nil
-  %h2.typeout{:style=>"height:30px"}
+  %h2.typeout.header{:style=>"height:30px; font-size:29px;"}
     Welcome Back To G.E.R.A Headquarters Agent 
     = current_user.lastName
     !
@@ -9,6 +9,7 @@
   %p
     The struggle against Big Petroleum is ongoing Agent
     = current_user.lastName
+    
   %p    
     Report to 
     =link_to "Missions ", missions_path
@@ -19,7 +20,7 @@
     screen
  
 - else
-  %h3
+  %h3.typeout.header
     Welcome to the Global Emissions Reduction Alliance
   = image_tag "res_fist.png"
   %br

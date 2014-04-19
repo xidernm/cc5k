@@ -37,6 +37,7 @@ main {
   border: 20px solid #333;
   @extend .container;
   background-color: #222;
+  color: #DDD;
  /* background: -webkit-radial-gradient( white .05%, grey .05%, black);  For Safari 5.1 to 6.0 */
   /*background: -o-radial-gradient(white .05%, grey .05%, black); /* For Opera 11.6 to 12.0 */
  /* background: -moz-radial-gradient(white .05%, grey .05%, black); /* For Fx 3.6 to 15 */
@@ -48,15 +49,18 @@ main {
   max-height:1080px;
   height:100%;
   overflow-y:auto;
+  font-size:18px;
   font-family:"Trebuchet MS", Verdana, sans-serif;
   }
  main p {
-  font-size:17px;
+  font-size:19px;
 }
 section {
   @extend .row;
   margin-top: 20px;
   }
+
+
 
 // Styles for Devise views
 // using Bootstrap
@@ -160,4 +164,9 @@ input, button, select, textarea{
   background-color: #010;
   border-color: #030;
   border-style: inherit;
+}
+
+.userTable tr, td, tbody
+{
+  font-size:17px;
 }

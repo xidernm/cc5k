@@ -1,4 +1,4 @@
-%table
+%table.userTable
  %th
  %th
  %tr
@@ -15,7 +15,7 @@
     %th
     %tr
      %td
-      %h2
+      %h2.header.typeout
        Agent:
        = "#{@user.firstName} #{@user.lastName}"
     %tr
@@ -39,7 +39,7 @@
      %td
     %tr
 
-%h2
+%h2.header.typeout1
  Earned Badges
 
 - for eb in @user_badges do
