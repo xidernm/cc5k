@@ -97,7 +97,7 @@ end
         end
 
         thisMonth.each do |i|
-          monthData.push([i[:name],(i[:val]/sum)*100].round(3))
+          monthData.push([i[:name],((i[:val]/sum)*100).round(3)])
         end
         
   @monthChart = LazyHighCharts::HighChart.new('pie') do |f|
