@@ -15,16 +15,21 @@
     %select#month
     %select#year
   .authform
-    #skip.button{:float => "left"}
-      Skip
-    #next.button
-      Start
-
+    %div{:style => "display: inline-block; align: left; min-width: 57px;"}
+      #back.button
+        Back
+    %div{:style => "display: inline-block; align: left; min-width: 53px;"}
+      #skip.button
+        Skip
+    %div{:style => "display: inline-block; align: left; min-width: 55px;"}
+      #next.button
+        Start
 
 %div
   = @mission.description
 :javascript
   $('#skip').hide();
+  $('#back').hide();
 
   $(document).ready(function() 
   {
@@ -69,7 +74,6 @@
 
   var updateFactor = function(id)
   {
-    console.debug("Sending statistic_id " + id);
     $.post("/answeredFactor", {id:id, month:data.month, year:data.year},
           function(result){
             if(result != null)
@@ -132,21 +136,22 @@
     }
   }
 
-  var displayNextQuestion = function()
+  var displayNewQuestion = function(delta)
   {
     var next;
 
-    if(counter < questions.length - 1)
+    if(counter + delta < questions.length && counter + delta >= 0)
     {
-      next = questions[++counter].variableName;
+      counter += delta;
+      next = questions[counter].variableName;
       $('#question').text(next);
       $('#answer').val('');
-      $('#next').text('Next');
       $('#year').hide();
       $('#month').hide();
       $('#answer').show();
       $('#skip').show();
       $('#next').show();
+      $('#next').text("Next");
       updateFactor(questions[counter].statistic_id);
     }
     else
@@ -156,6 +161,20 @@
       $('#next').hide();
       $('#answer').hide();
     }
+
+    if(counter > 0)
+      $('#back').show();
+    else
+      $('#back').hide();
+  }
+
+  var displayNextQuestion = function()
+  {
+    displayNewQuestion(1);
+  }
+  var displayPrevQuestion = function()
+  {
+    displayNewQuestion(-1);
   }
 
   var submitQuestion = function(value)
@@ -193,6 +212,12 @@
   {
     if(submitQuestion($('#answer').val()))
       displayNextQuestion();
+  });
+
+  $('#back').click(function()
+  {
+    console.debug('back');
+    displayPrevQuestion();
   });
 
 
