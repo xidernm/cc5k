@@ -5,7 +5,6 @@
   %li.sidebar-brand= link_to "#{current_user.lastName}: Personnel File", user_path(current_user), :id=>"prof"
   %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
   %li.sidebar-brand= link_to 'Missions', missions_path, :id => "missions"
-  %li.sidebar-brand= link_to 'Communications', wizard_path, :id => "comm" 
   - if current_user.admin?
    %li.sidebar-brand= link_to 'Statistics', statistics_path, :id => 'stats'
   %li.sidebar-brand= link_to 'Log out', destroy_user_session_path, :method => 'delete', :id => "lgout"
