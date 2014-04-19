@@ -2,7 +2,7 @@ class WizardController < ApplicationController
 
   def index
     mid = params[:format]
-    @factors = Factor.find(:all, :group => "category_id, statistic_id", :conditions => "dependency = 2")
+    @factors = Factor.all
     @mission = Mission.find_by(id: mid)
     @categories = Category.all
     @date = Time.new

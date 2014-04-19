@@ -7,9 +7,6 @@ class AnsweredFactorController < ApplicationController
 
   def show
     @answeredFactor = AnsweredFactor.find_by(statistic_id: params["id"], month: params["month"], year: params["year"])
-#    respond_to do |format|
-#      format.json
-#    end
     render :json => @answeredFactor
   end
 
