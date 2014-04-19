@@ -31,6 +31,7 @@ Myapp::Application.routes.draw do
   get "/fill_in_factors", to: "statistics#fill_in_factors", as: "fill_in_factors" 
   post "/submit_factor_changes", to: "statistics#submit_factor_changes", as: "submit_factor_changes" 
   get "/wizard", to:"wizard#index", as:"wizard"
+  post "/month_chart", to: "wizard#chart"
   get "/mission_objective", to: "mission_objective#index", as: "mission_objective"
   post "/update_anon", to: "anon_users#update", as: "update_anon"
   post "/answeredFactor", to: "answered_factor#show", as: "get_answered_factor"

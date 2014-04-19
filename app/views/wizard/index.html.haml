@@ -25,6 +25,9 @@
       #next.button
         Start
 
+- if @chart != nil
+  = high_chart("monthDist",@chart)
+
 %div
   = @mission.description
 
@@ -120,6 +123,13 @@
     });
   }
 
+  var updateChart = function()
+  {
+    $.post("/month_chart", {year:data.year, month:data.month}, function(data){console.debug(data);
+      console.log(#{@chart});
+    })
+  }
+
   var initTabs = function()
   {
     for(i in categories)
@@ -158,7 +168,7 @@
       $('#skip').show();
       $('#next').show();
       $('#next').text("Next");
-      updateFactor(questions[counter].statistic_id);
+      updateFactor(questions[counter].id);
     }
     else
     {
@@ -166,6 +176,7 @@
       $('#skip').hide();
       $('#next').hide();
       $('#answer').hide();
+      updateChart();
     }
 
     if(counter > 0)
