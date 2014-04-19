@@ -6,6 +6,16 @@ table.dataTable {
 	margin: 0 auto;
 	clear: both;
 	width: 100%;
+	color: #000;
+}
+table.dataTable td
+{
+color:inherit;
+font-size:14px;
+}
+table.dataTable th
+{
+color:#DDD;
 }
 
 table.dataTable thead th {
