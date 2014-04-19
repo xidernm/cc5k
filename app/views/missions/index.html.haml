@@ -23,8 +23,9 @@
         %td= mission.description
         %td= mission.value
         %td= link_to 'Show', wizard_path(mission)
-        %td= link_to 'Edit', edit_mission_path(mission)
-        %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if current_user.admin?
+          %td= link_to 'Edit', edit_mission_path(mission)
+          %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if current_user != nil && current_user.admin?
