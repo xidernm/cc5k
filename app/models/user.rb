@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       self.score = 10
     end
     
-    self.rank = (Math.sqrt(self.score).round)
+    self.rank = (Math.log10(self.score).round)
     puts self.save
   end
 end

@@ -6,7 +6,7 @@ class WizardController < ApplicationController
     @factors = Factor.all
     @categories = Category.all
     @date = Time.new
-    current_user.score += (@mission.value * current_user.rank)
+    current_user.score += @mission.value
     current_user.save
   end
 
