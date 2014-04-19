@@ -32,6 +32,7 @@ group :production do
   gem 'thin'
   gem 'pg'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 group :test do
   gem 'pickle'

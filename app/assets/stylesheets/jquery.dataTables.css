@@ -10,9 +10,20 @@ table.dataTable {
 }
 table.dataTable td
 {
-color:inherit;
+color:#000000;
 font-size:14px;
 }
+table.dataTable td a
+{
+color:#000000;
+text-decoration:underline;
+}
+table.dataTable td a:hover
+{
+text-decoration:none;
+background-color:inherit;
+}
+
 table.dataTable th
 {
 color:#DDD;

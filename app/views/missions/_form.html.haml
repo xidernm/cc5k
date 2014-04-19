@@ -8,19 +8,20 @@
 
   .field
     = f.label :name
-    %br
+  %br
     = f.text_field :name
   .field
     = f.label :description
-    %br
+  %br
     = f.text_area :description, size: "138x20"  
   .field
     = f.label :value
-    %br
+  %br
     = f.number_field :value
   .field
     = f.label :min_rank
-    %br
+  %br
     = f.number_field :min_rank
   .actions
+  %br
     = f.submit 'Save'
