@@ -1,0 +1,15 @@
+%h3.header.typeout
+  = "Mission complete, " + current_user.lastName + "!"
+  %br
+  %br
+
+%h2
+  Your results:
+
+- if @chart != nil
+  = high_chart("monthDist",@chart)
+- else
+  %h3 No data entered for the selected time period
+= javascript_include_tag "methodPopup"
+%small{:onClick=>"methodPopup()"}
+  %a How are these numbers generated?

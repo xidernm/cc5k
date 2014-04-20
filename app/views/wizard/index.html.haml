@@ -25,17 +25,8 @@
       #next.button
         Start
 
-- if @chart != nil
-  = high_chart("monthDist",@chart)
-
-%div
-  = @mission.description
-
-%div
-  %small{:onClick=>"methodPopup()"}
-    %a How are these numbers used?
-    
 :javascript
+  $('#complete').hide();
   $('#skip').hide();
   $('#back').hide();
 
@@ -125,9 +116,8 @@
 
   var updateChart = function()
   {
-    $.post("/month_chart", {year:data.year, month:data.month}, function(data){console.debug(data);
-      console.log(#{@chart});
-    })
+    //Dirty, but it works...
+    window.open("/mission_chart?month="+time.month+"&year="+time.year, "_self");
   }
 
   var initTabs = function()
@@ -172,10 +162,6 @@
     }
     else
     {
-      $('#question').text("Data received.");
-      $('#skip').hide();
-      $('#next').hide();
-      $('#answer').hide();
       updateChart();
     }
 
