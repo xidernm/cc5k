@@ -8,10 +8,9 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    
-    %body
+    - body = capture_haml do
       #wrapper
-        -if current_user!=nil;
+        - if current_user!=nil;
           = render 'layouts/navigation'
         %main{:role => "main"}
           = render 'layouts/messages'
@@ -20,8 +19,20 @@
           Copyright 2014 G.E.R.A ----
           = mail_to "webmaster@GERA.com", "Contact Us"
           = image_tag "cc5kstones.png"
-          -if current_user!=nil;
+          - if current_user!=nil;
             -javascript_include_tag 'showGuiders/js'
-            %span{:onClick=>"showGuiders()"} 
+            %span{:onClick=>"showGuiders()"}
               %a Show me how to use this application
 
+    - if current_user != nil and current_user.rank == 2 then
+      %body{:style => "background-image:url('/assets/background-rank2.jpg')"}
+        = body
+    - elsif current_user != nil and current_user.rank == 3 then
+      %body{:style => "background-image:url('/assets/background-rank3.jpg')"}
+        = body
+    - elsif current_user != nil and current_user.rank == 4 then
+      %body{:style => "background-image:url('/assets/background-rank4.jpg')"}
+        = body
+    - else
+      %body{:style => "background-image:url('/assets/background.jpg')"}
+        = body

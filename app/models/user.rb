@@ -18,12 +18,12 @@ class User < ActiveRecord::Base
     if self.rank == nil
       self.rank = 0
     end
-    
+
     if self.score == nil
       self.score = 10
     end
-    
-    self.rank = (Math.log10(self.score).round)
+
+    self.rank = (Math.log2(self.score).round)
     puts self.save
   end
 end
