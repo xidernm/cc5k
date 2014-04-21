@@ -14,9 +14,17 @@ class UsersController < ApplicationController
   def show
     current_user.updateRank
     @user_badges = EarnedBadge.order('created_at DESC').where(user_id: current_user.id)
-    if(@user_badges.count == 0) # Earn the signed up badge if haven't already
+
+    # earn the signed up badge if haven't already
+    if !EarnedBadge.IsEarned?(current_user, "Signed Up") and @user_badges.count == 0
       EarnedBadge.earn(current_user, "Signed Up")
     end
+
+    # earn the Missionary badge
+    if !EarnedBadge.IsEarned?(current_user, "Missionary") and AnsweredFactor.where(user_id: current_user.id).count > 0
+      EarnedBadge.earn(current_user, "Missionary")
+    end
+
     @most_recent_badge = @user_badges.first
     @user = User.find(params[:id])
   end

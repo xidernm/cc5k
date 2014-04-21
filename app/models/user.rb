@@ -18,11 +18,10 @@ class User < ActiveRecord::Base
     if self.rank == nil
       self.rank = 0
     end
-    
+
     if self.score == nil
       self.score = 10
     end
-    
     self.rank = (Math.log2(self.score).floor)
     puts self.save
     puts getGlobalAverage
