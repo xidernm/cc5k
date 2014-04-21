@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    current_user.updateRank
     @user_badges = EarnedBadge.order('created_at DESC').where(user_id: current_user.id)
     if(@user_badges.count == 0) # Earn the signed up badge if haven't already
       EarnedBadge.earn(current_user, "Signed Up")

@@ -23,7 +23,21 @@ class User < ActiveRecord::Base
       self.score = 10
     end
     
-    self.rank = (Math.log10(self.score).round)
+    self.rank = (Math.log2(self.score).floor)
     puts self.save
+    puts getGlobalAverage
+  end
+  
+  private
+  def getGlobalAverage
+    sum = 0
+    User.all.each do |user|
+      sum += user.score
+    end
+    return (sum / User.all.count)
+  end
+
+  def getAnsweredFactorAverage
+    
   end
 end
