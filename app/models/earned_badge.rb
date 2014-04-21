@@ -12,6 +12,9 @@ class EarnedBadge < ActiveRecord::Base
   def self.IsEarned?(user, title)
     user_badges = EarnedBadge.all.where(user_id: user.id)
     title_badge = Badge.all.where(title: title).first
-    return EarnedBadge.all.where(user_id: user.id, badge_id: title_badge.id).count > 0
+    if(title_badge)
+      return EarnedBadge.all.where(user_id: user.id, badge_id: title_badge.id).count > 0
+    end
+    return false
   end
 end
