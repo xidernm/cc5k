@@ -28,12 +28,14 @@
      %td Member for:
      %td= distance_of_time_in_words_to_now(@user.created_at)
     %tr
-     %td Rank:
+     %td Current Rank:
      %td= @user.rank
     %tr
      %td Score:
      %td= @user.score
     %tr
+     %td Minumum Score For Next Rank:
+     %td= 2**(@user.rank+1)
     %tr
      %td= link_to "Edit account", edit_user_registration_path
      %td
