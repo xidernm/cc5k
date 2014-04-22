@@ -31,7 +31,9 @@ class User < ActiveRecord::Base
   def getGlobalAverage
     sum = 0
     User.all.each do |user|
-      sum += user.score
+      if user.score != nil
+        sum += user.score
+      end
     end
     return (sum / User.all.count)
   end
