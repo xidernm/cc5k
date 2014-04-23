@@ -15,15 +15,18 @@ class User < ActiveRecord::Base
   end
 
   def fill_default_fields
-    rank = 0
-    score = 10
-    effective_score = score
-    wallpaper_id = 0
+    self.rank = 0
+    self.score = 0
+    self.effective_score = score
+    self.wallpaper_id = 0
+    self.save
   end
 
   def updateRank
     numberAnswers = Answer.where(user_id: id).count
-    self.rank = (Math.log2(self.score).floor)
+    self.rank = 0
+    self.rank = (Math.log2(self.score).floor) if self.score > 1
+
     puts self.save
     puts getGlobalAverage
   end
