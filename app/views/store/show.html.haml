@@ -1,0 +1,27 @@
+%h1 G.E.R.A Store
+%h3
+  Agent:
+  = "#{@user.firstName} #{@user.lastName}"
+%h3= "#{@user.effective_score}pts"
+
+%table
+  %th{style: "width: 200px;"}
+  %th{style: "width: 200px;"}
+  - purchasable_items = 0
+
+  - if @user.wallpaper_id < 4
+    - purchasable_items += 1
+    %tr{style: "height: 150px"}
+      %td= link_to "Upgrade Wallpaper", upgrade_wallpaper_path
+      %td= "#{@user.wallpaper_id * 100} pts"
+
+  - if !EarnedBadge.IsEarned?(@user, "High Roller")
+    - purchasable_items += 1
+    %tr{style: "height: 150px"}
+      %td= link_to "High Roller Badge", buy_high_roller_badge_path
+      %td= "1000 pts"
+
+  - if purchasable_items == 0
+    There is nothing left to buy.
+
+

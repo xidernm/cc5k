@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     puts self.save
     puts getGlobalAverage
   end
-  
+
   private
   def getGlobalAverage
     sum = 0
@@ -39,6 +39,6 @@ class User < ActiveRecord::Base
   end
 
   def getAnsweredFactorAverage
-    
+
   end
 end

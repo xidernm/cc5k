@@ -7,6 +7,7 @@ class WizardController < ApplicationController
     @date = Time.new
     @chart = nil
     current_user.score += @mission.value
+    current_user.effective_scorer += @mission.value
     current_user.save
   end
 
@@ -47,7 +48,7 @@ class WizardController < ApplicationController
         f.series(series)
         f.options[:title][:text] = 'Current Month Distribution of Emissions'
         f.plot_options(:pie=>{
-          :allowPointSelect=>true, 
+          :allowPointSelect=>true,
           :dataLabels=>{
           :enabled=>true,
           :color=>"white",

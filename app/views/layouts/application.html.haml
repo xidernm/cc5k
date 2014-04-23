@@ -24,13 +24,13 @@
             %span{:onClick=>"showGuiders()"}
               %a Show me how to use this application
 
-    - if current_user != nil and current_user.rank == 2 then
+    - if current_user != nil and current_user.wallpaper_id == 2 then
       %body{:style => "background-image:url('/assets/background-rank2.jpg')"}
         = body
-    - elsif current_user != nil and current_user.rank == 3 then
+    - elsif current_user != nil and current_user.wallpaper_id == 3 then
       %body{:style => "background-image:url('/assets/background-rank3.jpg')"}
         = body
-    - elsif current_user != nil and current_user.rank == 4 then
+    - elsif current_user != nil and current_user.wallpaper_id == 4 then
       %body{:style => "background-image:url('/assets/background-rank4.jpg')"}
         = body
     - else

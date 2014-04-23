@@ -32,13 +32,16 @@
      %td= @user.rank
     %tr
      %td Score:
-     %td= @user.score
+     %td= "#{@user.effective_score}pts"
+    %tr
+     %td Total Score:
+     %td= "#{@user.score}pts"
     %tr
      %td Minumum Score For Next Rank:
      %td= 2**(@user.rank+1)
     %tr
      %td= link_to "Edit account", edit_user_registration_path
-     %td
+     %td= link_to "Spend points", store_show_path
     %tr
 
 %h2.header.typeout1
