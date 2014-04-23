@@ -32,10 +32,14 @@
      %td= @user.rank
     %tr
      %td Score:
-     %td= "#{@user.effective_score}pts"
+     %td
+      %span.glyphicon.glyphicon-tree-conifer
+      = "#{@user.effective_score}"
     %tr
      %td Total Score:
-     %td= "#{@user.score}pts"
+     %td
+      %span.glyphicon.glyphicon-tree-conifer
+      = "#{@user.score}"
     %tr
      %td Minumum Score For Next Rank:
      %td= 2**(@user.rank+1)

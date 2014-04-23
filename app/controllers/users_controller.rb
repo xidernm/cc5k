@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user_badges = EarnedBadge.order('created_at DESC').where(user_id: current_user.id)
 
     # earn the signed up badge if haven't already
-    if !EarnedBadge.IsEarned?(current_user, "Signed Up") and @user_badges.count == 0
+    if !EarnedBadge.IsEarned?(current_user, "Signed Up")
       EarnedBadge.earn(current_user, "Signed Up")
     end
 

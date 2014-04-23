@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :fill_default_fields
   has_many :earnedbadges
   has_many :statistics
   belongs_to :region
@@ -13,15 +14,15 @@ class User < ActiveRecord::Base
     return roles.where(name: "Admin").take != nil
   end
 
+  def fill_default_fields
+    rank = 0
+    score = 10
+    effective_score = score
+    wallpaper_id = 0
+  end
+
   def updateRank
     numberAnswers = Answer.where(user_id: id).count
-    if self.rank == nil
-      self.rank = 0
-    end
-
-    if self.score == nil
-      self.score = 10
-    end
     self.rank = (Math.log2(self.score).floor)
     puts self.save
     puts getGlobalAverage
