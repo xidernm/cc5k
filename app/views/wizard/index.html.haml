@@ -77,8 +77,7 @@
     $.post("/answeredFactor", {id:id, month:data.month, year:data.year},
           function(result){
             if(result != null)
-              $('#answer').val(result.amount);}
-		console.debug("Submitted"););
+              $('#answer').val(result.amount);});
   }
 
   var updateLastFactor = function(id)
