@@ -3,7 +3,7 @@
   %li.sidebar-brand= link_to 'G.E.R.A', root_path, :id => 'hq'
   %li.sidebar-brand= link_to 'Mission Objective', mission_objective_path, :id => 'misobj'
   - if current_user.lastName!=nil and current_user.lastName.length < 8
-   %li.sidebar-brand= link_to "#{current_user.lastName}: Personnel File", user_path(current_user), :id=>"prof"
+   %li.sidebar-brand= link_to "#{current_user.lastName}: File", user_path(current_user), :id=>"prof"
   -else
    %li.sidebar-brand= link_to "Personnel File", user_path(current_user), :id=>"prof"
   %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
