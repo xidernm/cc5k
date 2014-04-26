@@ -50,7 +50,7 @@ showGuiders = function() {
     })
     $('#prof').guider({
     name: "prof",
-    next: "contrib",
+    next: "store",
     title: "Personnel File",
     description: "G.E.R.A members may view their records and awards, and update their contact information directly in their personnel file.",
     overlay: "dark",
@@ -64,6 +64,23 @@ showGuiders = function() {
     }
     }
     })
+    $('#store').guider({
+    name: "store",
+    next: "contrib",
+    title: "Armory",
+    description: "G.E.R.A members may need to purchase supplies, badges, or upgrades. You can find the cure for what ails you.",
+    overlay: "dark",
+    draggable: true,
+    buttons: {
+    Close: true,
+    Next: {
+    click: true,
+    className: "primary",
+    focus: true
+    }
+    }
+    })
+
     $('#contrib').guider({
     name: "contrib",
     next: "mission",
