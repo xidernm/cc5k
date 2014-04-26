@@ -1,5 +1,6 @@
 %h2.typeout.header Listing missions
 %p Your current assignments are listed below. Please complete them to earn points and advance your G.E.R.A rank and career.
+
 %table#cc5kmissionTable
   %thead
     %tr
@@ -22,7 +23,7 @@
             %td= link_to 'Destroy Mission', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-- if current_user != nil && current_user.admin?
+- if current_user != nil and current_user.admin?
   = link_to 'New Mission', new_mission_path
 
 :javascript
