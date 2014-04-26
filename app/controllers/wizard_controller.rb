@@ -7,7 +7,7 @@ class WizardController < ApplicationController
     @date = Time.new
     @chart = nil
     current_user.score += @mission.value
-    current_user.effective_scorer += @mission.value
+    current_user.effective_score += @mission.value
     current_user.save
   end
 
