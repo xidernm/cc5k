@@ -19,8 +19,8 @@
           %td= mission.value
           %td= link_to 'Mission Details', mission_path(mission)
           - if current_user.admin?
-            %td = link_to 'Edit Mission', edit_mission_path(mission)
-            %td = link_to 'Destroy Mission', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %td= link_to 'Edit Mission', edit_mission_path(mission)
+            %td= link_to 'Destroy Mission', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
           - else
             %td
             %td
