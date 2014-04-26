@@ -77,8 +77,19 @@
     $.post("/answeredFactor", {id:id, month:data.month, year:data.year},
           function(result){
             if(result != null)
-              $('#answer').val(result.amount)});
+              $('#answer').val(result.amount);}
+		console.debug("Submitted"););
   }
+
+  var updateLastFactor = function(id)
+  {
+    $.post("/answeredFactor", {id:id, month:data.month, year:data.year},
+          function(result){
+            if(result != null)
+              $('#answer').val(result.amount);
+            updateChart();});
+  }
+
 
   var addOptions = function(target, options, select, onupdate)
   {
@@ -116,6 +127,7 @@
 
   var updateChart = function()
   {
+    
     //Dirty, but it works...
     window.open("/mission_chart?month="+time.month+"&year="+time.year, "_self");
   }
@@ -162,6 +174,7 @@
     }
     else
     {
+      
       updateChart();
     }
 
