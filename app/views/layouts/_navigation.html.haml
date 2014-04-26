@@ -6,6 +6,7 @@
    %li.sidebar-brand= link_to "#{current_user.lastName}: File", user_path(current_user), :id=>"prof"
   -else
    %li.sidebar-brand= link_to "Personnel File", user_path(current_user), :id=>"prof"
+  %li.sidebar-brand= link_to "Buy Equipment", store_show_path
   %li.sidebar-brand= link_to "Intelligence", contribution_path, :id => "contrib"
   %li.sidebar-brand= link_to 'Missions', missions_path, :id => "missions"
   - if current_user.admin?
