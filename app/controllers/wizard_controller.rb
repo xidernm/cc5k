@@ -6,9 +6,6 @@ class WizardController < ApplicationController
     @categories = Category.all
     @date = Time.new
     @chart = nil
-    current_user.score += @mission.value
-    current_user.effective_score += @mission.value
-    current_user.save
   end
 
   def chart

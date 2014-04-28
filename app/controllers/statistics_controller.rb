@@ -145,6 +145,9 @@ class StatisticsController < ApplicationController
       if badFactors.count == 0
         userFactors = rearrangeFactors(factorIds)
         updateAnswer(userFactors,{:month=>params[:month],:year=>params[:year]})
+        current_user.score += Mission.getScore(current_user)
+        current_user.effective_score += Mission.getScore(current_user)
+        current_user.save
       end
     end
     if badFactors.count == 0 and factorIds.count != 0

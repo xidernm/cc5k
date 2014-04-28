@@ -6,7 +6,7 @@
   = @mission.description
 %p
   %b Value:
-  = @mission.value
+  = Mission.getScore(current_user)
 
 = link_to "Start Mission", wizard_path(@mission.id)
 
