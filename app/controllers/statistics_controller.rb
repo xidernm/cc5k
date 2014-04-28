@@ -32,7 +32,7 @@ class StatisticsController < ApplicationController
   # POST /statistics
   # POST /statistics.json
   def create
-    # TODO: We are accepting '=' characters into the Statistic Equation. If we do this 
+    # TODO: We are accepting '=' characters into the Statistic Equation. If we do this
     # we need to make sure that we take this into account appropriately.
     if Statistic.IsValidEquation(statistic_params[:equation])
       @statistic = Statistic.new(statistic_params)
@@ -85,7 +85,7 @@ class StatisticsController < ApplicationController
 
   # POST /submit_factor_changes
   # This code needs refactoring!
-  
+
   # This function updates the changes that the admin wants to make to
   # the dependency, amount, and unit fields, then sends them back
   # to the statistics show page.
@@ -95,19 +95,19 @@ class StatisticsController < ApplicationController
       f.dependency = factor[1]
       f.save
     end
-   
+
     params[:factor_amount].each do |factor|
       f = Factor.find_by(id: factor[0][0..-1])
       f.amount = factor[1][0..-1]
       f.save
      end
-    
+
     params[:factor_unit].each do |factor|
       f = Factor.find_by(id: factor[0])
       f.unit = factor[1..-1].join
       f.save
     end
-   
+
    params[:factor_question].each do |factor|
       f = Factor.find_by(id: factor[0])
       f.variableName = factor[1..-1].join
@@ -131,7 +131,7 @@ class StatisticsController < ApplicationController
                                   month: params[:month],
                                   year: params[:year],
                                   user_id: current_user.id).first_or_create
-       
+
         af[:amount] = field[1][:value]
         af.save
 
@@ -153,14 +153,14 @@ class StatisticsController < ApplicationController
       redirect_to emissions_template_path, alert: "Factor cannot be left blank."
     end
   end
-    
-  
+
+
   # Get /emissions_template
   def emissions_template
     @statistics = Statistic.all
     @user = current_user
     if params[:month] !=nil && params[:year]!=nil
-      @time = Time.new(params[:year],params[:month])    
+      @time = Time.new(params[:year],params[:month])
     end
     if @time == nil
       @time = Time.new
@@ -172,7 +172,7 @@ class StatisticsController < ApplicationController
   def set_statistic
     @statistic = Statistic.find(params[:id])
   end
-  
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def statistic_params
     params.require(:statistic).permit(:equation, :description, :category_id)
@@ -180,21 +180,23 @@ class StatisticsController < ApplicationController
 
   def create_factors_for_statistic(statistic)
     Factor.where(statistic_id: statistic.id).destroy_all
-    statistic.equation.gsub(/\s+/,"").split(/[*+-\/]/).delete_if(&:empty?).each do |factor|
-      name_check = Integer(factor) rescue nil
-      if name_check == nil
-        factor = Factor.where(name: factor, statistic_id: statistic.id).first_or_create
-      else
-        factor = Factor.where(value: factor, statistic_id: statistic.id).first_or_create
+    statistic.equation.gsub(/\s+/,"").split(/[\(\)*+-\/]/).delete_if(&:empty?).each do |factor|
+      if /[A-Z]/ =~ factor
+        name_check = Integer(factor) rescue nil
+        if name_check == nil
+          factor = Factor.where(name: factor, statistic_id: statistic.id).first_or_create
+        else
+          factor = Factor.where(value: factor, statistic_id: statistic.id).first_or_create
+        end
+        factor.category_id = statistic.category_id
+        factor.save
       end
-      factor.category_id = statistic.category_id 
-      factor.save
     end
   end
-  
+
   def rearrangeFactors(fids)
     factors = []
-    l = 0 
+    l = 0
     r = 1
     while r < fids.count
       if fids[l][1] == fids[r][1]
@@ -216,8 +218,8 @@ class StatisticsController < ApplicationController
     end
     return factors
   end
-  
-  # TODO: Make sure that users arent entering information 
+
+  # TODO: Make sure that users arent entering information
   # in that could return an Answer of type Float::INFINITY
   def updateAnswer(ls,time)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
@@ -226,7 +228,7 @@ class StatisticsController < ApplicationController
     ls.each do |e|
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
-      
+
       amount = stat[0].EvalEquation(current_user.id, e)
       #if exists
       if Answer.where(user_id: current_user.id,statistic_id: sid,month: time[:month], year: time[:year]).first.present?
