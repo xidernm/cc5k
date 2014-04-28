@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     self.rank = 0
     self.score = 0
     self.effective_score = score
-    self.wallpaper_id = 0
+    self.wallpaper_id = 1
     self.save
   end
 

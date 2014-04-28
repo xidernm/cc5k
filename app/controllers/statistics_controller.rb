@@ -222,6 +222,7 @@ class StatisticsController < ApplicationController
   def updateAnswer(ls,time)
     # ls is a list of list of answerd_factor_id, statistic_id pairs
     # t contains date information
+    puts ls.inspect
     ls.each do |e|
       sid = e[0][1].to_i
       stat = Statistic.where(id: sid)
