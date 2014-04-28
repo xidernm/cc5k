@@ -3,7 +3,7 @@ class Statistic < ActiveRecord::Base
   has_many :answers, dependent: :destroy
 
   def self.IsValidEquation(eqstr)
-    /[A-Z]([\(\)+\-*\/][A-Z])*/ =~ eqstr.gsub(/\s+/,"")
+    return (/\(?[A-Z]([\(\)+\-*\/][A-Z])*/ =~ eqstr.gsub(/\s+/,"")) != nil
   end
 
   # def equationToRpn
@@ -28,7 +28,6 @@ class Statistic < ActiveRecord::Base
     stack = []
     queue = []
     precedence = {'+'.to_s => 2, '-'.to_s => 2, '/'.to_s => 3, '*'.to_s => 3}
-
     equation.each_char do |c|
       if /[A-Z]/ =~ c
         queue << c
@@ -63,7 +62,7 @@ class Statistic < ActiveRecord::Base
   end
 
   def EvalEquation(current_user, pairs)
-    eqn = equationToRpn(self.equation)
+    eqn = Statistic.equationToRpn(self.equation)
     stack = []
     ops = {"+" => lambda {|x,y| x + y},
            "-" => lambda {|x,y| x - y},
@@ -83,7 +82,7 @@ class Statistic < ActiveRecord::Base
       else
         val1 = stack.pop
         val2 = stack.pop
-        stack.push(ops[c].call(val1, val2))
+        stack.push(ops[c].call(val2, val1))
       end
     end
     return stack.pop
