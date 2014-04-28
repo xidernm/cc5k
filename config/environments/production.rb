@@ -4,7 +4,7 @@ Myapp::Application.configure do
   :address        => ENV['MAILGUN_SMTP_SERVER'],
   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  :domain         => 'intense-caverns-3017.heroku.com',
+  :domain         => 'geralliance.com',
   :authentication => :plain,
   }
 ActionMailer::Base.delivery_method = :smtp
@@ -24,7 +24,7 @@ ActionMailer::Base.delivery_method = :smtp
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.action_mailer.default_url_options = {:host => "http://intense-caverns-3017.herokuapp.com"}
+  config.action_mailer.default_url_options = {:host => "http://geralliance.com"}
   
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
