@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
   end
 
   def fill_default_fields
-    self.rank = 0
-    self.score = 0
+    self.rank = 1
+    self.score = 2
     self.effective_score = self.score
     self.wallpaper_id = 1
     self.save
