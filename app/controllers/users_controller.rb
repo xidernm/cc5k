@@ -25,6 +25,11 @@ class UsersController < ApplicationController
       EarnedBadge.earn(current_user, "Missionary")
     end
 
+    # earn the Fighter badge
+    if !EarnedBadge.IsEarned?(current_user, "Fighter") and current_user.rank >= 2
+      EarnedBadge.earn(current_user, "Fighter")
+    end
+
     @most_recent_badge = @user_badges.first
     @user = User.find(params[:id])
   end
